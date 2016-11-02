@@ -1,0 +1,12 @@
+panel:
+    resource: "@PanelBundle/Resources/config/routing.yml"
+    prefix:   /panel
+
+app:
+    resource: "@AppBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+# FOS User routings:
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
