@@ -1,3 +1,7 @@
+invitation:
+    resource: "@InvitationBundle/Resources/config/routing.yml"
+    prefix:   /
+
 panel:
     resource: "@PanelBundle/Resources/config/routing.yml"
     prefix:   /panel

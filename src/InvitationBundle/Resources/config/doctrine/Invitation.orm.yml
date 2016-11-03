@@ -1,0 +1,27 @@
+InvitationBundle\Entity\Invitation:
+    type: entity
+    table: null
+    repositoryClass: InvitationBundle\Repository\InvitationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        code:
+            type: integer
+            unique: true
+        name:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        phone:
+            type: string
+            length: '12'
+        comment:
+            type: string
+            length: '2048'
+    lifecycleCallbacks: {  }

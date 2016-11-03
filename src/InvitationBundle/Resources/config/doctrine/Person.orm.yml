@@ -1,0 +1,28 @@
+InvitationBundle\Entity\Person:
+    type: entity
+    table: null
+    repositoryClass: InvitationBundle\Repository\PersonRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        status:
+            type: integer
+        child:
+            type: boolean
+        innerOrder:
+            type: integer
+            column: inner_order
+            
+    oneToMany:
+        invitation:
+            targetEntity: Invitation
+            mappedBy: person
+            cascade: ["persist", "merge"]
+    lifecycleCallbacks: {  }
