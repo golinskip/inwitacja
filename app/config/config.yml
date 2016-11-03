@@ -86,3 +86,15 @@ assetic:
         cssrewrite: ~
 braincrafted_bootstrap:
     css_preprocessor: less
+    auto_configure:
+        assetic: true
+        twig: true
+
+knp_menu:
+    # use "twig: false" to disable the Twig extension and the TwigRenderer
+    twig:
+        template: BraincraftedBootstrapBundle:Menu:bootstrap.html.twig
+    #  if true, enables the helper for PHP templates
+    templating: false
+    # the renderer to use, list is also available by default
+    default_renderer: twig

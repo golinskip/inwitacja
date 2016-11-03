@@ -1,3 +1,7 @@
 panel_homepage:
     path:     /
     defaults: { _controller: PanelBundle:Default:index }
+
+panel_person_manager:
+    path:     /personManager
+    defaults: { _controller: PanelBundle:PersonManager:index }
