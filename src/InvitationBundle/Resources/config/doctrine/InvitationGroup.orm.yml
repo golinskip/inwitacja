@@ -1,0 +1,27 @@
+InvitationBundle\Entity\InvitationGroup:
+    type: entity
+    table: null
+    repositoryClass: InvitationBundle\Repository\InvitationGroupRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        urlName:
+            type: string
+            length: 255
+            column: url_name
+        color:
+            type: string
+            length: '7'
+            nullable: true
+    lifecycleCallbacks: {  }
+    oneToMany:
+        event:
+            targetEntity: event
+            mappedBy: invitation_group

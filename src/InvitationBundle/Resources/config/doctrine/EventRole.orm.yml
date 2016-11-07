@@ -1,0 +1,34 @@
+InvitationBundle\Entity\EventRole:
+    type: entity
+    table: null
+    repositoryClass: InvitationBundle\Repository\EventRoleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            unique: true
+        title:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
+    manyToMany:
+        actions:
+            targetEntity: Action
+            joinTable:
+                name: action_event_role
+                joinColumns:
+                    event_role_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    action_id:
+                        referencedColumnName: id
+    oneToMany:
+        eventAggr:
+            targetEntity: UserEventRoleEvent
+            mappedBy: event

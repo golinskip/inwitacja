@@ -9,19 +9,34 @@ InvitationBundle\Entity\Invitation:
             generator:
                 strategy: AUTO
     fields:
-        code:
-            type: integer
-            unique: true
         name:
             type: string
             length: 255
+        urlName:
+            type: string
+            length: 255
+            unique: true
+            column: url_name
         email:
             type: string
             length: 255
+            nullable: true
         phone:
             type: string
-            length: '12'
-        comment:
-            type: string
-            length: '2048'
+            length: 255
+            nullable: true
+        code:
+            type: integer
+            unique: true
+        addDate:
+            type: datetime
+            column: add_date
+        lastChange:
+            type: datetime
+            column: last_change
+        status:
+            type: integer
+        innerOrder:
+            type: integer
+            column: inner_order
     lifecycleCallbacks: {  }

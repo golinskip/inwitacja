@@ -7,3 +7,8 @@ AppBundle\Entity\User:
             type: integer
             generator:
                 strategy: AUTO
+    
+    oneToMany:
+        eventAggr:
+            targetEntity: InvitationBundle\Entity\UserEventRoleEvent
+            mappedBy: user

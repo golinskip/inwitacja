@@ -1,0 +1,19 @@
+InvitationBundle\Entity\Action:
+    type: entity
+    table: null
+    repositoryClass: InvitationBundle\Repository\ActionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            unique: true
+        title:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

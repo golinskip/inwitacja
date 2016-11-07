@@ -1,0 +1,50 @@
+InvitationBundle\Entity\Event:
+    type: entity
+    table: null
+    repositoryClass: InvitationBundle\Repository\EventRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        urlName:
+            type: string
+            length: 255
+            unique: true
+            column: url_name
+        description:
+            type: string
+            length: '2048'
+            nullable: true
+        place:
+            type: string
+            length: 255
+            nullable: true
+        placeCoord:
+            type: string
+            length: '16'
+            nullable: true
+            column: place_coord
+        date:
+            type: datetime
+        createdAt:
+            type: datetime
+            column: created_at
+    lifecycleCallbacks: {  }
+    
+    oneToMany:
+        eventAggr:
+            targetEntity: UserEventRoleEvent
+            mappedBy: event
+    manyToOne:
+        eventType:
+            targetEntity: EventType
+            inversedBy: event
+            joinColumn:
+                name: event_type_id
+                referencedColumnName: id

@@ -3,7 +3,7 @@
 namespace InvitationBundle\Entity;
 
 /**
- * Guest
+ * Invitation
  */
 class Invitation
 {
@@ -13,14 +13,14 @@ class Invitation
     private $id;
 
     /**
-     * @var int
+     * @var string
      */
-    private $code;
+    private $name;
 
     /**
      * @var string
      */
-    private $name;
+    private $urlName;
 
     /**
      * @var string
@@ -33,9 +33,29 @@ class Invitation
     private $phone;
 
     /**
-     * @var string
+     * @var int
      */
-    private $comment;
+    private $code;
+
+    /**
+     * @var \DateTime
+     */
+    private $addDate;
+
+    /**
+     * @var \DateTime
+     */
+    private $lastChange;
+
+    /**
+     * @var int
+     */
+    private $status;
+
+    /**
+     * @var int
+     */
+    private $innerOrder;
 
 
     /**
@@ -49,35 +69,11 @@ class Invitation
     }
 
     /**
-     * Set code
-     *
-     * @param integer $code
-     *
-     * @return Guest
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-
-        return $this;
-    }
-
-    /**
-     * Get code
-     *
-     * @return int
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-    /**
      * Set name
      *
      * @param string $name
      *
-     * @return Guest
+     * @return Invitation
      */
     public function setName($name)
     {
@@ -97,11 +93,35 @@ class Invitation
     }
 
     /**
+     * Set urlName
+     *
+     * @param string $urlName
+     *
+     * @return Invitation
+     */
+    public function setUrlName($urlName)
+    {
+        $this->urlName = $urlName;
+
+        return $this;
+    }
+
+    /**
+     * Get urlName
+     *
+     * @return string
+     */
+    public function getUrlName()
+    {
+        return $this->urlName;
+    }
+
+    /**
      * Set email
      *
      * @param string $email
      *
-     * @return Guest
+     * @return Invitation
      */
     public function setEmail($email)
     {
@@ -125,7 +145,7 @@ class Invitation
      *
      * @param string $phone
      *
-     * @return Guest
+     * @return Invitation
      */
     public function setPhone($phone)
     {
@@ -145,26 +165,123 @@ class Invitation
     }
 
     /**
-     * Set comment
+     * Set code
      *
-     * @param string $comment
+     * @param integer $code
      *
-     * @return Guest
+     * @return Invitation
      */
-    public function setComment($comment)
+    public function setCode($code)
     {
-        $this->comment = $comment;
+        $this->code = $code;
 
         return $this;
     }
 
     /**
-     * Get comment
+     * Get code
      *
-     * @return string
+     * @return int
      */
-    public function getComment()
+    public function getCode()
     {
-        return $this->comment;
+        return $this->code;
+    }
+
+    /**
+     * Set addDate
+     *
+     * @param \DateTime $addDate
+     *
+     * @return Invitation
+     */
+    public function setAddDate($addDate)
+    {
+        $this->addDate = $addDate;
+
+        return $this;
+    }
+
+    /**
+     * Get addDate
+     *
+     * @return \DateTime
+     */
+    public function getAddDate()
+    {
+        return $this->addDate;
+    }
+
+    /**
+     * Set lastChange
+     *
+     * @param \DateTime $lastChange
+     *
+     * @return Invitation
+     */
+    public function setLastChange($lastChange)
+    {
+        $this->lastChange = $lastChange;
+
+        return $this;
+    }
+
+    /**
+     * Get lastChange
+     *
+     * @return \DateTime
+     */
+    public function getLastChange()
+    {
+        return $this->lastChange;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     *
+     * @return Invitation
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set innerOrder
+     *
+     * @param integer $innerOrder
+     *
+     * @return Invitation
+     */
+    public function setInnerOrder($innerOrder)
+    {
+        $this->innerOrder = $innerOrder;
+
+        return $this;
+    }
+
+    /**
+     * Get innerOrder
+     *
+     * @return int
+     */
+    public function getInnerOrder()
+    {
+        return $this->innerOrder;
     }
 }
+

@@ -1,0 +1,31 @@
+InvitationBundle\Entity\UserEventRoleEvent:
+    type: entity
+    table: null
+    repositoryClass: InvitationBundle\Repository\UserEventRoleEventRepository
+    id:
+        userId:
+            type: integer
+        eventRoleId:
+            type: integer
+        eventId:
+            type: integer
+    manyToOne:
+        user:
+            targetEntity: AppBundle\Entity\User
+            inversedBy: event_role_event
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+        eventRole:
+            targetEntity: EventRole
+            inversedBy: user_event
+            joinColumn:
+                name: event_role_id
+                referencedColumnName: id
+        event:
+            targetEntity: Event
+            inversedBy: user_event_role
+            joinColumn:
+                name: event_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }
