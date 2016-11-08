@@ -50,6 +50,9 @@ InvitationBundle\Entity\Event:
         invitation:
             targetEntity: Invitation
             mappedBy: event
+        message:
+            targetEntity: Message
+            mappedBy: event
     manyToOne:
         eventType:
             targetEntity: EventType

@@ -64,6 +64,8 @@ class Invitation
     private $invitationGroup;
     
     private $event;
+    
+    private $message;
 
 
     /**

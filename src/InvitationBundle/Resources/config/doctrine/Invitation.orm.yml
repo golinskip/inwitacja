@@ -47,6 +47,9 @@ InvitationBundle\Entity\Invitation:
         changelog:
             targetEntity: Changelog
             mappedBy: invitation
+        message:
+            targetEntity: Message
+            mappedBy: invitation
     manyToOne:
         invitationGroup:
             targetEntity: InvitationGroup

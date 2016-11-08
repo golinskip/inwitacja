@@ -1,0 +1,36 @@
+InvitationBundle\Entity\Message:
+    type: entity
+    table: null
+    repositoryClass: InvitationBundle\Repository\MessageRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+            nullable: true
+        content:
+            type: string
+            length: '10240'
+        status:
+            type: integer
+        date:
+            type: datetime
+    lifecycleCallbacks: {  }
+    manyToOne:
+        invitation:
+            targetEntity: Invitation
+            inversedBy: message
+            joinColumn:
+                name: invitation_id
+                referencedColumnName: id
+        event:
+            targetEntity: Event
+            inversedBy: message
+            joinColumn:
+                name: event_id
+                referencedColumnName: id

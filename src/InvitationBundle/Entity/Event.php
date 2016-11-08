@@ -56,6 +56,8 @@ class Event
     private $parameter;
     
     private $invitation;
+    
+    private $message;
 
 
     /**

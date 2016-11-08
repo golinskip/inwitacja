@@ -23,6 +23,8 @@ class EventType
     private $title;
     
     private $event;
+    
+    private $image;
 
 
     /**

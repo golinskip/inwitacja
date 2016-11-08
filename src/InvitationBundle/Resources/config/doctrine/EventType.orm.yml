@@ -17,6 +17,10 @@ InvitationBundle\Entity\EventType:
             type: string
             length: 255
             nullable: true
+        image:
+            type: string
+            length: 64
+            nullable: true
     lifecycleCallbacks: {  }
     oneToMany:
         event:
