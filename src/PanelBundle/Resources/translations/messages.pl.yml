@@ -1,3 +1,9 @@
 menu:
     personManager: Zaproszenia
     logout: Wyloguj
+eventManager:
+    addButton: Dodaj nowe wydarzenie
+    addDialog:
+        title: Dodaj nowe wydarzenie
+        buttonSubmit: Dodaj
+        buttonCancel: Anuluj
