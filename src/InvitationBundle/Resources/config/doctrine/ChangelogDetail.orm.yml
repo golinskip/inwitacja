@@ -1,0 +1,26 @@
+InvitationBundle\Entity\ChangelogDetail:
+    type: entity
+    table: null
+    repositoryClass: InvitationBundle\Repository\ChangelogDetailRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        variable:
+            type: string
+            length: '32'
+        value:
+            type: string
+            length: '2048'
+            nullable: true
+    lifecycleCallbacks: {  }
+    manyToOne:
+        changelog:
+            targetEntity: Changelog
+            inversedBy: changelogDetail
+            joinColumn:
+                name: changelog_id
+                referencedColumnName: id

@@ -16,6 +16,10 @@ InvitationBundle\Entity\EventRole:
         title:
             type: string
             length: 255
+        special_name:
+            type: string
+            length: 32
+            nullable: true
     lifecycleCallbacks: {  }
     manyToMany:
         actions:

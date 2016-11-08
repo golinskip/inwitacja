@@ -1,7 +1,7 @@
-InvitationBundle\Entity\EventType:
+InvitationBundle\Entity\PersonGroup:
     type: entity
     table: null
-    repositoryClass: InvitationBundle\Repository\EventTypeRepository
+    repositoryClass: InvitationBundle\Repository\PersonGroupRepository
     id:
         id:
             type: integer
@@ -12,13 +12,14 @@ InvitationBundle\Entity\EventType:
         name:
             type: string
             length: 255
-            unique: true
-        title:
+        price:
+            type: float
+        color:
             type: string
-            length: 255
+            length: 7
             nullable: true
     lifecycleCallbacks: {  }
     oneToMany:
-        event:
-            targetEntity: Event
-            mappedBy: eventType
+        invitation:
+            targetEntity: Person
+            mappedBy: personGroup

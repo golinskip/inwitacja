@@ -41,6 +41,15 @@ InvitationBundle\Entity\Event:
         eventAggr:
             targetEntity: UserEventRoleEvent
             mappedBy: event
+        invitationGroup:
+            targetEntity: InvitationGroup
+            mappedBy: event
+        parameter:
+            targetEntity: Parameter
+            mappedBy: event
+        invitation:
+            targetEntity: Invitation
+            mappedBy: event
     manyToOne:
         eventType:
             targetEntity: EventType

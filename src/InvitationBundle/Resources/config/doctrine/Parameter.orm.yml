@@ -1,0 +1,40 @@
+InvitationBundle\Entity\Parameter:
+    type: entity
+    table: null
+    repositoryClass: InvitationBundle\Repository\ParameterRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        type:
+            type: string
+            length: 16
+        description:
+            type: string
+            length: 2048
+            nullable: true
+        isCustom:
+            type: boolean
+            column: is_custom
+    lifecycleCallbacks: {  }
+    manyToOne:
+        predefiniedParameter:
+            targetEntity: PredefiniedParameter
+            inversedBy: parameter
+            joinColumn:
+                name: predefinied_parameter_id
+                referencedColumnName: id
+                nullable: true
+    oneToMany:
+        event:
+            targetEntity: Event
+            mappedBy: parameter
+        parameterValue:
+            targetEntity: ParameterValue
+            mappedBy: parameter

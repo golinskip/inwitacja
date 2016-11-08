@@ -1,0 +1,41 @@
+InvitationBundle\Entity\Changelog:
+    type: entity
+    table: null
+    repositoryClass: InvitationBundle\Repository\ChangelogRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        type:
+            type: string
+            length: '32'
+        date:
+            type: datetime
+        ip:
+            type: string
+            length: '20'
+        userAgent:
+            type: string
+            length: 255
+            column: user_agent
+    lifecycleCallbacks: {  }
+    oneToMany:
+        changelogDetail:
+            targetEntity: ChangelogDetail
+            mappedBy: changelog
+    manyToOne:
+        user:
+            targetEntity: AppBundle\Entity\User
+            inversedBy: changelog
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+        invitation:
+            targetEntity: Invitation
+            inversedBy: changelog
+            joinColumn:
+                name: invitation_id
+                referencedColumnName: id

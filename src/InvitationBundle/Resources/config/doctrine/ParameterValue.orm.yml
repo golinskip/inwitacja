@@ -1,0 +1,28 @@
+InvitationBundle\Entity\ParameterValue:
+    type: entity
+    table: null
+    repositoryClass: InvitationBundle\Repository\ParameterValueRepository
+    id:
+        personId:
+            type: integer
+        parameterId:
+            type: integer
+    fields:
+        value:
+            type: string
+            length: 255
+            nullable: true
+    lifecycleCallbacks: {  }
+    manyToOne:
+        parameter:
+            targetEntity: Parameter
+            inversedBy: parameterValue
+            joinColumn:
+                name: parameter_id
+                referencedColumnName: id
+        person:
+            targetEntity: Person
+            inversedBy: parameterValue
+            joinColumn:
+                name: person_id
+                referencedColumnName: id

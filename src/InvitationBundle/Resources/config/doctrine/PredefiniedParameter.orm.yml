@@ -1,7 +1,7 @@
-InvitationBundle\Entity\EventType:
+InvitationBundle\Entity\PredefiniedParameter:
     type: entity
     table: null
-    repositoryClass: InvitationBundle\Repository\EventTypeRepository
+    repositoryClass: InvitationBundle\Repository\PredefiniedParameterRepository
     id:
         id:
             type: integer
@@ -13,12 +13,11 @@ InvitationBundle\Entity\EventType:
             type: string
             length: 255
             unique: true
-        title:
+        type:
             type: string
-            length: 255
-            nullable: true
+            length: '16'
     lifecycleCallbacks: {  }
     oneToMany:
-        event:
-            targetEntity: Event
-            mappedBy: eventType
+        parameter:
+            targetEntity: Parameter
+            mappedBy: predefiniedParameter

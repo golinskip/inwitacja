@@ -12,19 +12,19 @@ InvitationBundle\Entity\UserEventRoleEvent:
     manyToOne:
         user:
             targetEntity: AppBundle\Entity\User
-            inversedBy: event_role_event
+            inversedBy: eventAggr
             joinColumn:
                 name: user_id
                 referencedColumnName: id
         eventRole:
             targetEntity: EventRole
-            inversedBy: user_event
+            inversedBy: eventAggr
             joinColumn:
                 name: event_role_id
                 referencedColumnName: id
         event:
             targetEntity: Event
-            inversedBy: user_event_role
+            inversedBy: eventAggr
             joinColumn:
                 name: event_id
                 referencedColumnName: id

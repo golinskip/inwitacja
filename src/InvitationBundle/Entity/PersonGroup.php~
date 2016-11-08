@@ -3,9 +3,9 @@
 namespace InvitationBundle\Entity;
 
 /**
- * InvitationGroup
+ * PersonGroup
  */
-class InvitationGroup
+class PersonGroup
 {
     /**
      * @var int
@@ -18,18 +18,17 @@ class InvitationGroup
     private $name;
 
     /**
-     * @var string
+     * @var float
      */
-    private $urlName;
+    private $price;
 
     /**
      * @var string
      */
     private $color;
-
-    private $invitation;
     
-    private $event;
+    private $invitation;
+
 
     /**
      * Get id
@@ -46,7 +45,7 @@ class InvitationGroup
      *
      * @param string $name
      *
-     * @return InvitationGroup
+     * @return PersonGroup
      */
     public function setName($name)
     {
@@ -66,27 +65,27 @@ class InvitationGroup
     }
 
     /**
-     * Set urlName
+     * Set price
      *
-     * @param string $urlName
+     * @param float $price
      *
-     * @return InvitationGroup
+     * @return PersonGroup
      */
-    public function setUrlName($urlName)
+    public function setPrice($price)
     {
-        $this->urlName = $urlName;
+        $this->price = $price;
 
         return $this;
     }
 
     /**
-     * Get urlName
+     * Get price
      *
-     * @return string
+     * @return float
      */
-    public function getUrlName()
+    public function getPrice()
     {
-        return $this->urlName;
+        return $this->price;
     }
 
     /**
@@ -94,7 +93,7 @@ class InvitationGroup
      *
      * @param string $color
      *
-     * @return InvitationGroup
+     * @return PersonGroup
      */
     public function setColor($color)
     {
@@ -123,11 +122,11 @@ class InvitationGroup
     /**
      * Add invitation
      *
-     * @param \InvitationBundle\Entity\Invitation $invitation
+     * @param \InvitationBundle\Entity\Person $invitation
      *
-     * @return InvitationGroup
+     * @return PersonGroup
      */
-    public function addInvitation(\InvitationBundle\Entity\Invitation $invitation)
+    public function addInvitation(\InvitationBundle\Entity\Person $invitation)
     {
         $this->invitation[] = $invitation;
 
@@ -137,9 +136,9 @@ class InvitationGroup
     /**
      * Remove invitation
      *
-     * @param \InvitationBundle\Entity\Invitation $invitation
+     * @param \InvitationBundle\Entity\Person $invitation
      */
-    public function removeInvitation(\InvitationBundle\Entity\Invitation $invitation)
+    public function removeInvitation(\InvitationBundle\Entity\Person $invitation)
     {
         $this->invitation->removeElement($invitation);
     }
@@ -152,29 +151,5 @@ class InvitationGroup
     public function getInvitation()
     {
         return $this->invitation;
-    }
-
-    /**
-     * Set event
-     *
-     * @param \InvitationBundle\Entity\Event $event
-     *
-     * @return InvitationGroup
-     */
-    public function setEvent(\InvitationBundle\Entity\Event $event = null)
-    {
-        $this->event = $event;
-
-        return $this;
-    }
-
-    /**
-     * Get event
-     *
-     * @return \InvitationBundle\Entity\Event
-     */
-    public function getEvent()
-    {
-        return $this->event;
     }
 }

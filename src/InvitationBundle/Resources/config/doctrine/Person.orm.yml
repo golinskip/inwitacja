@@ -1,0 +1,37 @@
+InvitationBundle\Entity\Person:
+    type: entity
+    table: null
+    repositoryClass: InvitationBundle\Repository\PersonRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        status:
+            type: integer
+        innerOrder:
+            type: integer
+            column: inner_order
+    lifecycleCallbacks: {  }
+    oneToMany:
+        parameterValue:
+            targetEntity: ParameterValue
+            mappedBy: person
+    manyToOne:
+        personGroup:
+            targetEntity: PersonGroup
+            inversedBy: person
+            joinColumn:
+                name: person_group_id
+                referencedColumnName: id
+        invitation:
+            targetEntity: Invitation
+            inversedBy: person
+            joinColumn:
+                name: invitation_id
+                referencedColumnName: id

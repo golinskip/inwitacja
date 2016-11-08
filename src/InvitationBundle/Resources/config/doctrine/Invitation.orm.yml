@@ -40,3 +40,24 @@ InvitationBundle\Entity\Invitation:
             type: integer
             column: inner_order
     lifecycleCallbacks: {  }
+    oneToMany:
+        person:
+            targetEntity: Person
+            mappedBy: invitation
+        changelog:
+            targetEntity: Changelog
+            mappedBy: invitation
+    manyToOne:
+        invitationGroup:
+            targetEntity: InvitationGroup
+            inversedBy: invitation
+            joinColumn:
+                name: invitation_id
+                referencedColumnName: id
+                nullable: true
+        event:
+            targetEntity: Event
+            inversedBy: invitation
+            joinColumn:
+                name: event_id
+                referencedColumnName: id

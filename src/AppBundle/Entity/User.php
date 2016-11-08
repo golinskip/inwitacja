@@ -17,4 +17,38 @@ class User extends BaseUser
         parent::__construct();
         // your own logic
     }
+
+    /**
+     * Add eventAggr
+     *
+     * @param \InvitationBundle\Entity\UserEventRoleEvent $eventAggr
+     *
+     * @return User
+     */
+    public function addEventAggr(\InvitationBundle\Entity\UserEventRoleEvent $eventAggr)
+    {
+        $this->eventAggr[] = $eventAggr;
+
+        return $this;
+    }
+
+    /**
+     * Remove eventAggr
+     *
+     * @param \InvitationBundle\Entity\UserEventRoleEvent $eventAggr
+     */
+    public function removeEventAggr(\InvitationBundle\Entity\UserEventRoleEvent $eventAggr)
+    {
+        $this->eventAggr->removeElement($eventAggr);
+    }
+
+    /**
+     * Get eventAggr
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEventAggr()
+    {
+        return $this->eventAggr;
+    }
 }

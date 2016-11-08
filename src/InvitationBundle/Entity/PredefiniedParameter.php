@@ -3,9 +3,9 @@
 namespace InvitationBundle\Entity;
 
 /**
- * EventType
+ * PredefiniedParameter
  */
-class EventType
+class PredefiniedParameter
 {
     /**
      * @var int
@@ -20,10 +20,9 @@ class EventType
     /**
      * @var string
      */
-    private $title;
-    
-    private $event;
+    private $type;
 
+    private $parameter;
 
     /**
      * Get id
@@ -40,7 +39,7 @@ class EventType
      *
      * @param string $name
      *
-     * @return EventType
+     * @return PredefiniedParameter
      */
     public function setName($name)
     {
@@ -60,67 +59,67 @@ class EventType
     }
 
     /**
-     * Set title
+     * Set type
      *
-     * @param string $title
+     * @param string $type
      *
-     * @return EventType
+     * @return PredefiniedParameter
      */
-    public function setTitle($title)
+    public function setType($type)
     {
-        $this->title = $title;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Get type
      *
      * @return string
      */
-    public function getTitle()
+    public function getType()
     {
-        return $this->title;
+        return $this->type;
     }
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->event = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->parameter = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add event
+     * Add parameter
      *
-     * @param \InvitationBundle\Entity\Event $event
+     * @param \InvitationBundle\Entity\Parameter $parameter
      *
-     * @return EventType
+     * @return PredefiniedParameter
      */
-    public function addEvent(\InvitationBundle\Entity\Event $event)
+    public function addParameter(\InvitationBundle\Entity\Parameter $parameter)
     {
-        $this->event[] = $event;
+        $this->parameter[] = $parameter;
 
         return $this;
     }
 
     /**
-     * Remove event
+     * Remove parameter
      *
-     * @param \InvitationBundle\Entity\Event $event
+     * @param \InvitationBundle\Entity\Parameter $parameter
      */
-    public function removeEvent(\InvitationBundle\Entity\Event $event)
+    public function removeParameter(\InvitationBundle\Entity\Parameter $parameter)
     {
-        $this->event->removeElement($event);
+        $this->parameter->removeElement($parameter);
     }
 
     /**
-     * Get event
+     * Get parameter
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEvent()
+    public function getParameter()
     {
-        return $this->event;
+        return $this->parameter;
     }
 }
