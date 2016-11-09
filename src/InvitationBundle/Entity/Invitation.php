@@ -417,4 +417,38 @@ class Invitation
     {
         return $this->event;
     }
+
+    /**
+     * Add message
+     *
+     * @param \InvitationBundle\Entity\Message $message
+     *
+     * @return Invitation
+     */
+    public function addMessage(\InvitationBundle\Entity\Message $message)
+    {
+        $this->message[] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Remove message
+     *
+     * @param \InvitationBundle\Entity\Message $message
+     */
+    public function removeMessage(\InvitationBundle\Entity\Message $message)
+    {
+        $this->message->removeElement($message);
+    }
+
+    /**
+     * Get message
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
 }

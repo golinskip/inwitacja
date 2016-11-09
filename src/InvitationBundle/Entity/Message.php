@@ -142,5 +142,52 @@ class Message
     {
         return $this->date;
     }
-}
 
+    /**
+     * Set invitation
+     *
+     * @param \InvitationBundle\Entity\Invitation $invitation
+     *
+     * @return Message
+     */
+    public function setInvitation(\InvitationBundle\Entity\Invitation $invitation = null)
+    {
+        $this->invitation = $invitation;
+
+        return $this;
+    }
+
+    /**
+     * Get invitation
+     *
+     * @return \InvitationBundle\Entity\Invitation
+     */
+    public function getInvitation()
+    {
+        return $this->invitation;
+    }
+
+    /**
+     * Set event
+     *
+     * @param \InvitationBundle\Entity\Event $event
+     *
+     * @return Message
+     */
+    public function setEvent(\InvitationBundle\Entity\Event $event = null)
+    {
+        $this->event = $event;
+
+        return $this;
+    }
+
+    /**
+     * Get event
+     *
+     * @return \InvitationBundle\Entity\Event
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
+}

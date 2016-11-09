@@ -31,10 +31,13 @@ InvitationBundle\Entity\Parameter:
                 name: predefinied_parameter_id
                 referencedColumnName: id
                 nullable: true
-    oneToMany:
         event:
             targetEntity: Event
-            mappedBy: parameter
+            inversedBy: parameter
+            joinColumn:
+                name: event_id
+                referencedColumnName: id
+    oneToMany:
         parameterValue:
             targetEntity: ParameterValue
             mappedBy: parameter

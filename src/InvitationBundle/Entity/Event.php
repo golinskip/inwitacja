@@ -58,6 +58,8 @@ class Event
     private $invitation;
     
     private $message;
+    
+    private $updatedAt;
 
 
     /**
@@ -91,6 +93,7 @@ class Event
      */
     public function getName()
     {
+        
         return $this->name;
     }
 
@@ -237,6 +240,31 @@ class Event
     {
         return $this->createdAt;
     }
+
+    /**
+     * Set updateddAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Event
+     */
+    public function setUpdatedAt($createdAt)
+    {
+        $this->updatedAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdateddAt()
+    {
+        return $this->updatedAt;
+    }
+    
     /**
      * Constructor
      */
@@ -406,5 +434,55 @@ class Event
     public function getEventType()
     {
         return $this->eventType;
+    }
+
+    /**
+     * Add message
+     *
+     * @param \InvitationBundle\Entity\Message $message
+     *
+     * @return Event
+     */
+    public function addMessage(\InvitationBundle\Entity\Message $message)
+    {
+        $this->message[] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Remove message
+     *
+     * @param \InvitationBundle\Entity\Message $message
+     */
+    public function removeMessage(\InvitationBundle\Entity\Message $message)
+    {
+        $this->message->removeElement($message);
+    }
+
+    /**
+     * Get message
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+    
+    public function fillEmptyFields() {
+        if($this->getCreatedAt() == null) {
+            $this->setCreatedAt(new \DateTime());
+        }
+        
+        $this->setUpdatedAt(new \DateTime());
+        
+        if($this->getUrlName() == null) {
+            $this->setUrlName($this->slug($this->getName()));
+        }
+    }
+    
+    protected function slug($string) {
+        return preg_replace('/[^\da-z]/i', '-',strtolower(iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $string)));
     }
 }

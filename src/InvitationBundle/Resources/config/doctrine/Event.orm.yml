@@ -19,7 +19,7 @@ InvitationBundle\Entity\Event:
             column: url_name
         description:
             type: string
-            length: '2048'
+            length: 2048
             nullable: true
         place:
             type: string
@@ -27,7 +27,7 @@ InvitationBundle\Entity\Event:
             nullable: true
         placeCoord:
             type: string
-            length: '16'
+            length: 16
             nullable: true
             column: place_coord
         date:
@@ -35,7 +35,11 @@ InvitationBundle\Entity\Event:
         createdAt:
             type: datetime
             column: created_at
-    lifecycleCallbacks: {  }
+        updatedAt:
+            type: datetime
+            column: updated_at
+    lifecycleCallbacks:
+        prePersist: [ fillEmptyFields ]
     
     oneToMany:
         eventAggr:

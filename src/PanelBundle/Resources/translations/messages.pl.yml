@@ -7,3 +7,8 @@ eventManager:
         title: Dodaj nowe wydarzenie
         buttonSubmit: Dodaj
         buttonCancel: Anuluj
+        name: Nazwa
+        type: Typ imprezy
+        description: Opis
+        date: Data
+        place: Miejsce
