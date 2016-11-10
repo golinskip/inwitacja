@@ -10,9 +10,13 @@
                 </button>
             </div>
             <div class="col-lg-6">
-                
+            
             </div>
         </div>
+    </div>
+    
+    <div class="container">
+        {% include 'PanelBundle:EventManager:card.html.twig' %}
     </div>
                     
     {% include 'PanelBundle:EventManager:addFormDialog.html.twig' with { 'form' : addForm } %}

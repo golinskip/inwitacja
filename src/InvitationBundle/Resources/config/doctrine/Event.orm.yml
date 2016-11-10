@@ -40,6 +40,8 @@ InvitationBundle\Entity\Event:
             column: updated_at
     lifecycleCallbacks:
         prePersist: [ fillEmptyFields ]
+        postPersist: [ assignAsOwner ]
+        preUpdate: [ beforeUpdate ]
     
     oneToMany:
         eventAggr:
@@ -63,4 +65,9 @@ InvitationBundle\Entity\Event:
             inversedBy: event
             joinColumn:
                 name: event_type_id
+                referencedColumnName: id
+        createdBy:
+            targetEntity: AppBundle\Entity\User
+            joinColumn:
+                name: user_id
                 referencedColumnName: id

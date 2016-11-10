@@ -11,8 +11,10 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class EventManagerController extends Controller
 {
-    public function indexAction(Request $request)
-    {
+    public function indexAction(Request $request) {
+        
+        $em = $this->getDoctrine()->getManager();
+        
         $Event = new Event;
         $Event->setDate(new \DateTime('tomorrow'));
         
@@ -28,11 +30,16 @@ class EventManagerController extends Controller
         
         if ($addForm->isSubmitted() && $addForm->isValid()) {
             $Event = $addForm->getData();
-            $em = $this->getDoctrine()->getManager();
+            $Event->setCreatedBy($this->getUser());
             $em->persist($Event);
             $em->flush();
             return $this->redirectToRoute('panel_event_manager');
-    }
+        }
+        
+        /*$Events = $em->createQueryBuilder()
+            ->select('r')
+            ->from('InvitationBundle:Events', 'e')
+            ->innerJoin()*/
         
             
         return $this->render('PanelBundle:EventManager:index.html.twig', array(

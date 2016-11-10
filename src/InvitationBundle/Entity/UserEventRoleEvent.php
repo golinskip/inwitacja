@@ -123,6 +123,8 @@ class UserEventRoleEvent
      */
     public function setUser(\AppBundle\Entity\User $user = null)
     {
+        $this->setUserId($user->getId());
+        
         $this->user = $user;
 
         return $this;
@@ -147,6 +149,8 @@ class UserEventRoleEvent
      */
     public function setEventRole(\InvitationBundle\Entity\EventRole $eventRole = null)
     {
+        $this->setEventRoleId($eventRole->getId());
+        
         $this->eventRole = $eventRole;
 
         return $this;
@@ -171,6 +175,8 @@ class UserEventRoleEvent
      */
     public function setEvent(\InvitationBundle\Entity\Event $event = null)
     {
+        $this->setEventId($event->getId());
+        
         $this->event = $event;
 
         return $this;

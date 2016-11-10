@@ -26,7 +26,7 @@ class EventRole
 	
 	private $eventAggr;
     
-    private $special_name;
+    private $specialName;
 
 
     /**
@@ -88,7 +88,7 @@ class EventRole
     }
 	
 	public function __construct() {
-		$this->actions = new ArrayCollection();
+		$this->actions = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
     /**
@@ -100,7 +100,7 @@ class EventRole
      */
     public function setSpecialName($specialName)
     {
-        $this->special_name = $specialName;
+        $this->specialName = $specialName;
 
         return $this;
     }
@@ -112,7 +112,7 @@ class EventRole
      */
     public function getSpecialName()
     {
-        return $this->special_name;
+        return $this->specialName;
     }
 
     /**

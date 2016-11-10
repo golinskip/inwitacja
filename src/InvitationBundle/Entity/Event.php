@@ -2,11 +2,15 @@
 
 namespace InvitationBundle\Entity;
 
+use Doctrine\ORM\Event\LifecycleEventArgs;
+
 /**
  * Event
  */
 class Event
 {
+    
+    const DEFAULT_ROLE = 'owner';
     /**
      * @var int
      */
@@ -60,6 +64,8 @@ class Event
     private $message;
     
     private $updatedAt;
+    
+    private $createdBy;
 
 
     /**
@@ -224,7 +230,7 @@ class Event
      *
      * @return Event
      */
-    public function setCreatedAt($createdAt)
+    private function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
 
@@ -248,7 +254,7 @@ class Event
      *
      * @return Event
      */
-    public function setUpdatedAt($createdAt)
+    private function setUpdatedAt($createdAt)
     {
         $this->updatedAt = $createdAt;
 
@@ -427,6 +433,30 @@ class Event
     }
 
     /**
+     * Get createdBy
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param \AppBundle\Entity\User $eventType
+     *
+     * @return Event
+     */
+    public function setCreatedBy(\AppBundle\Entity\User $createdBy)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
      * Get eventType
      *
      * @return \InvitationBundle\Entity\EventType
@@ -470,16 +500,31 @@ class Event
         return $this->message;
     }
     
-    public function fillEmptyFields() {
-        if($this->getCreatedAt() == null) {
-            $this->setCreatedAt(new \DateTime());
-        }
-        
+    public function beforeUpdate(LifecycleEventArgs $e) {
         $this->setUpdatedAt(new \DateTime());
-        
+    }
+    
+    public function fillEmptyFields(LifecycleEventArgs $e) {
+        $this->setCreatedAt(new \DateTime());
+        $this->setUpdatedAt(new \DateTime());
         if($this->getUrlName() == null) {
             $this->setUrlName($this->slug($this->getName()));
         }
+    }
+    
+    public function assignAsOwner(LifecycleEventArgs $e) {
+        $em = $e->getObjectManager();
+        $EventRole = $em
+            ->getRepository('InvitationBundle:EventRole')
+            ->findOneBySpecialName(self::DEFAULT_ROLE);
+                
+        $UserEventRoleEvent = new UserEventRoleEvent;
+        $UserEventRoleEvent->setUser($this->getCreatedBy());
+        $UserEventRoleEvent->setEventRole($EventRole);
+        $UserEventRoleEvent->setEvent($this);
+            
+        $em->persist($UserEventRoleEvent);
+        $em->flush();
     }
     
     protected function slug($string) {
