@@ -36,14 +36,19 @@ class EventManagerController extends Controller
             return $this->redirectToRoute('panel_event_manager');
         }
         
-        /*$Events = $em->createQueryBuilder()
-            ->select('r')
-            ->from('InvitationBundle:Events', 'e')
-            ->innerJoin()*/
-        
+        $Events = $this->getDoctrine()
+            ->getRepository('InvitationBundle:Event')
+            ->findByRelatedUser($this->getUser());
+            
+        $actionTab = [];
+        foreach($Events as $Event) {
+            $Event->loadPermissionSet($this->getUser());
+        }
+            
             
         return $this->render('PanelBundle:EventManager:index.html.twig', array(
             'addForm' => $addForm->createView(),
+            'Events' => $Events,
         ));
     }
 

@@ -159,7 +159,6 @@ class EventRole
     public function addAction(\InvitationBundle\Entity\Action $action)
     {
         $this->actions[] = $action;
-
         return $this;
     }
 

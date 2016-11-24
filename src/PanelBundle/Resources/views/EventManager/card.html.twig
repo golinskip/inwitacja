@@ -2,14 +2,17 @@
           <div class="thumbnail">
               <div class="caption">
                 <div class='col-lg-12'>
-                    <i class="fa fa-trash-o pull-right text-primary" aria-hidden="true"></i>
+                    {% if Event.checkPermission('event.remove') %}
+                        <i class="fa fa-trash-o pull-right text-primary" aria-hidden="true"></i>
+                    {% endif %}
                 </div>
                 <div class='col-lg-12 well well-add-card'>
-                    <h4>John Deo Mobilel</h4>
+                    <h4>{{Event.name}}</h4>
                 </div>
                 <div class='col-lg-12'>
-                    <p>4111xxxxxxxx3265</p>
-                    <p class"text-muted">Exp: 12-08</p>
+                    <p>{{Event.description}}</p>
+                    <p><b>Miejsce:</b> {{Event.place}}</p>
+                    <p><b>Data:</b> {{Event.date|date('Y-m-d')}}</p>
                 </div>
                 <button type="button" class="btn btn-primary btn-xs btn-update btn-add-card">Update</button>
             </div>

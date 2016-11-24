@@ -16,7 +16,9 @@
     </div>
     
     <div class="container">
-        {% include 'PanelBundle:EventManager:card.html.twig' %}
+        {% for Event in Events %}
+            {% include 'PanelBundle:EventManager:card.html.twig' with { 'Event' : Event } %}
+        {% endfor %}
     </div>
                     
     {% include 'PanelBundle:EventManager:addFormDialog.html.twig' with { 'form' : addForm } %}

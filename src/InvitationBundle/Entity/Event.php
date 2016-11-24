@@ -3,6 +3,7 @@
 namespace InvitationBundle\Entity;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\ORM\PersistentCollection;
 
 /**
  * Event
@@ -11,6 +12,10 @@ class Event
 {
     
     const DEFAULT_ROLE = 'owner';
+    
+    const URL_SPLITTER = '-';
+    
+    const URL_MAX_CHAR = 255;
     /**
      * @var int
      */
@@ -66,6 +71,8 @@ class Event
     private $updatedAt;
     
     private $createdBy;
+    
+    private $permissionSet;
 
 
     /**
@@ -505,11 +512,26 @@ class Event
     }
     
     public function fillEmptyFields(LifecycleEventArgs $e) {
+        $em = $e->getObjectManager();
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
         if($this->getUrlName() == null) {
-            $this->setUrlName($this->slug($this->getName()));
+            $urlName = $this->slug($this->getName());
         }
+        $tryCount = 1;
+        $urlNameCurrent = $urlName;
+        do {
+            $ExistedEvent = $em
+                ->getRepository('InvitationBundle:Event')
+                ->findOneByUrlName($urlNameCurrent);
+            if(is_null($ExistedEvent)) {
+                break;
+            }
+            $sufx = self::URL_SPLITTER.$tryCount;
+            $urlNameCurrent = substr($urlName, 0, self::URL_MAX_CHAR-strlen($sufx)).$sufx;
+            $tryCount++;
+        } while(true);
+        $this->setUrlName($urlNameCurrent);
     }
     
     public function assignAsOwner(LifecycleEventArgs $e) {
@@ -528,6 +550,37 @@ class Event
     }
     
     protected function slug($string) {
-        return preg_replace('/[^\da-z]/i', '-',strtolower(iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $string)));
+        $string = trim(preg_replace('/[^\da-z]/i', ' ',strtolower(iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $string))));
+        return str_replace(' ', self::URL_SPLITTER, $string);
+    }
+    
+    public function checkPermission($tag) {
+        if($this->permissionSet == null) {
+            return false;
+        }
+        if(!isset($this->permissionSet[$tag])) {
+            return false;
+        }
+        return $this->permissionSet[$tag];
+        
+    }
+    
+    public function loadPermissionSet($User) {
+        $permissionSet = $this->getUserActions($User);
+        $this->permissionSet = [];
+        foreach($permissionSet as $Action) {
+            $this->permissionSet[$Action->getTag()] = true;
+        }
+    }
+    
+    public function getUserActions($User) {
+        $Actions = [];
+        foreach($this->getEventAggr() as $EventAggr) {
+            if($EventAggr->getUser()->getId() == $User->getId()) {
+                $Actions = $Actions + $EventAggr->getEventRole()->getActions()->toArray();
+            }
+        }
+        
+        return $Actions;
     }
 }

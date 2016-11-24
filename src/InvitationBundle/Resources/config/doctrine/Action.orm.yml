@@ -13,7 +13,11 @@ InvitationBundle\Entity\Action:
             type: string
             length: 255
             unique: true
-        title:
+        tag:
             type: string
             length: 255
     lifecycleCallbacks: {  }
+    manyToMany:
+        eventRoles:
+            targetEntity: EventRole
+            mappedBy: actions

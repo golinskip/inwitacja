@@ -25,7 +25,7 @@ InvitationBundle\Entity\EventRole:
     manyToMany:
         actions:
             targetEntity: Action
-            inversedBy: eventRole
+            inversedBy: eventRoles
             joinTable:
                 name: action_event_role
                 joinColumns:

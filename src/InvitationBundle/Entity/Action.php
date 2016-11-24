@@ -20,7 +20,9 @@ class Action
     /**
      * @var string
      */
-    private $title;
+    private $tag;
+    
+    private $eventRoles;
 
 
     /**
@@ -58,26 +60,82 @@ class Action
     }
 
     /**
-     * Set title
+     * Set tag
      *
-     * @param string $title
+     * @param string $tag
      *
      * @return Action
      */
-    public function setTitle($title)
+    public function setTag($tag)
     {
-        $this->title = $title;
+        $this->tag = $tag;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Get tag
      *
      * @return string
      */
-    public function getTitle()
+    public function getTag()
     {
-        return $this->title;
+        return $this->tag;
+    }
+
+    /**
+     * Set eventRoles
+     *
+     * @param string $eventRoles
+     *
+     * @return Action
+     */
+    public function setEventRoles($eventRoles)
+    {
+        $this->eventRoles = $eventRoles;
+
+        return $this;
+    }
+
+    /**
+     * Get eventRoles
+     *
+     * @return string
+     */
+    public function getEventRoles()
+    {
+        return $this->eventRoles;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->eventRoles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add eventRole
+     *
+     * @param \InvitationBundle\Entity\EventRole $eventRole
+     *
+     * @return Action
+     */
+    public function addEventRole(\InvitationBundle\Entity\EventRole $eventRole)
+    {
+        $this->eventRoles[] = $eventRole;
+        $eventRole->addAction($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove eventRole
+     *
+     * @param \InvitationBundle\Entity\EventRole $eventRole
+     */
+    public function removeEventRole(\InvitationBundle\Entity\EventRole $eventRole)
+    {
+        $this->eventRoles->removeElement($eventRole);
     }
 }
