@@ -12,3 +12,10 @@ eventManager:
         description: Opis
         date: Data
         place: Miejsce
+    card:
+        place: Miejsce
+        date: Data
+        goToEvent: Przejdź do wydarzenia
+eventDashboard:
+    button:
+        invitations: Edytuj zaproszenia

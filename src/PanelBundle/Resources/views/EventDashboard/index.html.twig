@@ -1,7 +1,15 @@
-{% extends "::base.html.twig" %}
-
-{% block title %}PanelBundle:EventDashboard:index{% endblock %}
+{% extends 'PanelBundle::base.html.twig' %}
 
 {% block body %}
-<h1>Welcome to the EventDashboard:index page</h1>
+    <div class="container">
+        <h1>{{Event.name}}</h1>
+        <p>{{Event.description}}</p>
+        <div class="row">
+            <div class="row-md-6">
+                {% if Event.checkPermission('event.view') %}
+                    <a href="{{ path('panel_invitations_manager', {'slug': Event.urlName}) }}" type="button" class="btn btn-primary btn-update btn-add-card">{{'eventDashboard.button.invitations'|trans}}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

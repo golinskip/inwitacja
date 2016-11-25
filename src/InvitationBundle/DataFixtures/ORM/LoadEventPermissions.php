@@ -9,7 +9,10 @@ use InvitationBundle\Entity\Action;
 class LoadEventPermissions implements FixtureInterface {
     
     private $actionList = array(
-        'event.edit', 'event.remove'
+        'event.view',
+        'event.edit',
+        'event.edit.guests',
+        'event.remove',
     );
     
     public function load(ObjectManager $manager) {
