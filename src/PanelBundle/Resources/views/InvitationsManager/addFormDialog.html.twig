@@ -1,0 +1,19 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="addEventDialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            {{ form_start(form) }}
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{"eventManager.addDialog.title"|trans}}</h4>
+            </div>
+            <div class="modal-body">
+                {{ form_widget(form) }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{"eventManager.addDialog.buttonCancel"|trans}}</button>
+                <button type="submit" class="btn btn-primary">{{"eventManager.addDialog.buttonSubmit"|trans}}</button>
+            </div>
+            {{ form_end(form) }}
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
