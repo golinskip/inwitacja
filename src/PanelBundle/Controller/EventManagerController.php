@@ -20,7 +20,7 @@ class EventManagerController extends Controller
         
         $addForm = $this->createFormBuilder($Event)
             ->add('name', TextType::class, array('label' => 'eventManager.addDialog.name'))
-            ->add('eventType', EntityType::class, array('label' => 'eventManager.addDialog.type', 'class' => 'InvitationBundle:EventType', 'choice_label' => 'title'))
+            ->add('eventType', EntityType::class, array('label' => 'eventManager.addDialog.type', 'class' => 'InvitationBundle:EventType', 'choice_label' => 'name'))
             ->add('description', TextType::class, array('label' => 'eventManager.addDialog.description', 'required' => false))
             ->add('date', DateType::class, array('label' => 'eventManager.addDialog.date'))
             ->add('place', TextType::class, array('label' => 'eventManager.addDialog.place', 'required' => false))

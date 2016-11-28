@@ -13,10 +13,6 @@ InvitationBundle\Entity\EventType:
             type: string
             length: 255
             unique: true
-        title:
-            type: string
-            length: 255
-            nullable: true
         image:
             type: string
             length: 64

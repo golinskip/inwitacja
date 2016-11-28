@@ -17,7 +17,7 @@ class DBTranslationLoader implements LoaderInterface{
         $this->languageRepository = $entityManager->getRepository("AppBundle:Language");
     }
  
-    function load($resource, $locale, $domain = 'messages'){
+    public function load($resource, $locale, $domain = 'messages'){
         //Load on the db for the specified local
         $Language = $this->languageRepository->findOneByName($locale);
  

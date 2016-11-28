@@ -5,7 +5,6 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use InvitationBundle\Entity\EventType;
-use AppBundle\Entity\Language;
 use AppBundle\Entity\LanguageToken;
 use AppBundle\Entity\LanguageTranslation;
 
@@ -13,9 +12,9 @@ class LoadEventType extends AbstractFixture implements OrderedFixtureInterface {
     const TRANS_CATALOGUE = 'message';
     
     private $data = [
-        ['wedding', 'eventType.wedding', 'wedding.jpg'],
-        ['baptism', 'eventType.baptism', 'baptism.jpg'],
-        ['communion', 'eventType.communion', 'communion.jpg'],
+        ['eventType.wedding', 'wedding.jpg'],
+        ['eventType.baptism', 'baptism.jpg'],
+        ['eventType.communion', 'communion.jpg'],
     ];
     
     private $translations = [
@@ -35,8 +34,7 @@ class LoadEventType extends AbstractFixture implements OrderedFixtureInterface {
             
             $eventType = new EventType;
             $eventType->setName($row[0]);
-            $eventType->setTitle($row[1]);
-            $eventType->setImage($row[2]);
+            $eventType->setImage($row[1]);
             
             $this->manager->persist($eventType);
             $this->manager->flush();
