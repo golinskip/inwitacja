@@ -13,9 +13,6 @@ InvitationBundle\Entity\EventRole:
             type: string
             length: 255
             unique: true
-        title:
-            type: string
-            length: 255
         specialName:
             type: string
             length: 32

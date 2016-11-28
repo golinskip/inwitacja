@@ -16,11 +16,6 @@ class EventRole
      * @var string
      */
     private $name;
-
-    /**
-     * @var string
-     */
-    private $title;
 	
 	private $actions;
 	
@@ -61,30 +56,6 @@ class EventRole
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return EventRole
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
     }
 	
 	public function __construct() {

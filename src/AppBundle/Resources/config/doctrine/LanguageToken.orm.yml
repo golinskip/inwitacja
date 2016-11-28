@@ -1,0 +1,15 @@
+AppBundle\Entity\LanguageToken:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\LanguageTokenRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        token:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

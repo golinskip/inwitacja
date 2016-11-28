@@ -1,14 +1,14 @@
 <?php
 namespace AppBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\User;
 
-class LoadUserData implements FixtureInterface
-{
-    public function load(ObjectManager $manager)
-    {
+class LoadUserData extends AbstractFixture implements OrderedFixtureInterface {
+    
+    public function load(ObjectManager $manager) {
         $userAdmin = new User();
         $userAdmin->setUsername('admin');
         $userAdmin->setEmail('admin@whitesite.eu');
@@ -18,5 +18,9 @@ class LoadUserData implements FixtureInterface
 
         $manager->persist($userAdmin);
         $manager->flush();
+    }
+    
+    public function getOrder() {
+        return 1;
     }
 }
