@@ -31,6 +31,7 @@ InvitationBundle\Entity\EventRole:
                 inverseJoinColumns:
                     action_id:
                         referencedColumnName: id
+    manyToOne:
         nameTranslation:
             targetEntity: AppBundle\Entity\Translation
             joinColumn:

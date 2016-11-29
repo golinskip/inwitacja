@@ -17,9 +17,9 @@ class EventRole
      */
     private $name;
 	
-	private $actions;
+    private $actions;
 	
-	private $eventAggr;
+    private $eventAggr;
     
     private $specialName;
     

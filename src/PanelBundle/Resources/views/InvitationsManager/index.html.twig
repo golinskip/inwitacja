@@ -1,5 +1,23 @@
 {% extends 'PanelBundle::base.html.twig' %}
 
 {% block body %}
-    Inwitacje
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-primary btn-lg btn-block" id="addEventButton" data-toggle="modal" data-target="#addEventDialog">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    {{ "invitationsManager.addButton" |trans }}
+                </button>
+            </div>
+            <div class="col-lg-6">
+            
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        Lista
+    </div>
+                    
+    {% include 'PanelBundle:InvitationsManager:addFormDialog.html.twig' with { 'form' : form } %}
 {% endblock %}

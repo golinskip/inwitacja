@@ -50,8 +50,8 @@ class LoadEventPermissions extends AbstractFixture implements OrderedFixtureInte
             $EventRole->setNameTranslation($Translation);
         }
             
-        $manager->persist($EventRole);
-        $manager->flush();
+        $this->manager->persist($EventRole);
+        $this->manager->flush();
         
         $this->loadActions($EventRole);
     }
@@ -92,7 +92,7 @@ class LoadEventPermissions extends AbstractFixture implements OrderedFixtureInte
             
             $Translation = $this->manager->getRepository('AppBundle:Translation')->findOneByToken($action);
             if($Translation != null) {
-                //$Action->setNameTranslation($Translation);
+                $Action->setNameTranslation($Translation);
             }
             
             $Action->addEventRole($EventRole);

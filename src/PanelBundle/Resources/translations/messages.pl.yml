@@ -19,3 +19,13 @@ eventManager:
 eventDashboard:
     button:
         invitations: Edytuj zaproszenia
+invitationsManager:
+    addButton: Dodaj zaproszenie
+    addDialog:
+        title: Dodaj nowe zaproszenie
+        buttonSubmit: Dodaj
+        buttonCancel: Anuluj
+        invitation: Zaproszenie
+        person: Osoby
+    
+    

@@ -5,10 +5,6 @@ panel_event_manager:
 panel_event_dashboard:
     path:     /event/{slug}
     defaults: { _controller: PanelBundle:EventDashboard:index }
-
-panel_person_manager:
-    path:     /personManager
-    defaults: { _controller: PanelBundle:PersonManager:index }
     
 panel_invitations_manager:
     path:     /invitations/{slug}
