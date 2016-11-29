@@ -1,0 +1,22 @@
+AppBundle\Entity\Translation:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\TranslationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        token:
+            type: string
+            length: 64
+        defaultValue:
+            type: text
+            column: default_value
+    lifecycleCallbacks: {  }
+    oneToMany:
+        value:
+            targetEntity: TranslationValue
+            mappedBy: translation

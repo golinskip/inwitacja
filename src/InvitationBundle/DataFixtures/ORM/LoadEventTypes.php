@@ -5,8 +5,9 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use InvitationBundle\Entity\EventType;
-use AppBundle\Entity\LanguageToken;
-use AppBundle\Entity\LanguageTranslation;
+
+use AppBundle\Entity\Translation;
+use AppBundle\Entity\TranslationValue;
 
 class LoadEventType extends AbstractFixture implements OrderedFixtureInterface {
     const TRANS_CATALOGUE = 'message';
@@ -30,43 +31,49 @@ class LoadEventType extends AbstractFixture implements OrderedFixtureInterface {
     public function load(ObjectManager $manager) {
         $this->manager = $manager;
         
+        $this->loadTranslations();
+        
         foreach($this->data as $row) {
             
             $eventType = new EventType;
             $eventType->setName($row[0]);
             $eventType->setImage($row[1]);
             
+            $Translation = $this->manager->getRepository('AppBundle:Translation')->findOneByToken($row[0]);
+            if($Translation != null) {
+                $eventType->setNameTranslation($Translation);
+            }
+            
             $this->manager->persist($eventType);
             $this->manager->flush();
         }
-        
-        $this->loadTranslations();
     }
     
     public function loadTranslations() {
         foreach($this->translations as $lang => $translation) {
-            $Language = $this->manager->getRepository('AppBundle:Language')->findOneByName($lang);
             foreach($translation as $key => $value) {
-                $this->loadTranslation($key, $value, $Language);
+                $this->loadTranslation($key, $value, $lang);
             }
         }
     }
     
-    public function loadTranslation($key, $value, $Language) {
+    public function loadTranslation($key, $value, $lang) {
+        $Translation = $this->manager->getRepository('AppBundle:Translation')->findOneByToken($key);
+        if($Translation == null) {
+            $Translation = new Translation;
+            $Translation->setToken($key);
+            $Translation->setDefaultValue($value);
         
-        $LanguageToken = new LanguageToken;
-        $LanguageToken->setToken($value);
+            $this->manager->persist($Translation);
+            $this->manager->flush();
+        }
         
-        $this->manager->persist($LanguageToken);
-        $this->manager->flush();
+        $TranslationValue = new TranslationValue;
+        $TranslationValue->setLocale($lang);
+        $TranslationValue->setValue($value);
+        $TranslationValue->setTranslation($Translation);
         
-        $LanguageTranslation = new LanguageTranslation;
-        $LanguageTranslation->setCatalogue(self::TRANS_CATALOGUE);
-        $LanguageTranslation->setTranslation($key);
-        $LanguageTranslation->setLanguage($Language);
-        $LanguageTranslation->setLanguageToken($LanguageToken);
-            
-        $this->manager->persist($LanguageTranslation);
+        $this->manager->persist($TranslationValue);
         $this->manager->flush();
     }
     

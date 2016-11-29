@@ -23,6 +23,11 @@ class Action
     private $tag;
     
     private $eventRoles;
+    
+    /**
+     * @var \AppBundle\Entity\Translation
+     */
+    private $nameTranslation;
 
 
     /**
@@ -137,5 +142,29 @@ class Action
     public function removeEventRole(\InvitationBundle\Entity\EventRole $eventRole)
     {
         $this->eventRoles->removeElement($eventRole);
+    }
+
+    /**
+     * Set nameTranslation
+     *
+     * @param \AppBundle\Entity\Translation $nameTranslation
+     *
+     * @return EventType
+     */
+    public function setNameTranslation(\AppBundle\Entity\Translation $nameTranslation = null)
+    {
+        $this->nameTranslation = $nameTranslation;
+
+        return $this;
+    }
+
+    /**
+     * Get nameTranslation
+     *
+     * @return \AppBundle\Entity\Translation
+     */
+    public function getNameTranslation()
+    {
+        return $this->nameTranslation;
     }
 }

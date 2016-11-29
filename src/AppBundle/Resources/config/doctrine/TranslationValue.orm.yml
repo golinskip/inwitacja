@@ -1,0 +1,24 @@
+AppBundle\Entity\TranslationValue:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\TranslationValueRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        locale:
+            type: string
+            length: 16
+        value:
+            type: text
+    lifecycleCallbacks: {  }
+    manyToOne:
+        translation:
+            targetEntity: Translation
+            inversedBy: value
+            joinColumn:
+                name: translation_id
+                referencedColumnName: id

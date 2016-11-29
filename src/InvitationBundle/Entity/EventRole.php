@@ -22,6 +22,11 @@ class EventRole
 	private $eventAggr;
     
     private $specialName;
+    
+    /**
+     * @var \AppBundle\Entity\Translation
+     */
+    private $nameTranslation;
 
 
     /**
@@ -151,5 +156,29 @@ class EventRole
     public function getActions()
     {
         return $this->actions;
+    }
+
+    /**
+     * Set nameTranslation
+     *
+     * @param \AppBundle\Entity\Translation $nameTranslation
+     *
+     * @return EventType
+     */
+    public function setNameTranslation(\AppBundle\Entity\Translation $nameTranslation = null)
+    {
+        $this->nameTranslation = $nameTranslation;
+
+        return $this;
+    }
+
+    /**
+     * Get nameTranslation
+     *
+     * @return \AppBundle\Entity\Translation
+     */
+    public function getNameTranslation()
+    {
+        return $this->nameTranslation;
     }
 }
