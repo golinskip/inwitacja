@@ -17,6 +17,7 @@ class LoadEventPermissions extends AbstractFixture implements OrderedFixtureInte
         'event.edit',
         'event.remove',
         'event.invitation.view',
+        'event.invitation.add',
         'event.invitation.edit',
         'event.invitation.remove',
     ];
@@ -26,6 +27,7 @@ class LoadEventPermissions extends AbstractFixture implements OrderedFixtureInte
             'event.view' => 'Podgląd wydarzenia',
             'event.edit' => 'Edycja wydarzenia',
             'event.remove' => 'Usuwanie wydarzenia',
+            'event.invitation.view' => 'Dodawanie zaproszeń',
             'event.invitation.view' => 'Podgląd zaproszeń',
             'event.invitation.edit' => 'Edycja zaproszeń',
             'event.invitation.remove' => 'Usuwanie zaproszeń',

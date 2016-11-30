@@ -26,6 +26,9 @@ invitationsManager:
         buttonSubmit: Dodaj
         buttonCancel: Anuluj
         invitation: Zaproszenie
+        invitationPlaceholder: Dla kogo?
         person: Osoby
-    
+        personPlaceholder: Imię i nazwisko
+    messages:
+        addSuccess: Pomyślnie dodano nowe zaproszenie
     

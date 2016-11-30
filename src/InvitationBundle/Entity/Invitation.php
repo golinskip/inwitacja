@@ -2,11 +2,20 @@
 
 namespace InvitationBundle\Entity;
 
+use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\ORM\PersistentCollection;
 /**
  * Invitation
  */
 class Invitation
 {
+    
+    const URL_SPLITTER = '-';
+    
+    const URL_MAX_CHAR = 255;
+    
+    const CODE_LENGTH = 6;
+    
     /**
      * @var int
      */
@@ -40,12 +49,12 @@ class Invitation
     /**
      * @var \DateTime
      */
-    private $addDate;
+    private $createdAt;
 
     /**
      * @var \DateTime
      */
-    private $lastChange;
+    private $updatedAt;
 
     /**
      * @var int
@@ -199,51 +208,51 @@ class Invitation
     }
 
     /**
-     * Set addDate
+     * Set createdAt
      *
-     * @param \DateTime $addDate
+     * @param \DateTime $createdAt
      *
      * @return Invitation
      */
-    public function setAddDate($addDate)
+    public function setCreatedAt($createdAt)
     {
-        $this->addDate = $addDate;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     /**
-     * Get addDate
+     * Get createdAt
      *
      * @return \DateTime
      */
-    public function getAddDate()
+    public function getCreatedAt()
     {
-        return $this->addDate;
+        return $this->createdAt;
     }
 
     /**
-     * Set lastChange
+     * Set updatedAt
      *
-     * @param \DateTime $lastChange
+     * @param \DateTime $updatedAt
      *
      * @return Invitation
      */
-    public function setLastChange($lastChange)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->lastChange = $lastChange;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
     /**
-     * Get lastChange
+     * Get updatedAt
      *
      * @return \DateTime
      */
-    public function getLastChange()
+    public function getUpdatedAt()
     {
-        return $this->lastChange;
+        return $this->updatedAt;
     }
 
     /**
@@ -450,5 +459,46 @@ class Invitation
     public function getMessage()
     {
         return $this->message;
+    }
+    
+    protected function slug($string) {
+        $string = trim(preg_replace('/[^\da-z]/i', ' ',strtolower(iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $string))));
+        return str_replace(' ', self::URL_SPLITTER, $string);
+    }
+    
+    public function fillEmptyFields(LifecycleEventArgs $e) {
+        $em = $e->getObjectManager();
+        $this->setCreatedAt(new \DateTime());
+        $this->setUpdatedAt(new \DateTime());
+        if($this->getUrlName() == null) {
+            $urlName = $this->slug($this->getName());
+        }
+        $tryCount = 1;
+        $urlNameCurrent = $urlName;
+        do {
+            $ExistedInvitation = $em
+                ->getRepository('InvitationBundle:Invitation')
+                ->findOneByUrlName($urlNameCurrent);
+            if(is_null($ExistedInvitation)) {
+                break;
+            }
+            $sufx = self::URL_SPLITTER.$tryCount;
+            $urlNameCurrent = substr($urlName, 0, self::URL_MAX_CHAR-strlen($sufx)).$sufx;
+            $tryCount++;
+        } while(true);
+        $this->setUrlName($urlNameCurrent);
+        if($this->getCode() === null) {
+            $this->setCode($this->generateCode());
+        }
+    }
+    
+    protected function generateCode() {
+        $lengthMin = pow(10, self::CODE_LENGTH-1);
+        $lengthMax = pow(10, self::CODE_LENGTH)-1;
+        return rand($lengthMin, $lengthMax);
+    }
+    
+    public function beforeUpdate(LifecycleEventArgs $e) {
+        $this->setUpdatedAt(new \DateTime());
     }
 }

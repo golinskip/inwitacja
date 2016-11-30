@@ -1,10 +1,10 @@
 <?php
-namespace PanelBundle\Entity\Form;
+namespace PanelBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
 
-class AddInvitationForm {
+class AddInvitation {
     protected $invitation;
     
     protected $person;

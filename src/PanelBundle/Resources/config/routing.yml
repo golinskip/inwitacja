@@ -9,3 +9,7 @@ panel_event_dashboard:
 panel_invitations_manager:
     path:     /invitations/{slug}
     defaults: { _controller: PanelBundle:InvitationsManager:index }
+    
+panel_invitations_manager_add_invitation:
+    path:     /invitations/{slug}/addInvitation
+    defaults: { _controller: PanelBundle:InvitationsManager:addInvitation }

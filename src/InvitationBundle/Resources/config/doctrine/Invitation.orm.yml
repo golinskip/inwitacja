@@ -28,18 +28,20 @@ InvitationBundle\Entity\Invitation:
         code:
             type: integer
             unique: true
-        addDate:
-            type: datetime
-            column: add_date
-        lastChange:
-            type: datetime
-            column: last_change
         status:
             type: integer
         innerOrder:
             type: integer
             column: inner_order
-    lifecycleCallbacks: {  }
+        createdAt:
+            type: datetime
+            column: created_at
+        updatedAt:
+            type: datetime
+            column: updated_at
+    lifecycleCallbacks:
+        prePersist: [ fillEmptyFields ]
+        preUpdate: [ beforeUpdate ]
     oneToMany:
         person:
             targetEntity: Person
@@ -55,7 +57,7 @@ InvitationBundle\Entity\Invitation:
             targetEntity: InvitationGroup
             inversedBy: invitation
             joinColumn:
-                name: invitation_id
+                name: invitation_group_id
                 referencedColumnName: id
                 nullable: true
         event:

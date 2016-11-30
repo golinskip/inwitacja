@@ -22,14 +22,15 @@
 
 <body>
 	{% include 'PanelBundle::navbar.html.twig' %}
+	{% include 'PanelBundle::flashbag.html.twig' %}
 	{% block body %}{% endblock %}
-    {% block javascripts %}{% endblock %}
-    {% javascripts '@PanelBundle/Resources/public/js/*'%}
-        <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
     <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
     <script src="{{ asset('js/jquery.js') }}"></script>
     <!-- Include all JavaScripts, compiled by Assetic -->
     <script src="{{ asset('js/bootstrap.js') }}"></script>
+    {% block javascripts %}{% endblock %}
+    {% javascripts '@PanelBundle/Resources/public/js/*'%}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 </body>
 </html>

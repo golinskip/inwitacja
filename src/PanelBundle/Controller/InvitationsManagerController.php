@@ -3,42 +3,98 @@
 namespace PanelBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use PanelBundle\Entity\Form\AddInvitationForm;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use PanelBundle\Form\AddInvitationForm;
+use PanelBundle\Entity\AddInvitation;
+use InvitationBundle\Entity\Invitation;
+use InvitationBundle\Entity\Person;
 
 class InvitationsManagerController extends Controller
 {
-    public function indexAction($slug)
-    {
+    public function indexAction($slug) {
         
         $Event = $this->getDoctrine()
             ->getRepository('InvitationBundle:Event')
             ->findOneByUrlName($slug);
+        if(!$Event) {
+            throw $this->createNotFoundException('Event not found');
+        }
         $Event->loadPermissionSet($this->getUser());
         if(!$Event->checkPermission('event.invitation.view')) {
             throw new AccessDeniedException('Access denied.');
         }
         
-        $AddInvitationForm = new AddInvitationForm();
+        $Invitations = $this->getDoctrine()
+            ->getRepository('InvitationBundle:Invitation')
+            ->findByEvent($Event);
         
-        $Form = $this->createFormBuilder($AddInvitationForm)
-            ->add('invitation', TextType::class, array('label' => 'invitationsManager.addDialog.invitation'))
-            ->add('person', CollectionType::class, array(
-                'entry_type'   => TextType::class,
-                'label' => 'invitationsManager.addDialog.person',
-
-                'allow_add' => true,
-                'allow_delete' => true,
-
-                'prototype' => true,
-            ))->getForm();
+        $AddInvitation = new AddInvitation();
+        $AddInvitation->addPerson('');
+        $form = $this->createForm(AddInvitationForm::class, $AddInvitation);
         
         return $this->render('PanelBundle:InvitationsManager:index.html.twig', array(
             'Event' => $Event,
-            'form' => $Form->createView(),
+            'Invitations' => $Invitations,
+            'form' => $form->createView(),
         ));
+    }
+    
+    public function addInvitationAction(Request $request, $slug) {
+        
+        $Event = $this->getDoctrine()
+            ->getRepository('InvitationBundle:Event')
+            ->findOneByUrlName($slug);
+        if(!$Event) {
+            throw $this->createNotFoundException('Event not found');
+        }
+        $Event->loadPermissionSet($this->getUser());
+        if(!$Event->checkPermission('event.invitation.view')) {
+            throw new AccessDeniedException('Access denied.');
+        }
+        
+        $AddInvitation = new AddInvitation();
+        $form = $this->createForm(AddInvitationForm::class, $AddInvitation);
+        
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $Invitation = new Invitation;
+            $Invitation->setEvent($Event);
+            $Invitation->setName($AddInvitation->getInvitation());
+            $Invitation->setInnerOrder(0);
+            $Invitation->setStatus(0);
+            
+            $em->persist($Invitation);
+            $em->flush();
+            
+            $innerOrder = 0;
+            foreach($AddInvitation->getPerson() as $personName) {
+                if($personName === null) {
+                    continue;
+                }
+                $Person = new Person;
+                $Person->setName($personName);
+                $Person->setInvitation($Invitation);
+                $Person->setStatus(0);
+                $Person->setInnerOrder($innerOrder);
+                
+                $em->persist($Person);
+                $em->flush();
+                
+                $innerOrder++;
+            }
+            
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', $this->get('translator')->trans('invitationsManager.messages.addSuccess'))
+            ;
+        }
+        
+        return $this->redirectToRoute('panel_invitations_manager', [
+            'slug' => $slug
+        ]);
     }
 
 }

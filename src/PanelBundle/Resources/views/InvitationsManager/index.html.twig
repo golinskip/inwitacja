@@ -2,12 +2,15 @@
 
 {% block body %}
     <div class="container">
+    
         <div class="row">
             <div class="col-lg-6">
-                <button type="button" class="btn btn-primary btn-lg btn-block" id="addEventButton" data-toggle="modal" data-target="#addEventDialog">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                    {{ "invitationsManager.addButton" |trans }}
-                </button>
+                {% if Event.checkPermission('event.invitation.add') %}
+                    <button type="button" class="btn btn-primary btn-lg btn-block" id="addEventButton" data-toggle="modal" data-target="#addEventDialog">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        {{ "invitationsManager.addButton" |trans }}
+                    </button>
+                {% endif %}
             </div>
             <div class="col-lg-6">
             
@@ -16,8 +19,12 @@
     </div>
     
     <div class="container">
-        Lista
+        {% for Invitation in Invitations %}
+            {{Invitation.name}}
+        {% endfor %}
     </div>
                     
-    {% include 'PanelBundle:InvitationsManager:addFormDialog.html.twig' with { 'form' : form } %}
+    {% if Event.checkPermission('event.invitation.add') %}
+        {% include 'PanelBundle:InvitationsManager:addFormDialog.html.twig' with { 'form' : form, 'Event' : Event } %}
+    {% endif %}
 {% endblock %}
