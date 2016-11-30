@@ -27,7 +27,12 @@ class PersonGroup
      */
     private $color;
     
-    private $invitation;
+    private $person;
+    
+    /**
+     * @var \InvitationBundle\Entity\Event
+     */
+    private $event;
 
 
     /**
@@ -116,40 +121,65 @@ class PersonGroup
      */
     public function __construct()
     {
-        $this->invitation = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->person = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add invitation
+     * Add person
      *
-     * @param \InvitationBundle\Entity\Person $invitation
+     * @param \PersonBundle\Entity\Person $person
      *
      * @return PersonGroup
      */
-    public function addInvitation(\InvitationBundle\Entity\Person $invitation)
+    public function addPerson(\PersonBundle\Entity\Person $person)
     {
-        $this->invitation[] = $invitation;
+        $this->person[] = $person;
 
         return $this;
     }
 
     /**
-     * Remove invitation
+     * Remove person
      *
-     * @param \InvitationBundle\Entity\Person $invitation
+     * @param \PersonBundle\Entity\Person $person
      */
-    public function removeInvitation(\InvitationBundle\Entity\Person $invitation)
+    public function removePerson(\PersonBundle\Entity\Person $person)
     {
-        $this->invitation->removeElement($invitation);
+        $this->person->removeElement($person);
     }
 
     /**
-     * Get invitation
+     * Get person
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getInvitation()
+    public function getPerson()
     {
-        return $this->invitation;
+        return $this->person;
+    }
+
+
+    /**
+     * Set event
+     *
+     * @param \InvitationBundle\Entity\Event $event
+     *
+     * @return PersonGroup
+     */
+    public function setEvent(\InvitationBundle\Entity\Event $event = null)
+    {
+        $this->event = $event;
+
+        return $this;
+    }
+
+    /**
+     * Get event
+     *
+     * @return \InvitationBundle\Entity\Event
+     */
+    public function getEvent()
+    {
+        return $this->event;
     }
 }

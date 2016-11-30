@@ -20,6 +20,13 @@ InvitationBundle\Entity\PersonGroup:
             nullable: true
     lifecycleCallbacks: {  }
     oneToMany:
-        invitation:
+        person:
             targetEntity: Person
             mappedBy: personGroup
+    manyToOne:
+        event:
+            targetEntity: Event
+            inversedBy: personGroup
+            joinColumn:
+                name: event_id
+                referencedColumnName: id

@@ -44,6 +44,9 @@ InvitationBundle\Entity\Event:
         preUpdate: [ beforeUpdate ]
     
     oneToMany:
+        personGroup:
+            targetEntity: PersonGroup
+            mappedBy: event
         eventAggr:
             targetEntity: UserEventRoleEvent
             mappedBy: event

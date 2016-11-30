@@ -20,6 +20,7 @@ class AppKernel extends Kernel
 			new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
 			new Bmatzner\FontAwesomeBundle\BmatznerFontAwesomeBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new AppBundle\AppBundle(),
             new PanelBundle\PanelBundle(),
             new InvitationBundle\InvitationBundle(),

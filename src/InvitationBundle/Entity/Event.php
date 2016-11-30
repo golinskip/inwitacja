@@ -73,6 +73,11 @@ class Event
     private $createdBy;
     
     private $permissionSet;
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $personGroup;
 
 
     /**
@@ -582,5 +587,50 @@ class Event
         }
         
         return $Actions;
+    }
+
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Add personGroup
+     *
+     * @param \InvitationBundle\Entity\PersonGroup $personGroup
+     *
+     * @return Event
+     */
+    public function addPersonGroup(\InvitationBundle\Entity\PersonGroup $personGroup)
+    {
+        $this->personGroup[] = $personGroup;
+
+        return $this;
+    }
+
+    /**
+     * Remove personGroup
+     *
+     * @param \InvitationBundle\Entity\PersonGroup $personGroup
+     */
+    public function removePersonGroup(\InvitationBundle\Entity\PersonGroup $personGroup)
+    {
+        $this->personGroup->removeElement($personGroup);
+    }
+
+    /**
+     * Get personGroup
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPersonGroup()
+    {
+        return $this->personGroup;
     }
 }

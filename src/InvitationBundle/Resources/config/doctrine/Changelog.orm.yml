@@ -29,7 +29,6 @@ InvitationBundle\Entity\Changelog:
     manyToOne:
         user:
             targetEntity: AppBundle\Entity\User
-            inversedBy: changelog
             joinColumn:
                 name: user_id
                 referencedColumnName: id

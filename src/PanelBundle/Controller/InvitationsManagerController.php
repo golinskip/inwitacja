@@ -12,7 +12,7 @@ use InvitationBundle\Entity\Person;
 
 class InvitationsManagerController extends Controller
 {
-    public function indexAction($slug) {
+    public function indexAction(Request $request, $slug, $page) {
         
         $Event = $this->getDoctrine()
             ->getRepository('InvitationBundle:Event')
@@ -25,16 +25,24 @@ class InvitationsManagerController extends Controller
             throw new AccessDeniedException('Access denied.');
         }
         
+        $AddInvitation = new AddInvitation();
+        $AddInvitation->addPerson('');
+        
+        $form = $this->createForm(AddInvitationForm::class, $AddInvitation);
         $Invitations = $this->getDoctrine()
             ->getRepository('InvitationBundle:Invitation')
             ->findByEvent($Event);
         
-        $AddInvitation = new AddInvitation();
-        $AddInvitation->addPerson('');
-        $form = $this->createForm(AddInvitationForm::class, $AddInvitation);
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $Invitations,
+            $page,
+            20
+        );
         
         return $this->render('PanelBundle:InvitationsManager:index.html.twig', array(
             'Event' => $Event,
+            'pagination' => $pagination,
             'Invitations' => $Invitations,
             'form' => $form->createView(),
         ));
