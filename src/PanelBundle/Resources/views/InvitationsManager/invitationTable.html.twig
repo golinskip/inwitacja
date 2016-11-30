@@ -1,0 +1,15 @@
+<table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>{{"invitationsManager.table.name"|trans}}</th>
+                </tr>
+            </thead>
+            {% for Invitation in pagination %}
+                <tr class="tr-clickable" data-href="{{path('panel_invitations_manager_invitation', {'slug': Event.urlName, 'invitation':Invitation.id})}}">
+                    <td>{{Invitation.name}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>

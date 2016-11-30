@@ -31,5 +31,7 @@ invitationsManager:
         personPlaceholder: Imię i nazwisko
     messages:
         addSuccess: Pomyślnie dodano nowe zaproszenie
+    table:
+        name: Nazwa na zaproszeniu
 Previous: Poprzednia
 Next: Następna

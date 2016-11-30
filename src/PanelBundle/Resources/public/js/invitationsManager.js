@@ -15,6 +15,10 @@ jQuery(document).ready(function() {
 	}
 	fieldDuplicator();
     
+    $('tr[data-href]').click(function(){
+        document.location = $(this).data('href');
+    });
+    
     function addInviataionFormReset() {
         
     }

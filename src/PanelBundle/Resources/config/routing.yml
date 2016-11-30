@@ -7,11 +7,17 @@ panel_event_dashboard:
     defaults: { _controller: PanelBundle:EventDashboard:index }
     
 panel_invitations_manager:
-    path:     /invitations/{slug}/{page}
+    path:     /invitation/{slug}/{page}
     defaults: { _controller: PanelBundle:InvitationsManager:index, page:1 }
     requirements:
         page:     \d+
     
 panel_invitations_manager_add_invitation:
-    path:     /invitations/{slug}/addInvitation
+    path:     /invitation/{slug}/addInvitation
     defaults: { _controller: PanelBundle:InvitationsManager:addInvitation }
+
+panel_invitations_manager_invitation:
+    path:     /invitation/{slug}/edit/{invitation}
+    defaults: { _controller: PanelBundle:InvitationEditor:index }
+    requirements:
+        page:     \d+

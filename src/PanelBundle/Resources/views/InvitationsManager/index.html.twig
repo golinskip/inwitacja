@@ -19,12 +19,7 @@
     </div>
     
     <div class="container">
-        {% for Invitation in pagination %}
-            {% include 'PanelBundle:InvitationsManager:invitationRow.html.twig' with { 'Invitation' : Invitation } %}
-        {% endfor %}
-        <div class="navigation">
-            {{ knp_pagination_render(pagination) }}
-        </div>
+        {% include 'PanelBundle:InvitationsManager:invitationTable.html.twig' with { 'pagination' : pagination, 'Event' : Event } %}
     </div>
                     
     {% if Event.checkPermission('event.invitation.add') %}
