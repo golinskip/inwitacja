@@ -48,5 +48,8 @@ invitationEditor:
                 undefined: Niezdecydowany
                 enable: Obecny
                 disable: Nieobecny
+        save: Zapisz zmiany
+    messages:
+        editSuccess: Pomyślnie dodano nowe zaproszenie
 Previous: Poprzednia
 Next: Następna

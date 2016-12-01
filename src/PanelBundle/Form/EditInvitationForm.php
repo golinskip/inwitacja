@@ -3,9 +3,7 @@ namespace PanelBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use PanelBundle\Form\PersonInInvitationForm;
 use InvitationBundle\Entity\Invitation;
@@ -36,12 +34,14 @@ class EditInvitationForm extends AbstractType {
                 'attr' => [
                     'placeholder' => 'invitationEditor.form.phone',
                 ],
+                'required' => false,
             ])
             ->add('email', TextType::class, [
                 'label' => 'invitationEditor.form.email',
                 'attr' => [
                     'placeholder' => 'invitationEditor.form.email',
                 ],
+                'required' => false,
             ])
             ;
     }

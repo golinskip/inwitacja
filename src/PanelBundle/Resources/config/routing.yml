@@ -20,4 +20,10 @@ panel_invitations_manager_invitation:
     path:     /invitation/{slug}/edit/{invitation}
     defaults: { _controller: PanelBundle:InvitationEditor:index }
     requirements:
-        page:     \d+
+        invitation:     \d+
+
+panel_invitations_manager_invitation_edit:
+    path:     /invitation/{slug}/edit/{invitation}/editInvitation
+    defaults: { _controller: PanelBundle:InvitationEditor:editInvitation }
+    requirements:
+        invitation:     \d+

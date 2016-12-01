@@ -96,7 +96,7 @@ class InvitationsManagerController extends Controller
             
             $request->getSession()
                 ->getFlashBag()
-                ->add('success', $this->get('translator')->trans('invitationsManager.messages.addSuccess'))
+                ->add('success', $this->get('translator')->trans('invitationEditor.messages.editSuccess'))
             ;
         }
         

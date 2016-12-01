@@ -1,29 +1,47 @@
-{{ form_start(form) }}
-    <div class='row'>
-        {{ form_label(form.name) }}
-        {{ form_errors(form.name) }}
-        {{ form_widget(form.name) }}
-    </div>
-    <div class='row'>
-        {{ form_label(form.phone) }}
-        {{ form_errors(form.phone) }}
-        {{ form_widget(form.phone) }}
-    </div>
-    <div class='row'>
-        {{ form_label(form.email) }}
-        {{ form_errors(form.email) }}
-        {{ form_widget(form.email) }}
-    </div>
-{% for person in form.children.person.children %}
-    <div class="row">
-        <div class="col-md-6">
-            {{ form_errors(person.name) }}
-            {{ form_widget(person.name) }}
-        </div>
-        <div class="col-md-6">
-            {{ form_errors(person.status) }}
-            {{ form_widget(person.status) }}
-        </div>
-    </div>
-{% endfor %}
+{{ form_start(form, {'action': path('panel_invitations_manager_invitation_edit', {'slug': app.request.get('slug'), 'invitation' : app.request.get('invitation')}) }) }}
+<div class='row'>
+    {{ form_label(form.name) }}
+    {{ form_errors(form.name) }}
+    {{ form_widget(form.name) }}
+</div>
+<div class='row'>
+    {{ form_label(form.phone) }}
+    {{ form_errors(form.phone) }}
+    {{ form_widget(form.phone) }}
+</div>
+<div class='row'>
+    {{ form_label(form.email) }}
+    {{ form_errors(form.email) }}
+    {{ form_widget(form.email) }}
+</div>
+<div class='row'>
+    <hr/>
+    {{ form_label(form.person) }}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    {{'invitationEditor.form.person.name'|trans}}
+                </th>
+                <th>
+                    {{'invitationEditor.form.person.status'|trans}}
+                </th>
+            </tr>
+        </thead>
+        <tbody data-prototype="{% filter escape %}{% include 'PanelBundle:InvitationEditor:form/person.html.twig' with {'form': form.children.person.vars.prototype} %}{% endfilter %}">
+            {% for person in form.children.person.children %}
+                {% include 'PanelBundle:InvitationEditor:form/person.html.twig' with {'form': person} %}
+            {% endfor %}
+        </tbody>
+    </table>
+     <a href ="#">
+        <i class="fa fa-plus"></i> Dodaj osobę
+    </a>
+</div>
+<div class='row'>
+    <hr/>
+    <button type="submit" class="btn btn-primary btn-lg right">
+        <i class="fa fa-floppy-o"></i> {{'invitationEditor.form.save'|trans}}
+    </button>
+</div>
 {{ form_end(form) }}
