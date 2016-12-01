@@ -20,6 +20,7 @@ eventDashboard:
     button:
         invitations: Edytuj zaproszenia
 invitationsManager:
+    title: ': podgląd zaproszeń'
     addButton: Dodaj zaproszenie
     addDialog:
         title: Dodaj nowe zaproszenie
@@ -33,5 +34,19 @@ invitationsManager:
         addSuccess: Pomyślnie dodano nowe zaproszenie
     table:
         name: Nazwa na zaproszeniu
+invitationEditor:
+    title: ': edycja zaproszenia'
+    form:
+        name: Nazwa zaproszenia
+        email: Adres e-mail
+        phone: Telefon
+        persons: Osoby
+        person:
+            name: Imię i nazwisko
+            status: Status
+            statusType:
+                undefined: Niezdecydowany
+                enable: Obecny
+                disable: Nieobecny
 Previous: Poprzednia
 Next: Następna

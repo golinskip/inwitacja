@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="container">
-    
+        <h1>{{Event.name}}{{'invitationsManager.title'|trans}}</h1>
         <div class="row">
             <div class="col-lg-6">
                 {% if Event.checkPermission('event.invitation.add') %}

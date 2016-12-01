@@ -7,8 +7,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
-class AddInvitationForm extends AbstractType
-{
+class AddInvitationForm extends AbstractType {
+    
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('invitation', TextType::class, array(

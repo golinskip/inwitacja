@@ -1,0 +1,29 @@
+{{ form_start(form) }}
+    <div class='row'>
+        {{ form_label(form.name) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name) }}
+    </div>
+    <div class='row'>
+        {{ form_label(form.phone) }}
+        {{ form_errors(form.phone) }}
+        {{ form_widget(form.phone) }}
+    </div>
+    <div class='row'>
+        {{ form_label(form.email) }}
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email) }}
+    </div>
+{% for person in form.children.person.children %}
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_errors(person.name) }}
+            {{ form_widget(person.name) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_errors(person.status) }}
+            {{ form_widget(person.status) }}
+        </div>
+    </div>
+{% endfor %}
+{{ form_end(form) }}

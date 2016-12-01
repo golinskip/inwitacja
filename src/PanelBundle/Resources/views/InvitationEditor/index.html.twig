@@ -1,8 +1,10 @@
 {% extends 'PanelBundle::base.html.twig' %}
 
 {% block body %}
-
     <div class="container">
-        wilkomen
+        <h1>{{Invitation.name}}{{'invitationEditor.title'|trans}}</h1>
+    </div>
+    <div class="container">
+        {% include 'PanelBundle:InvitationEditor:form/edit.html.twig' with { 'form' : form } %}
     </div>
 {% endblock %}

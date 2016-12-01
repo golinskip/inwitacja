@@ -7,6 +7,10 @@ namespace InvitationBundle\Entity;
  */
 class Person
 {
+    const STATUS_UNDEFINED = 0;
+    const STATUS_ENABLE = 1;
+    const STATUS_DISABLE = 2;
+    
     /**
      * @var int
      */
