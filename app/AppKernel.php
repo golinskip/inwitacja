@@ -21,6 +21,7 @@ class AppKernel extends Kernel
 			new Bmatzner\FontAwesomeBundle\BmatznerFontAwesomeBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
             new AppBundle\AppBundle(),
             new PanelBundle\PanelBundle(),
             new InvitationBundle\InvitationBundle(),

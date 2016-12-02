@@ -23,6 +23,12 @@
 <body>
 	{% include 'PanelBundle::navbar.html.twig' %}
 	{% include 'PanelBundle::flashbag.html.twig' %}
+    <div class="container">
+        <div class="row">
+            {{ wo_render_breadcrumbs() }}
+            <h3>{% block title %}{% endblock %}</h3>
+        </div>
+    </div>
 	{% block body %}{% endblock %}
     <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
     <script src="{{ asset('js/jquery.js') }}"></script>

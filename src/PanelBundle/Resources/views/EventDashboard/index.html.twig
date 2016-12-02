@@ -1,8 +1,7 @@
 {% extends 'PanelBundle::base.html.twig' %}
-
+{% block title %}{{Event.name}}{% endblock %}
 {% block body %}
     <div class="container">
-        <h1>{{Event.name}}</h1>
         <p>{{Event.description}}</p>
         <div class="row">
             <div class="row-md-6">

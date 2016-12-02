@@ -16,9 +16,17 @@ class EventDashboardController extends Controller {
             throw new AccessDeniedException('Access denied.');
         }
         
+        $this->breadcrumb($Event);
+        
         return $this->render('PanelBundle:EventDashboard:index.html.twig', array(
             'Event' => $Event,
         ));
+    }
+    
+    protected function breadcrumb($Event) {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("breadcrumb.home", $this->get("router")->generate("panel_event_manager"));
+        $breadcrumbs->addItem("literal", null, ['%var%'=>$Event->getName()]);
     }
 
 }

@@ -40,6 +40,8 @@ class InvitationsManagerController extends Controller
             20
         );
         
+        $this->breadcrumb($Event);
+        
         return $this->render('PanelBundle:InvitationsManager:index.html.twig', array(
             'Event' => $Event,
             'pagination' => $pagination,
@@ -103,6 +105,15 @@ class InvitationsManagerController extends Controller
         return $this->redirectToRoute('panel_invitations_manager', [
             'slug' => $slug
         ]);
+    }
+    
+    protected function breadcrumb($Event) {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("breadcrumb.home", $this->get("router")->generate("panel_event_manager"));
+        $breadcrumbs->addItem("literal", $this->get("router")->generate("panel_event_dashboard", array(
+            'slug' => $Event->getUrlName(),
+        )), ['%var%'=>$Event->getName()]);
+        $breadcrumbs->addItem("breadcrumb.invitation.list");
     }
 
 }

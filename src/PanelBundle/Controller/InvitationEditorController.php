@@ -18,6 +18,8 @@ class InvitationEditorController extends Controller
         
         $form = $this->createForm(EditInvitationForm::class, $Invitation);
         
+        $this->breadcrumb($Event, $Invitation);
+        
         return $this->render('PanelBundle:InvitationEditor:index.html.twig', array(
             'Invitation' => $Invitation,
             'form' => $form->createView(),
@@ -48,6 +50,8 @@ class InvitationEditorController extends Controller
             ;
         }
         
+        $this->breadcrumb($Event, $Invitation);
+        
         return $this->redirectToRoute('panel_invitations_manager_invitation', [
             'slug' => $slug,
             'invitation' => $invitation,
@@ -74,6 +78,18 @@ class InvitationEditorController extends Controller
             throw new AccessDeniedException('Access denied.');
         }
         return $Invitation;
+    }
+    
+    protected function breadcrumb($Event, $Invitation) {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("breadcrumb.home", $this->get("router")->generate("panel_event_manager"));
+        $breadcrumbs->addItem("literal", $this->get("router")->generate("panel_event_dashboard", array(
+            'slug' => $Event->getUrlName(),
+        )), ['%var%'=>$Event->getName()]);
+        $breadcrumbs->addItem("breadcrumb.invitation.list", $this->get("router")->generate("panel_invitations_manager", array(
+            'slug' => $Event->getUrlName(),
+        )));
+        $breadcrumbs->addItem("literal", null, ['%var%'=>$Invitation->getName()]);
     }
 
 }

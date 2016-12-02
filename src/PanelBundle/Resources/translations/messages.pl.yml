@@ -1,7 +1,12 @@
 menu:
     personManager: Zaproszenia
     logout: Wyloguj
+breadcrumb:
+    home: Panel
+    invitation:
+        list: Zaproszenia
 eventManager:
+    title: Panel główny
     addButton: Dodaj nowe wydarzenie
     addDialog:
         title: Dodaj nowe wydarzenie
@@ -20,7 +25,7 @@ eventDashboard:
     button:
         invitations: Edytuj zaproszenia
 invitationsManager:
-    title: ': podgląd zaproszeń'
+    title: ': zaproszenia'
     addButton: Dodaj zaproszenie
     addDialog:
         title: Dodaj nowe zaproszenie
@@ -53,3 +58,4 @@ invitationEditor:
         editSuccess: Pomyślnie dodano nowe zaproszenie
 Previous: Poprzednia
 Next: Następna
+literal: %var%
