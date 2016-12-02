@@ -1,10 +1,19 @@
-<tr>
+<tr data-index="{{form.vars.name}}">
     <td>
         {{ form_errors(form.name) }}
         {{ form_widget(form.name) }}
+        {{ form_widget(form.innerOrder, { 'attr': {'class': 'inputInnerOrder'} }) }}
     </td>
     <td>
         {{ form_errors(form.status) }}
         {{ form_widget(form.status) }}
+    </td>
+    <td>
+        <a class="text-primary holder move">
+            <i class="fa fa-arrows" aria-hidden="true"></i>
+        </a>
+        <a class="text-danger pull-right remove clickable">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
     </td>
 </tr>

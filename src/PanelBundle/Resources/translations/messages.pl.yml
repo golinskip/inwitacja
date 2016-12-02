@@ -36,7 +36,7 @@ invitationsManager:
         person: Osoby
         personPlaceholder: Imię i nazwisko
     messages:
-        addSuccess: Pomyślnie dodano nowe zaproszenie
+        addSuccess: Dodano nowe zaproszenie
     table:
         name: Nazwa na zaproszeniu
 invitationEditor:
@@ -55,7 +55,8 @@ invitationEditor:
                 disable: Nieobecny
         save: Zapisz zmiany
     messages:
-        editSuccess: Pomyślnie dodano nowe zaproszenie
+        editSuccess: Edycja zaproszenia przebiegła pomyślnie
+        removeQuestion: Czy napewno usunąć tą osobę?
 Previous: Poprzednia
 Next: Następna
 literal: %var%

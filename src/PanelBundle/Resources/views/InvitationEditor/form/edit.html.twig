@@ -16,7 +16,6 @@
 </div>
 <div class='row'>
     <hr/>
-    {{ form_label(form.person) }}
     <table class="table table-striped">
         <thead>
             <tr>
@@ -28,18 +27,20 @@
                 </th>
             </tr>
         </thead>
-        <tbody data-prototype="{% filter escape %}{% include 'PanelBundle:InvitationEditor:form/person.html.twig' with {'form': form.children.person.vars.prototype} %}{% endfilter %}">
+        <tbody id="invitationEditorPersonTable" data-prototype="{% filter escape %}{% include 'PanelBundle:InvitationEditor:form/person.html.twig' with {'form': form.children.person.vars.prototype} %}{% endfilter %}">
             {% for person in form.children.person.children %}
                 {% include 'PanelBundle:InvitationEditor:form/person.html.twig' with {'form': person} %}
             {% endfor %}
         </tbody>
     </table>
+    {{ form_widget(form.person) }}
      <a id="invitationEditorAddPerson" href="#">
         <i class="fa fa-plus"></i> Dodaj osobę
     </a>
 </div>
 <div class='row'>
     <hr/>
+    <input id="personTrash" type="hidden" name="trash" value="">
     <button type="submit" class="btn btn-primary btn-lg right">
         <i class="fa fa-floppy-o"></i> {{'invitationEditor.form.save'|trans}}
     </button>

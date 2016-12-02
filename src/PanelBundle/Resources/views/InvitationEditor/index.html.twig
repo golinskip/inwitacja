@@ -1,6 +1,14 @@
 {% extends 'PanelBundle::base.html.twig' %}
 {% block title %}{{Invitation.name}}{{'invitationEditor.title'|trans}}{% endblock %}
 
+{% block javascripts %}
+<script type="text/javascript">
+    var translations = {
+       'removeQuestion' : '{{ 'invitationEditor.messages.removeQuestion' | trans }}',
+    }
+</script>
+{% endblock %}
+
 {% block body %}
     <div class="container">
         {% include 'PanelBundle:InvitationEditor:form/edit.html.twig' with { 'form' : form } %}

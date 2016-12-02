@@ -77,7 +77,6 @@ class InvitationsManagerController extends Controller
             $Invitation->setStatus(0);
             
             $em->persist($Invitation);
-            $em->flush();
             
             $innerOrder = 0;
             foreach($AddInvitation->getPerson() as $personName) {
@@ -91,11 +90,11 @@ class InvitationsManagerController extends Controller
                 $Person->setInnerOrder($innerOrder);
                 
                 $em->persist($Person);
-                $em->flush();
                 
                 $innerOrder++;
             }
             
+            $em->flush();
             $request->getSession()
                 ->getFlashBag()
                 ->add('success', $this->get('translator')->trans('invitationEditor.messages.editSuccess'))

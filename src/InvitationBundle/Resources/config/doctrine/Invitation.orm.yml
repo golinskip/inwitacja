@@ -46,6 +46,8 @@ InvitationBundle\Entity\Invitation:
         person:
             targetEntity: Person
             mappedBy: invitation
+            cascade: ['persist', 'remove']
+            orderBy: { 'innerOrder': 'ASC' }
         changelog:
             targetEntity: Changelog
             mappedBy: invitation

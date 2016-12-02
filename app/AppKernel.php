@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
+            new Bmatzner\JQueryUIBundle\BmatznerJQueryUIBundle(),
             new AppBundle\AppBundle(),
             new PanelBundle\PanelBundle(),
             new InvitationBundle\InvitationBundle(),

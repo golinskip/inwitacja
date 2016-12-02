@@ -10,6 +10,8 @@ use InvitationBundle\Entity\Person;
 use DateTime;
 
 class LoadExampleData extends AbstractFixture implements OrderedFixtureInterface {
+    const GENERATE_INVITATIONS = 0;
+    
     protected $manager;
     
     public function load(ObjectManager $manager) {
@@ -27,12 +29,12 @@ class LoadExampleData extends AbstractFixture implements OrderedFixtureInterface
         
         $this->manager->persist($Event);
         $this->manager->flush();
-        
-        $this->generateInvitations($Event, 300, 5);
+        if(self::GENERATE_INVITATIONS) {
+            $this->generateInvitations($Event, 300, 5);
+        }
     }
     
     protected function generateInvitations($Event, $numOfInvitation, $maxChild) {
-        
         for($i=0; $i<$numOfInvitation; $i++) {
             $this->generateFamily($Event, $maxChild);
         }

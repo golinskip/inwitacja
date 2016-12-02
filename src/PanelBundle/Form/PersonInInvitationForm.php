@@ -5,6 +5,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use InvitationBundle\Entity\Person;
 
@@ -18,6 +19,7 @@ class PersonInInvitationForm extends AbstractType {
                     'placeholder' => 'invitationEditor.form.person.name',
                 ],
             ])
+            ->add('innerOrder', HiddenType::class)
             ->add('status', ChoiceType::class, [
                 'label' => 'invitationEditor.form.person.status',
                 'choices'  => [

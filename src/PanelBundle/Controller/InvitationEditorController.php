@@ -4,6 +4,7 @@ namespace PanelBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Collections\ArrayCollection;
 use PanelBundle\Form\EditInvitationForm;
 
 class InvitationEditorController extends Controller
@@ -36,12 +37,29 @@ class InvitationEditorController extends Controller
         
         $Invitation = $this->loadInvitation($invitation, $Event);
         
+        $originalPerson = new ArrayCollection();
+
+        foreach ($Invitation->getPerson() as $Person) {
+            $originalPerson->add($Person);
+        }
+        
         $form = $this->createForm(EditInvitationForm::class, $Invitation);
         
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
             $Invitation = $form->getData();
+            
+            foreach ($originalPerson as $Person) {
+                if (false === $Invitation->getPerson()->contains($Person)) {
+                    $Invitation->getPerson()->removeElement($Person);
+                    $em->persist($Invitation);
+                    $em->remove($Person);
+                }
+            }
+            foreach($Invitation->getPerson() as $Person) {
+                $Person->setInvitation($Invitation);
+            }
             $em->persist($Invitation);
             $em->flush();
             $request->getSession()
