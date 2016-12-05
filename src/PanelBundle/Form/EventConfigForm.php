@@ -3,13 +3,9 @@ namespace PanelBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use PanelBundle\Form\EventConfig\InvitationGroupForm;
-use PanelBundle\Form\EventConfig\PersonGroupForm;
-use PanelBundle\Form\EventConfig\ParameterForm;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use InvitationBundle\Entity\Event;
 
 class EventConfigForm extends AbstractType {
@@ -30,9 +26,9 @@ class EventConfigForm extends AbstractType {
             ;
     }
     
-    public function getDefaultOptions(array $options) {
-        return array(
+    public function configureOptions(OptionsResolver $resolver) {
+        $resolver->setDefaults([
             'data_class' => Event::class,
-        );
+        ]);
     }
 }

@@ -12,10 +12,6 @@ InvitationBundle\Entity\InvitationGroup:
         name:
             type: string
             length: 255
-        urlName:
-            type: string
-            length: 255
-            column: url_name
         color:
             type: string
             length: '7'

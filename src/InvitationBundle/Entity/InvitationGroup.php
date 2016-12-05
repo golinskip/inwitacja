@@ -20,11 +20,6 @@ class InvitationGroup
     /**
      * @var string
      */
-    private $urlName;
-
-    /**
-     * @var string
-     */
     private $color;
 
     private $invitation;
@@ -63,30 +58,6 @@ class InvitationGroup
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set urlName
-     *
-     * @param string $urlName
-     *
-     * @return InvitationGroup
-     */
-    public function setUrlName($urlName)
-    {
-        $this->urlName = $urlName;
-
-        return $this;
-    }
-
-    /**
-     * Get urlName
-     *
-     * @return string
-     */
-    public function getUrlName()
-    {
-        return $this->urlName;
     }
 
     /**

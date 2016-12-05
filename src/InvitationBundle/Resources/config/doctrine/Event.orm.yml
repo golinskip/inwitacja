@@ -53,6 +53,7 @@ InvitationBundle\Entity\Event:
         invitationGroup:
             targetEntity: InvitationGroup
             mappedBy: event
+            cascade: ['persist', 'remove']
         parameter:
             targetEntity: Parameter
             mappedBy: event

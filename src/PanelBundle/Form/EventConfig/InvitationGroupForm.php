@@ -4,7 +4,7 @@ namespace PanelBundle\Form\EventConfig;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use InvitationBundle\Entity\InvitationGroup;
 
 class InvitationGroupForm extends AbstractType {
@@ -26,9 +26,9 @@ class InvitationGroupForm extends AbstractType {
             ;
     }
     
-    public function getDefaultOptions(array $options) {
-        return array(
+    public function configureOptions(OptionsResolver $resolver) {
+        $resolver->setDefaults([
             'data_class' => InvitationGroup::class,
-        );
+        ]);
     }
 }

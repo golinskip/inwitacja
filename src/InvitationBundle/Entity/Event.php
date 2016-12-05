@@ -3,7 +3,6 @@
 namespace InvitationBundle\Entity;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Doctrine\ORM\PersistentCollection;
 
 /**
  * Event

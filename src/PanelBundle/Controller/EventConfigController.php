@@ -33,6 +33,10 @@ class EventConfigController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $Event = $form->getData();
             
+        foreach($Event->getInvitationGroup() as $InvitationGroup){
+            $InvitationGroup->setEvent($Event);
+        }
+            
             $em->persist($Event);
             $em->flush();
             
@@ -47,6 +51,12 @@ class EventConfigController extends Controller
         ]);
     }
     
+    /**
+     * 
+     * @param string $slug
+     * @return InvitationBundle\Entity\Event
+     * @throws AccessDeniedException
+     */
     protected function getEvent($slug) {
         $Event = $this->getDoctrine()
             ->getRepository('InvitationBundle:Event')
