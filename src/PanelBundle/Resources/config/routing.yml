@@ -27,3 +27,11 @@ panel_invitations_manager_invitation_edit:
     defaults: { _controller: PanelBundle:InvitationEditor:editInvitation }
     requirements:
         invitation:     \d+
+
+panel_event_config:
+    path:     /event/{slug}/config
+    defaults: { _controller: PanelBundle:EventConfig:index }
+
+panel_event_config_save:
+    path:  /event/{slug}/config/save
+    defaults: { _controller: PanelBundle:EventConfig:save }

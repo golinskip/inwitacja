@@ -1,0 +1,36 @@
+{% extends 'PanelBundle::base.html.twig' %}
+{% block title %}{{Event.name}}{{'eventConfig.title'|trans}}{% endblock %}
+{% block body %}
+    <div class="container">
+        {{ form_start(form, {'action': path('panel_event_config_save', {'slug': app.request.get('slug')}) }) }}
+        <div class='row'>
+            <button type="submit" class="btn btn-primary btn-lg right">
+                <i class="fa fa-floppy-o"></i> {{'invitationEditor.form.save'|trans}}
+            </button>
+            <hr/>
+        </div>
+        <div class='row'>
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#invitationGroups" aria-controls="invitationGroups" role="tab" data-toggle="tab">{{'eventConfig.tabs.invitationGroups'|trans}}</a></li>
+            <li role="presentation"><a href="#personGroups" aria-controls="personGroups" role="tab" data-toggle="tab">{{'eventConfig.tabs.personGroups'|trans}}</a></li>
+            <li role="presentation"><a href="#parameters" aria-controls="parameters" role="tab" data-toggle="tab">{{'eventConfig.tabs.parameters'|trans}}</a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="invitationGroups">
+                {% include 'PanelBundle:EventConfig:tabs/tabInvitationGroups.html.twig' with {'form' : form.children.invitationGroup} %}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="personGroups">
+                {% include 'PanelBundle:EventConfig:tabs/tabPersonGroups.html.twig' %}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="parameters">
+                {% include 'PanelBundle:EventConfig:tabs/tabParameters.html.twig' %}
+            </div>
+          </div>
+
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

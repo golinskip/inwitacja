@@ -5,8 +5,11 @@
         <p>{{Event.description}}</p>
         <div class="row">
             <div class="row-md-6">
-                {% if Event.checkPermission('event.view') %}
+                {% if Event.checkPermission('event.invitation.view') %}
                     <a href="{{ path('panel_invitations_manager', {'slug': Event.urlName}) }}" type="button" class="btn btn-primary btn-update btn-add-card">{{'eventDashboard.button.invitations'|trans}}</a>
+                {% endif %}
+                {% if Event.checkPermission('event.edit') %}
+                    <a href="{{ path('panel_event_config', {'slug': Event.urlName}) }}" type="button" class="btn btn-primary btn-update btn-add-card">{{'eventDashboard.button.config'|trans}}</a>
                 {% endif %}
             </div>
         </div>

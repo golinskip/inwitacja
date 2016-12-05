@@ -1,0 +1,21 @@
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    {{'eventConfig.form.invitationGroup.name'|trans}}
+                </th>
+                <th>
+                    {{'eventConfig.form.invitationGroup.color'|trans}}
+                </th>
+            </tr>
+        </thead>
+        <tbody id="eventConfig-invitationGroupsTable" data-prototype="{% filter escape %}{% include 'PanelBundle:EventConfig:tabs/rowInvitationGroup.html.twig' with {'form': form.vars.prototype} %}{% endfilter %}">
+            {% for invitationGroup in form.children %}
+                {% include 'PanelBundle:EventConfig:tabs/rowInvitationGroup.html.twig' with {'form': invitationGroup} %}
+            {% endfor %}
+        </tbody>
+    </table>
+    {{ form_widget(form) }}
+    <a id="eventConfig-addInvitationGroup" class="eventConfig-addRow" data-table="eventConfig-invitationGroupsTable" href="#">
+        <i class="fa fa-plus"></i> {{'eventConfig.form.invitationGroup.addGroup'|trans}}
+    </a>

@@ -5,6 +5,8 @@ breadcrumb:
     home: Panel
     invitation:
         list: Zaproszenia
+    event:
+        config: Ustawienia
 eventManager:
     title: Panel główny
     addButton: Dodaj nowe wydarzenie
@@ -24,6 +26,18 @@ eventManager:
 eventDashboard:
     button:
         invitations: Edytuj zaproszenia
+        config: Ustawienia
+eventConfig:
+    title: ': ustawienia'
+    tabs:
+        invitationGroups: Grupy zaproszeń
+        personGroups: Grupy cenowe
+        parameters: Parametry
+    form:
+        invitationGroup:
+            name: Nazwa
+            color: Kolor
+            addGroup: Dodaj grupę
 invitationsManager:
     title: ': zaproszenia'
     addButton: Dodaj zaproszenie
