@@ -1,5 +1,14 @@
 {% extends 'PanelBundle::base.html.twig' %}
 {% block title %}{{'eventManager.title'|trans}}{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+        '@PanelBundle/Resources/public/js/eventManager.js'
+        %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}    
+{% endblock %}
+
 {% block body %}
     <div class="container">
         <div class="row">

@@ -7,8 +7,23 @@ $(document).ready(function(){
         
         newElement = newElement.replace(/__name__/g, counter);
 		tableHandler.append(newElement);
+        eventConfig_reloadButtons();
         
         e.preventDefault();
         return false;
     });
+    
+    function eventConfig_reloadButtons() {
+        $('.eventConfig-editableTable .remove').unbind().click(function(){
+            if(confirm(window.translations.removeQuestion)) {
+                $(this).closest( "tr" ).remove();
+            }
+            e.preventDefault();
+            return false;
+        });
+        $('.colorpicker-component').colorpicker({
+            'format' : 'hex'
+        });
+    }
+    eventConfig_reloadButtons();
 });

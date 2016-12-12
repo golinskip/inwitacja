@@ -56,3 +56,12 @@ body {
 .card .btn-update {
   margin-left: 15px;
 }
+.tr-clickable {
+  cursor: pointer;
+}
+.clickable {
+  cursor: pointer;
+}
+.move {
+  cursor: move;
+}

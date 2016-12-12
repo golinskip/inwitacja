@@ -5,6 +5,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use PanelBundle\Form\PersonInInvitationForm;
 use InvitationBundle\Entity\Invitation;
 
@@ -29,6 +30,12 @@ class EditInvitationForm extends AbstractType {
                 'prototype'    => true,
                 'required'     => false,
            ])
+            ->add('invitationGroup', EntityType::class, [
+                'label' => 'invitationEditor.form.invitationGroup',
+                'class' => 'InvitationBundle:InvitationGroup',
+                'choice_label' => 'name',
+                'required' => false,
+            ])
             ->add('phone', TextType::class, [
                 'label' => 'invitationEditor.form.phone',
                 'attr' => [

@@ -19,6 +19,10 @@
 	%}
 	<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="all" />
 	{% endstylesheets %}
+    {% stylesheets '@PanelBundle/Resources/public/css/*'%}
+	<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="all" />
+    {% endstylesheets %}
+    {% block stylesheets %}{% endblock %}
     <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
     {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
 
@@ -40,8 +44,5 @@
     <!-- Include all JavaScripts, compiled by Assetic -->
     <script src="{{ asset('js/bootstrap.js') }}"></script>
     {% block javascripts %}{% endblock %}
-    {% javascripts '@PanelBundle/Resources/public/js/*'%}
-        <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
 </body>
 </html>

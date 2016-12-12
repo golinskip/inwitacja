@@ -5,12 +5,12 @@
     </td>
     <td>
         {{ form_errors(form.color) }}
-        {{ form_widget(form.color) }}
+        <div id="cp2" class="input-group colorpicker-component">
+            {{ form_widget(form.color, { 'attr': {'class': 'colorpicker'} }) }}
+            <span class="input-group-addon"><i></i></span>
+        </div>
     </td>
     <td>
-        <a class="text-primary holder move">
-            <i class="fa fa-arrows" aria-hidden="true"></i>
-        </a>
         <a class="text-danger pull-right remove clickable">
             <i class="fa fa-times" aria-hidden="true"></i>
         </a>

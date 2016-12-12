@@ -1,5 +1,28 @@
 {% extends 'PanelBundle::base.html.twig' %}
 {% block title %}{{Event.name}}{{'eventConfig.title'|trans}}{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+        '@BootstrapColorPickerBundle/Resources/public/js/bootstrap-colorpicker.min.js'
+        '@PanelBundle/Resources/public/js/eventConfig.js'
+        %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}    
+    <script type="text/javascript">
+        var translations = {
+           'removeQuestion' : '{{ 'invitationEditor.messages.removeQuestion' | trans }}',
+        }
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets filter='cssrewrite'
+      'bundles/bootstrapcolorpicker/css/bootstrap-colorpicker.min.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
     <div class="container">
         {{ form_start(form, {'action': path('panel_event_config_save', {'slug': app.request.get('slug')}) }) }}

@@ -21,6 +21,11 @@
     {{ form_widget(form.email) }}
 </div>
 <div class='row'>
+    {{ form_label(form.invitationGroup) }}
+    {{ form_errors(form.invitationGroup) }}
+    {{ form_widget(form.invitationGroup) }}
+</div>
+<div class='row'>
     <hr/>
     <table class="table table-striped">
         <thead>

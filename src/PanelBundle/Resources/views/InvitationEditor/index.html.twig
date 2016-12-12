@@ -2,7 +2,12 @@
 {% block title %}{{Invitation.name}}{{'invitationEditor.title'|trans}}{% endblock %}
 
 {% block javascripts %}
-<script type="text/javascript">
+    {% javascripts
+        '@PanelBundle/Resources/public/js/invitationEditor.js'
+        %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+<script type="text/javascript">    
     var translations = {
        'removeQuestion' : '{{ 'invitationEditor.messages.removeQuestion' | trans }}',
     }

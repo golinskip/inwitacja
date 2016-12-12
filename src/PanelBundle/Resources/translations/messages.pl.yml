@@ -59,6 +59,7 @@ invitationEditor:
         name: Nazwa zaproszenia
         email: Adres e-mail
         phone: Telefon
+        invitationGroup: Grupa
         persons: Osoby
         person:
             name: Imię i nazwisko
