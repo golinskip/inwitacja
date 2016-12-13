@@ -12,6 +12,7 @@ use InvitationBundle\Entity\Invitation;
 class EditInvitationForm extends AbstractType {
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
+        $eventId = $options['attr']['eventId'];
         $builder
             ->add('name', TextType::class, [
                 'label' => 'invitationEditor.form.name',
@@ -33,6 +34,14 @@ class EditInvitationForm extends AbstractType {
             ->add('invitationGroup', EntityType::class, [
                 'label' => 'invitationEditor.form.invitationGroup',
                 'class' => 'InvitationBundle:InvitationGroup',
+                'query_builder' => function ($repository) use ($eventId) {
+                    return $repository->createQueryBuilder('ig')
+                        ->where('ig.event = :eid')
+                        ->setParameter('eid', $eventId)
+                        ->orderBy('ig.name', 'ASC'); 
+                },
+                
+                'empty_data'  => 'kuwerty',
                 'choice_label' => 'name',
                 'required' => false,
             ])

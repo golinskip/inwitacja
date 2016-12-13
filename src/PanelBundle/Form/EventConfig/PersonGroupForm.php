@@ -4,6 +4,8 @@ namespace PanelBundle\Form\EventConfig;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use InvitationBundle\Entity\PersonGroup;
 
@@ -12,37 +14,25 @@ class PersonGroupForm extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'invitationEditor.form.name',
+                'label' => 'eventConfig.form.personGroup.name',
                 'attr' => [
-                    'placeholder' => 'invitationEditor.form.name',
+                    'placeholder' => 'eventConfig.form.personGroup.name',
                 ],
             ])
-            
-           ->add('person', CollectionType::class, [
-                'label' => 'invitationEditor.form.persons',
-                'entry_type'    => PersonInInvitationForm::class,
-                'entry_options'  => array(
-                    'label' => false
-                ),
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'prototype'    => true,
-                'required'     => false,
-           ])
-            ->add('phone', TextType::class, [
-                'label' => 'invitationEditor.form.phone',
+            ->add('price', NumberType::class, [
+                'label' => 'eventConfig.form.personGroup.price',
+                'scale' => 2,
                 'attr' => [
-                    'placeholder' => 'invitationEditor.form.phone',
+                    'placeholder' => 'eventConfig.form.personGroup.price',
                 ],
-                'required' => false,
             ])
-            ->add('email', TextType::class, [
-                'label' => 'invitationEditor.form.email',
+            ->add('color', TextType::class, [
+                'label' => 'eventConfig.form.personGroup.color',
                 'attr' => [
-                    'placeholder' => 'invitationEditor.form.email',
+                    'placeholder' => 'eventConfig.form.personGroup.color',
                 ],
-                'required' => false,
             ])
+            ->add('innerOrder', HiddenType::class)
             ;
     }
     

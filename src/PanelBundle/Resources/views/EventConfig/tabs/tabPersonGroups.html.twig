@@ -1,1 +1,24 @@
-kuwerty
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    {{'eventConfig.form.personGroup.name'|trans}}
+                </th>
+                <th>
+                    {{'eventConfig.form.personGroup.price'|trans}}
+                </th>
+                <th>
+                    {{'eventConfig.form.personGroup.color'|trans}}
+                </th>
+            </tr>
+        </thead>
+        <tbody id="eventConfig-personGroupsTable" class="eventConfig-editableTable" data-prototype="{% filter escape %}{% include 'PanelBundle:EventConfig:tabs/rowPersonGroup.html.twig' with {'form': form.vars.prototype} %}{% endfilter %}">
+            {% for personGroup in form.children %}
+                {% include 'PanelBundle:EventConfig:tabs/rowPersonGroup.html.twig' with {'form': personGroup} %}
+            {% endfor %}
+        </tbody>
+    </table>
+    {{ form_widget(form) }}
+    <a id="eventConfig-addPersonGroup" class="eventConfig-addRow" data-table="eventConfig-personGroupsTable" href="#">
+        <i class="fa fa-plus"></i> {{'eventConfig.form.personGroup.addGroup'|trans}}
+    </a>

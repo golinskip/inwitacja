@@ -34,6 +34,11 @@ class PersonGroup
      */
     private $event;
 
+    /**
+     * @var int
+     */
+    private $innerOrder;
+
 
     /**
      * Get id
@@ -181,5 +186,29 @@ class PersonGroup
     public function getEvent()
     {
         return $this->event;
+    }
+
+    /**
+     * Set innerOrder
+     *
+     * @param integer $innerOrder
+     *
+     * @return Person
+     */
+    public function setInnerOrder($innerOrder)
+    {
+        $this->innerOrder = $innerOrder;
+
+        return $this;
+    }
+
+    /**
+     * Get innerOrder
+     *
+     * @return int
+     */
+    public function getInnerOrder()
+    {
+        return $this->innerOrder;
     }
 }

@@ -38,6 +38,11 @@ eventConfig:
             name: Nazwa
             color: Kolor
             addGroup: Dodaj grupę
+        personGroup:
+            name: Nazwa
+            color: Kolor
+            price: Cena
+            addGroup: Dodaj grupę
 invitationsManager:
     title: ': zaproszenia'
     addButton: Dodaj zaproszenie

@@ -17,7 +17,7 @@ class InvitationEditorController extends Controller
         
         $Invitation = $this->loadInvitation($invitation, $Event);
         
-        $form = $this->createForm(EditInvitationForm::class, $Invitation);
+        $form = $this->createForm(EditInvitationForm::class, $Invitation, ['attr' => ['eventId' => $Event->getId()]]);
         
         $this->breadcrumb($Event, $Invitation);
         
@@ -43,7 +43,7 @@ class InvitationEditorController extends Controller
             $originalPerson->add($Person);
         }
         
-        $form = $this->createForm(EditInvitationForm::class, $Invitation);
+        $form = $this->createForm(EditInvitationForm::class, $Invitation, ['attr' => ['eventId' => $Event->getId()]]);
         
         $form->handleRequest($request);
         

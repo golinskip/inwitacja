@@ -18,6 +18,9 @@ InvitationBundle\Entity\PersonGroup:
             type: string
             length: 7
             nullable: true
+        innerOrder:
+            type: integer
+            column: inner_order
     lifecycleCallbacks: {  }
     oneToMany:
         person:

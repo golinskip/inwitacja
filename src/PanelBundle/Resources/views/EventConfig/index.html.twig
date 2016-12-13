@@ -46,7 +46,7 @@
                 {% include 'PanelBundle:EventConfig:tabs/tabInvitationGroups.html.twig' with {'form' : form.children.invitationGroup} %}
             </div>
             <div role="tabpanel" class="tab-pane" id="personGroups">
-                {% include 'PanelBundle:EventConfig:tabs/tabPersonGroups.html.twig' %}
+                {% include 'PanelBundle:EventConfig:tabs/tabPersonGroups.html.twig' with {'form' : form.children.personGroup} %}
             </div>
             <div role="tabpanel" class="tab-pane" id="parameters">
                 {% include 'PanelBundle:EventConfig:tabs/tabParameters.html.twig' %}
