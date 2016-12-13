@@ -37,6 +37,10 @@ class EventConfigController extends Controller
             $InvitationGroup->setEvent($Event);
         }
             
+        foreach($Event->getPersonGroup() as $PersonGroup){
+            $PersonGroup->setEvent($Event);
+        }
+            
             $em->persist($Event);
             $em->flush();
             

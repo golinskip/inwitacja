@@ -4,8 +4,8 @@ namespace PanelBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use InvitationBundle\Entity\Person;
 
@@ -20,13 +20,15 @@ class PersonInInvitationForm extends AbstractType {
                 ],
             ])
             ->add('innerOrder', HiddenType::class)
-            ->add('status', ChoiceType::class, [
-                'label' => 'invitationEditor.form.person.status',
-                'choices'  => [
-                    'invitationEditor.form.person.statusType.undefined' => Person::STATUS_UNDEFINED,
-                    'invitationEditor.form.person.statusType.enable' => Person::STATUS_ENABLE,
-                    'invitationEditor.form.person.statusType.disable' => Person::STATUS_DISABLE,
-                ],
+            ->add('personGroup', EntityType::class, [
+                'label' => 'invitationEditor.form.person.personGroup',
+                'class' => 'InvitationBundle:PersonGroup',
+                'query_builder' => function ($repository) {
+                    return $repository->createQueryBuilder('pg')
+                        ->orderBy('pg.innerOrder', 'ASC'); 
+                },
+                'choice_label' => 'name',
+                'required' => false,
             ])
             ;
     }

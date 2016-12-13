@@ -40,8 +40,6 @@ class EditInvitationForm extends AbstractType {
                         ->setParameter('eid', $eventId)
                         ->orderBy('ig.name', 'ASC'); 
                 },
-                
-                'empty_data'  => 'kuwerty',
                 'choice_label' => 'name',
                 'required' => false,
             ])

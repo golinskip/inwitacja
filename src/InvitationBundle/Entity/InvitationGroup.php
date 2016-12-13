@@ -24,6 +24,10 @@ class InvitationGroup
 
     private $invitation;
     
+    
+    /**
+     * @var \InvitationBundle\Entity\Event
+     */
     private $event;
 
     /**

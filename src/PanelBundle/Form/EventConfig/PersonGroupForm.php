@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use InvitationBundle\Entity\PersonGroup;
 
 class PersonGroupForm extends AbstractType {
@@ -36,9 +36,9 @@ class PersonGroupForm extends AbstractType {
             ;
     }
     
-    public function getDefaultOptions(array $options) {
-        return array(
+    public function configureOptions(OptionsResolver $resolver) {
+        $resolver->setDefaults([
             'data_class' => PersonGroup::class,
-        );
+        ]);
     }
 }

@@ -14,7 +14,7 @@ InvitationBundle\Entity\InvitationGroup:
             length: 255
         color:
             type: string
-            length: '7'
+            length: 7
             nullable: true
     lifecycleCallbacks: {  }
     oneToMany:

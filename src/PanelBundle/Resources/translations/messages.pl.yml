@@ -68,7 +68,7 @@ invitationEditor:
         persons: Osoby
         person:
             name: Imię i nazwisko
-            status: Status
+            personGroup: Grupa
             statusType:
                 undefined: Niezdecydowany
                 enable: Obecny
@@ -80,3 +80,4 @@ invitationEditor:
 Previous: Poprzednia
 Next: Następna
 literal: %var%
+"": ""

@@ -22,7 +22,6 @@ class EventConfigForm extends AbstractType {
                 'allow_add'    => true,
                 'allow_delete' => true,
                 'prototype'    => true,
-                'required'     => false,
            ])
            ->add('personGroup', CollectionType::class, [
                 'label' => false,
@@ -33,7 +32,6 @@ class EventConfigForm extends AbstractType {
                 'allow_add'    => true,
                 'allow_delete' => true,
                 'prototype'    => true,
-                'required'     => false,
            ])
             ;
     }

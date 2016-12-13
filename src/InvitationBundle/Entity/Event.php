@@ -59,8 +59,6 @@ class Event
 	
 	private $eventType;
     
-    private $invitationGroup;
-    
     private $parameter;
     
     private $invitation;
@@ -77,6 +75,11 @@ class Event
      * @var \Doctrine\Common\Collections\Collection
      */
     private $personGroup;
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $invitationGroup;
 
 
     /**

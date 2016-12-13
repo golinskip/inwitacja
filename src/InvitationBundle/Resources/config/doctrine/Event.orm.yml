@@ -44,12 +44,14 @@ InvitationBundle\Entity\Event:
         preUpdate: [ beforeUpdate ]
     
     oneToMany:
-        personGroup:
-            targetEntity: PersonGroup
-            mappedBy: event
         eventAggr:
             targetEntity: UserEventRoleEvent
             mappedBy: event
+        personGroup:
+            targetEntity: PersonGroup
+            mappedBy: event
+            cascade: ['persist', 'remove']
+            orderBy: { 'innerOrder': 'ASC' }
         invitationGroup:
             targetEntity: InvitationGroup
             mappedBy: event
