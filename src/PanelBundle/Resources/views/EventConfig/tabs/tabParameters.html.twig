@@ -1,1 +1,21 @@
-asdf
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    {{'eventConfig.form.parameter.name'|trans}}
+                </th>
+                <th>
+                    {{'eventConfig.form.parameter.description'|trans}}
+                </th>
+            </tr>
+        </thead>
+        <tbody id="eventConfig-parameterTable" class="eventConfig-editableTable" data-prototype="{% filter escape %}{% include 'PanelBundle:EventConfig:tabs/rowParameter.html.twig' with {'form': form.vars.prototype} %}{% endfilter %}">
+            {% for parameter in form.children %}
+                {% include 'PanelBundle:EventConfig:tabs/rowParameter.html.twig' with {'form': parameter} %}
+            {% endfor %}
+        </tbody>
+    </table>
+    {{ form_widget(form) }}
+    <a id="eventConfig-addParameter" class="eventConfig-addRow" data-table="eventConfig-parameterTable" href="#">
+        <i class="fa fa-plus"></i> {{'eventConfig.form.parameter.addParameter'|trans}}
+    </a>

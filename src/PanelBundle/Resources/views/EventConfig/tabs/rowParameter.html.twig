@@ -1,0 +1,15 @@
+<tr data-index="{{form.vars.name}}">
+    <td>
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name) }}
+    </td>
+    <td>
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description) }}
+    </td>
+    <td>
+        <a class="text-danger pull-right remove clickable">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+    </td>
+</tr>

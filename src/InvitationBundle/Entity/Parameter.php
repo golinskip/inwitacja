@@ -37,6 +37,8 @@ class Parameter
     private $parameterValue;
     
     private $predefiniedParameter;
+    
+    private $valueDetails;
 
 
     /**
@@ -243,5 +245,29 @@ class Parameter
     public function getPredefiniedParameter()
     {
         return $this->predefiniedParameter;
+    }
+    
+    /**
+     * Set valueDetails
+     *
+     * @param string $valueDetails
+     *
+     * @return Parameter
+     */
+    public function setValueDetails($valueDetails)
+    {
+        $this->valueDetails = $valueDetails;
+
+        return $this;
+    }
+
+    /**
+     * Get valueDetails
+     *
+     * @return string
+     */
+    public function getValueDetails()
+    {
+        return $this->valueDetails;
     }
 }

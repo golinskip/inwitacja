@@ -20,7 +20,7 @@ $(document).ready(function(){
     });
     
     function reinitRows() {
-        $( "#invitationEditorPersonTable .remove").unbind().click(function(){
+        $( "#invitationEditorPersonTable .remove").unbind().click(function(e){
             if(confirm(window.translations.removeQuestion)) {
                 //$('#personTrash').val($('#personTrash').val()+','+);
                 $(this).closest( "tr" ).remove();
@@ -39,7 +39,6 @@ $(document).ready(function(){
                 });
             }
         });
-        $( "#invitationEditorPersonTable" ).disableSelection();
     }
     reinitRows();
 });

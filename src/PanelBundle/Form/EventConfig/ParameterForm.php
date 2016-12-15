@@ -4,8 +4,8 @@ namespace PanelBundle\Form\EventConfig;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use InvitationBundle\Entity\Parameter;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ParameterForm extends AbstractType {
     
@@ -13,43 +13,23 @@ class ParameterForm extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'invitationEditor.form.name',
+                'label' => 'eventConfig.form.parameter.name',
                 'attr' => [
-                    'placeholder' => 'invitationEditor.form.name',
+                    'placeholder' => 'eventConfig.form.parameter.name',
                 ],
             ])
-           ->add('person', CollectionType::class, [
-                'label' => 'invitationEditor.form.persons',
-                'entry_type'    => PersonInInvitationForm::class,
-                'entry_options'  => array(
-                    'label' => false
-                ),
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'prototype'    => true,
-                'required'     => false,
-           ])
-           
-            ->add('phone', TextType::class, [
-                'label' => 'invitationEditor.form.phone',
+            ->add('description', TextType::class, [
+                'label' => 'eventConfig.form.parameter.description',
                 'attr' => [
-                    'placeholder' => 'invitationEditor.form.phone',
+                    'placeholder' => 'eventConfig.form.parameter.description',
                 ],
-                'required' => false,
-            ])
-            ->add('email', TextType::class, [
-                'label' => 'invitationEditor.form.email',
-                'attr' => [
-                    'placeholder' => 'invitationEditor.form.email',
-                ],
-                'required' => false,
             ])
             ;
     }
     
-    public function getDefaultOptions(array $options) {
-        return array(
+    public function configureOptions(OptionsResolver $resolver) {
+        $resolver->setDefaults([
             'data_class' => Parameter::class,
-        );
+        ]);
     }
 }

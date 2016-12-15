@@ -6,6 +6,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use PanelBundle\Form\EventConfig\InvitationGroupForm;
 use PanelBundle\Form\EventConfig\PersonGroupForm;
+use PanelBundle\Form\EventConfig\ParameterForm;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use InvitationBundle\Entity\Event;
 
@@ -26,6 +27,16 @@ class EventConfigForm extends AbstractType {
            ->add('personGroup', CollectionType::class, [
                 'label' => false,
                 'entry_type'    => PersonGroupForm::class,
+                'entry_options'  => array(
+                    'label' => false,
+                ),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+           ])
+           ->add('parameter', CollectionType::class, [
+                'label' => false,
+                'entry_type'    => ParameterForm::class,
                 'entry_options'  => array(
                     'label' => false,
                 ),
