@@ -24,7 +24,10 @@ class EditInvitationForm extends AbstractType {
                 'label' => 'invitationEditor.form.persons',
                 'entry_type'    => PersonInInvitationForm::class,
                 'entry_options'  => array(
-                    'label' => false
+                    'label' => false,
+                    'attr' => [
+                        'eventId' => $eventId,
+                    ],
                 ),
                 'allow_add'    => true,
                 'allow_delete' => true,

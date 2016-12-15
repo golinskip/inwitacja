@@ -12,6 +12,7 @@ use InvitationBundle\Entity\Person;
 class PersonInInvitationForm extends AbstractType {
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
+        $eventId = $options['attr']['eventId'];
         $builder
             ->add('name', TextType::class, [
                 'label' => 'invitationEditor.form.person.name',
@@ -23,8 +24,10 @@ class PersonInInvitationForm extends AbstractType {
             ->add('personGroup', EntityType::class, [
                 'label' => 'invitationEditor.form.person.personGroup',
                 'class' => 'InvitationBundle:PersonGroup',
-                'query_builder' => function ($repository) {
+                'query_builder' => function ($repository) use ($eventId) {
                     return $repository->createQueryBuilder('pg')
+                        ->where('pg.event = :eid')
+                        ->setParameter('eid', $eventId)
                         ->orderBy('pg.innerOrder', 'ASC'); 
                 },
                 'choice_label' => 'name',

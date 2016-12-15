@@ -132,11 +132,11 @@ class PersonGroup
     /**
      * Add person
      *
-     * @param \PersonBundle\Entity\Person $person
+     * @param \InvitationBundle\Entity\Person $person
      *
      * @return PersonGroup
      */
-    public function addPerson(\PersonBundle\Entity\Person $person)
+    public function addPerson(\InvitationBundle\Entity\Person $person)
     {
         $this->person[] = $person;
 
@@ -146,9 +146,9 @@ class PersonGroup
     /**
      * Remove person
      *
-     * @param \PersonBundle\Entity\Person $person
+     * @param \InvitationBundle\Entity\Person $person
      */
-    public function removePerson(\PersonBundle\Entity\Person $person)
+    public function removePerson(\InvitationBundle\Entity\Person $person)
     {
         $this->person->removeElement($person);
     }
