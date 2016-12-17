@@ -7,6 +7,18 @@ namespace InvitationBundle\Entity;
  */
 class Parameter
 {
+    const TYPE_BOOLEAN = 'boolean';
+    const TYPE_INTEGER = 'integer';
+    const TYPE_STRING = 'string';
+    const TYPE_ENUM = 'enum';
+    
+    private $typeList = [
+        self::TYPE_BOOLEAN,
+        self::TYPE_INTEGER,
+        self::TYPE_STRING,
+        self::TYPE_ENUM,
+    ];
+    
     /**
      * @var int
      */
@@ -269,5 +281,9 @@ class Parameter
     public function getValueDetails()
     {
         return $this->valueDetails;
+    }
+    
+    public function getTypeList() {
+        return $this->typeList;
     }
 }
