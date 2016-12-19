@@ -8,10 +8,10 @@ use PanelBundle\Form\EventConfigForm;
 
 class EventConfigController extends Controller
 {
-    public function indexAction($slug) {
+    public function indexAction(Request $request, $slug) {
         $Event = $this->getEvent($slug);
         
-        $form = $this->createForm(EventConfigForm::class, $Event);
+        $form = $this->createForm(EventConfigForm::class, $Event, ['attr' => ['locale' => $request->getLocale()]]);
         
         $this->breadcrumb($Event);
         
@@ -26,20 +26,24 @@ class EventConfigController extends Controller
         
         $Event = $this->getEvent($slug);
         
-        $form = $this->createForm(EventConfigForm::class, $Event);
+        $form = $this->createForm(EventConfigForm::class, $Event, ['attr' => ['locale' => $request->getLocale()]]);
         
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
             $Event = $form->getData();
             
-        foreach($Event->getInvitationGroup() as $InvitationGroup){
-            $InvitationGroup->setEvent($Event);
-        }
-            
-        foreach($Event->getPersonGroup() as $PersonGroup){
-            $PersonGroup->setEvent($Event);
-        }
+            foreach($Event->getInvitationGroup() as $InvitationGroup){
+                $InvitationGroup->setEvent($Event);
+            }
+                
+            foreach($Event->getParameter() as $Parameter){
+                $Parameter->setEvent($Event);
+            }
+                
+            foreach($Event->getPersonGroup() as $PersonGroup){
+                $PersonGroup->setEvent($Event);
+            }
             
             $em->persist($Event);
             $em->flush();

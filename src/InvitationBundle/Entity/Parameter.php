@@ -12,7 +12,7 @@ class Parameter
     const TYPE_STRING = 'string';
     const TYPE_ENUM = 'enum';
     
-    private $typeList = [
+    public static $typeList = [
         self::TYPE_BOOLEAN,
         self::TYPE_INTEGER,
         self::TYPE_STRING,
@@ -38,11 +38,6 @@ class Parameter
      * @var string
      */
     private $description;
-
-    /**
-     * @var bool
-     */
-    private $isCustom;
     
     private $event;
     
@@ -51,6 +46,11 @@ class Parameter
     private $predefiniedParameter;
     
     private $valueDetails;
+
+    /**
+     * @var int
+     */
+    private $innerOrder;
 
 
     /**
@@ -134,30 +134,7 @@ class Parameter
     {
         return $this->description;
     }
-
-    /**
-     * Set isCustom
-     *
-     * @param boolean $isCustom
-     *
-     * @return Parameter
-     */
-    public function setIsCustom($isCustom)
-    {
-        $this->isCustom = $isCustom;
-
-        return $this;
-    }
-
-    /**
-     * Get isCustom
-     *
-     * @return bool
-     */
-    public function getIsCustom()
-    {
-        return $this->isCustom;
-    }
+    
     /**
      * Constructor
      */
@@ -167,39 +144,6 @@ class Parameter
         $this->parameterValue = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Add event
-     *
-     * @param \InvitationBundle\Entity\Event $event
-     *
-     * @return Parameter
-     */
-    public function addEvent(\InvitationBundle\Entity\Event $event)
-    {
-        $this->event[] = $event;
-
-        return $this;
-    }
-
-    /**
-     * Remove event
-     *
-     * @param \InvitationBundle\Entity\Event $event
-     */
-    public function removeEvent(\InvitationBundle\Entity\Event $event)
-    {
-        $this->event->removeElement($event);
-    }
-
-    /**
-     * Get event
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEvent()
-    {
-        return $this->event;
-    }
 
     /**
      * Add parameterValue
@@ -284,6 +228,54 @@ class Parameter
     }
     
     public function getTypeList() {
-        return $this->typeList;
+        return self::$typeList;
+    }
+
+    /**
+     * Set event
+     *
+     * @param \InvitationBundle\Entity\Event $event
+     *
+     * @return Parameter
+     */
+    public function setEvent(\InvitationBundle\Entity\Event $event = null)
+    {
+        $this->event = $event;
+
+        return $this;
+    }
+
+    /**
+     * Get event
+     *
+     * @return \InvitationBundle\Entity\Event
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
+
+    /**
+     * Set innerOrder
+     *
+     * @param integer $innerOrder
+     *
+     * @return Person
+     */
+    public function setInnerOrder($innerOrder)
+    {
+        $this->innerOrder = $innerOrder;
+
+        return $this;
+    }
+
+    /**
+     * Get innerOrder
+     *
+     * @return int
+     */
+    public function getInnerOrder()
+    {
+        return $this->innerOrder;
     }
 }

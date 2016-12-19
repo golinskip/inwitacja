@@ -23,9 +23,10 @@ InvitationBundle\Entity\Parameter:
             type: text
             nullable: true
             column: value_details
-        isCustom:
-            type: boolean
-            column: is_custom
+        innerOrder:
+            type: integer
+            column: inner_order
+            nullable: true
     lifecycleCallbacks: {  }
     manyToOne:
         predefiniedParameter:

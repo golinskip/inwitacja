@@ -10,7 +10,9 @@
     {% endjavascripts %}    
     <script type="text/javascript">
         var translations = {
-           'removeQuestion' : '{{ 'invitationEditor.messages.removeQuestion' | trans }}',
+           'removeInvitationGroup' : '{{ 'eventConfig.form.invitationGroup.removeQuestion' | trans }}',
+           'removePersonGroup' : '{{ 'eventConfig.form.personGroup.removeQuestion' | trans }}',
+           'removeParameter' : '{{ 'eventConfig.form.parameter.removeQuestion' | trans }}',
         }
     </script>
 {% endblock %}
@@ -38,6 +40,7 @@
             <li role="presentation" class="active"><a href="#invitationGroups" aria-controls="invitationGroups" role="tab" data-toggle="tab">{{'eventConfig.tabs.invitationGroups'|trans}}</a></li>
             <li role="presentation"><a href="#personGroups" aria-controls="personGroups" role="tab" data-toggle="tab">{{'eventConfig.tabs.personGroups'|trans}}</a></li>
             <li role="presentation"><a href="#parameters" aria-controls="parameters" role="tab" data-toggle="tab">{{'eventConfig.tabs.parameters'|trans}}</a></li>
+            <li role="presentation"><a href="#event" aria-controls="event" role="tab" data-toggle="tab">{{'eventConfig.tabs.event'|trans}}</a></li>
           </ul>
 
           <!-- Tab panes -->
@@ -50,6 +53,9 @@
             </div>
             <div role="tabpanel" class="tab-pane" id="parameters">
                 {% include 'PanelBundle:EventConfig:tabs/tabParameters.html.twig' with {'form' : form.children.parameter}  %}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="event">
+                {% include 'PanelBundle:EventConfig:tabs/tabEvent.html.twig' with {'form' : form}  %}
             </div>
           </div>
 

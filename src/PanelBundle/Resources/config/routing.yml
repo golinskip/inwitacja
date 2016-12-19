@@ -15,6 +15,10 @@ panel_invitations_manager:
 panel_invitations_manager_add_invitation:
     path:     /invitation/{slug}/addInvitation
     defaults: { _controller: PanelBundle:InvitationsManager:addInvitation }
+    
+panel_invitations_manager_remove_invitation:
+    path:     /invitation/{slug}/removeInvitation/{invitation}
+    defaults: { _controller: PanelBundle:InvitationsManager:removeInvitation }
 
 panel_invitations_manager_invitation:
     path:     /invitation/{slug}/edit/{invitation}

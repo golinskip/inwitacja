@@ -2,13 +2,22 @@
     <td>
         {{ form_errors(form.name) }}
         {{ form_widget(form.name) }}
+        {{ form_widget(form.innerOrder, { 'attr': {'class': 'inputInnerOrder'} }) }}
     </td>
     <td>
         {{ form_errors(form.description) }}
         {{ form_widget(form.description) }}
     </td>
     <td>
-        <a class="text-danger pull-right remove clickable">
+        {{ form_errors(form.type) }}
+        {{ form_widget(form.type) }}
+    </td>
+    <td>
+        <button type="button" class="btn btn-default">{{'eventConfig.form.parameter.configureType'|trans}}</button>
+        <a class="text-primary holder move">
+            <i class="fa fa-arrows" aria-hidden="true"></i>
+        </a>
+        <a class="text-danger pull-right remove clickable" data-message="removeParameter">
             <i class="fa fa-times" aria-hidden="true"></i>
         </a>
     </td>

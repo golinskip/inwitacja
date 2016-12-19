@@ -7,9 +7,12 @@
                 <th>
                     {{'eventConfig.form.parameter.description'|trans}}
                 </th>
+                <th>
+                    {{'eventConfig.form.parameter.type'|trans}}
+                </th>
             </tr>
         </thead>
-        <tbody id="eventConfig-parameterTable" class="eventConfig-editableTable" data-prototype="{% filter escape %}{% include 'PanelBundle:EventConfig:tabs/rowParameter.html.twig' with {'form': form.vars.prototype} %}{% endfilter %}">
+        <tbody id="eventConfig-parameterTable" class="eventConfig-editableTable tbody-sortable" data-prototype="{% filter escape %}{% include 'PanelBundle:EventConfig:tabs/rowParameter.html.twig' with {'form': form.vars.prototype} %}{% endfilter %}">
             {% for parameter in form.children %}
                 {% include 'PanelBundle:EventConfig:tabs/rowParameter.html.twig' with {'form': parameter} %}
             {% endfor %}

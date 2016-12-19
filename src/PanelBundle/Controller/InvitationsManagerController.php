@@ -14,16 +14,7 @@ class InvitationsManagerController extends Controller
 {
     public function indexAction(Request $request, $slug, $page) {
         
-        $Event = $this->getDoctrine()
-            ->getRepository('InvitationBundle:Event')
-            ->findOneByUrlName($slug);
-        if(!$Event) {
-            throw $this->createNotFoundException('Event not found');
-        }
-        $Event->loadPermissionSet($this->getUser());
-        if(!$Event->checkPermission('event.invitation.view')) {
-            throw new AccessDeniedException('Access denied.');
-        }
+        $Event = $this->getEventBySlug($slug);
         
         $AddInvitation = new AddInvitation();
         $AddInvitation->addPerson('');
@@ -52,16 +43,7 @@ class InvitationsManagerController extends Controller
     
     public function addInvitationAction(Request $request, $slug) {
         
-        $Event = $this->getDoctrine()
-            ->getRepository('InvitationBundle:Event')
-            ->findOneByUrlName($slug);
-        if(!$Event) {
-            throw $this->createNotFoundException('Event not found');
-        }
-        $Event->loadPermissionSet($this->getUser());
-        if(!$Event->checkPermission('event.invitation.view')) {
-            throw new AccessDeniedException('Access denied.');
-        }
+        $Event = $this->getEventBySlug($slug);
         
         $AddInvitation = new AddInvitation();
         $form = $this->createForm(AddInvitationForm::class, $AddInvitation);
@@ -97,13 +79,62 @@ class InvitationsManagerController extends Controller
             $em->flush();
             $request->getSession()
                 ->getFlashBag()
-                ->add('success', $this->get('translator')->trans('invitationEditor.messages.editSuccess'))
+                ->add('success', $this->get('translator')
+                    ->trans('invitationsManager.messages.addSuccess', ['%name%' => $Invitation->getName()]))
             ;
         }
         
         return $this->redirectToRoute('panel_invitations_manager', [
             'slug' => $slug
         ]);
+    }
+    
+    public function removeInvitationAction(Request $request, $slug, $invitation) {
+        $Event = $this->getEventBySlug($slug);
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        $Invitation = $this->getDoctrine()
+            ->getRepository('InvitationBundle:Invitation')
+            ->findOneById($invitation);
+        
+        if($Invitation->getEvent() != $Event) {
+            throw new AccessDeniedException('Access denied.');
+        }
+        
+        $name = $Invitation->getName();
+            
+        if (!$Invitation) {
+            throw $this->createNotFoundException('Invitation not found');
+        }
+
+        $em->remove($Invitation);
+        $em->flush();
+        
+        
+        $request->getSession()
+            ->getFlashBag()
+            ->add('success', $this->get('translator')
+                ->trans('invitationsManager.messages.removeSuccess', ['%name%' => $name]))
+        ;
+        
+        return $this->redirectToRoute('panel_invitations_manager', [
+            'slug' => $slug
+        ]);
+    }
+    
+    protected function getEventBySlug($slug) {
+        $Event = $this->getDoctrine()
+            ->getRepository('InvitationBundle:Event')
+            ->findOneByUrlName($slug);
+        if(!$Event) {
+            throw $this->createNotFoundException('Event not found');
+        }
+        $Event->loadPermissionSet($this->getUser());
+        if(!$Event->checkPermission('event.invitation.view')) {
+            throw new AccessDeniedException('Access denied.');
+        }
+        return $Event;
     }
     
     protected function breadcrumb($Event) {

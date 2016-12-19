@@ -31,25 +31,37 @@ eventConfig:
     title: ': ustawienia'
     tabs:
         invitationGroups: Grupy zaproszeń
-        personGroups: Grupy cenowe
-        parameters: Parametry
+        personGroups: Grupy osób
+        parameters: Parametry osób
+        event: Ustawienia
     form:
         invitationGroup:
             name: Nazwa
             color: Kolor
             addGroup: Dodaj grupę
+            removeQuestion: Czy napewno chcesz usunąć grupę?
         personGroup:
             name: Nazwa
             color: Kolor
             price: Cena
             addGroup: Dodaj grupę
+            removeQuestion: Czy napewno chcesz usunąć grupę?
         parameter:
             name: Nazwa
             description: Opis
+            type: Typ
+            types:
+                boolean: Wybór tak/nie
+                integer: Liczba
+                string: Tekst
+                enum: Lista wyboru
+            configureType: Konfiguruj
             addParameter: Dodaj parametr
+            removeQuestion: Czy napewno chcesz usunąć parametr?
 invitationsManager:
     title: ': zaproszenia'
     addButton: Dodaj zaproszenie
+    removeQuestion: Czy napewno chcesz usunąć to zaproszenie?
     addDialog:
         title: Dodaj nowe zaproszenie
         buttonSubmit: Dodaj
@@ -59,9 +71,13 @@ invitationsManager:
         person: Osoby
         personPlaceholder: Imię i nazwisko
     messages:
-        addSuccess: Dodano nowe zaproszenie
+        addSuccess: Dodano nowe zaproszenie "%name%"
+        removeSuccess: Pomyślnie usunięto zaproszenie "%name%"
     table:
         name: Nazwa na zaproszeniu
+        buttons:
+            edit: Edytuj
+            show: Przejdź do zaproszenia
 invitationEditor:
     title: ': edycja zaproszenia'
     form:
