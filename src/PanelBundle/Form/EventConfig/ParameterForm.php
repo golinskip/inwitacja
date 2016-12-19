@@ -30,6 +30,7 @@ class ParameterForm extends AbstractType {
                 'attr' => [
                     'placeholder' => 'eventConfig.form.parameter.description',
                 ],
+                'required' => false,
             ])
             ->add('type', ChoiceType::class, [
                 'label' => 'eventConfig.form.parameter.type',

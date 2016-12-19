@@ -1,3 +1,3 @@
-#invitation_homepage:
-#    path:     /
-#    defaults: { _controller: InvitationBundle:Default:index }
+invitation_homepage:
+    path:     /
+    defaults: { _controller: InvitationBundle:Default:index }

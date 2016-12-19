@@ -1,16 +1,28 @@
 invitation:
     resource: "@InvitationBundle/Resources/config/routing.yml"
     prefix:   /
+    host:     "{slug}.{domain}"
+    defaults:
+        domain: '%domain%'
+    requirements:
+        domain: '%domain%'
 
 panel:
     resource: "@PanelBundle/Resources/config/routing.yml"
     prefix:   /panel
-
+    host:     "{domain}"
+    defaults:
+        domain: '%domain%'
+    requirements:
+        domain: '%domain%'
 app:
     resource: "@AppBundle/Resources/config/routing.yml"
     prefix:   /
-
-
+    host:     "{domain}"
+    defaults:
+        domain: '%domain%'
+    requirements:
+        domain: '%domain%'
 # FOS User routings:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
