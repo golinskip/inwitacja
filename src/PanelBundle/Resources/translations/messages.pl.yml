@@ -60,13 +60,23 @@ eventConfig:
             removeQuestion: Czy napewno chcesz usunąć parametr?
             dialog:
                 title: Konfiguracja parametru
-                loading: Proszę czekać - trwa ładowanie..
                 buttonSave: Zapisz
                 buttonCancel: Anuluj
     typeConfig:
         boolean:
-            undefined: Możliwa wartość niezdefiniowana
-            
+            enableEmpty: Możliwa wartość niezdefiniowana
+            default: Domyślna wartość
+            defaultList:
+                empty: Niezdefiniowane
+                trueVal: Tak
+                falseVal: Nie
+            truePrice: Dodatkowe koszty, gdy zaznaczone "Tak"
+            falsePrice: Dodatkowe koszty, gdy zaznaczone "Nie"
+            layout: Sposób wyboru
+            layoutList:
+                button: Przycisk
+                checkbox: Checkbox
+                dropdown: Lista rozwijana
 invitationsManager:
     title: ': zaproszenia'
     addButton: Dodaj zaproszenie

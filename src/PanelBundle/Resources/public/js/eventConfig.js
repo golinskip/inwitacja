@@ -9,6 +9,10 @@ $(document).ready(function(){
 		tableHandler.append(newElement);
         eventConfig_reloadButtons();
         
+        $('#typeConfigDialog').on('hidden.bs.modal', function () {
+            $('#typeConfigDialog .modal-body-content').html('');
+        });
+        
         e.preventDefault();
         return false;
     });
@@ -25,14 +29,14 @@ $(document).ready(function(){
             'format' : 'hex'
         });
         $('button.typeConfig').unbind().click(function(){
-            $('#typeConfigDialog .modal-body-content').hide();
-            $('#typeConfigDialog .modal-body-preloader').show();
             var type = $(this).closest( "tr" ).find('.inputType').val();
-            var routing = Routing.generate('panel_event_config_type_config', { type: type});
-            $.get( routing, function( data ) {
+            var typeConfig = $(this).closest( "tr" ).find('.inputTypeConfig').val();
+            var routing = Routing.generate('panel_event_config_type_config', { type: type, output: 'html'});
+            $.post( routing, {
+                data: typeConfig
+            }, function( data ) {
+                $('#typeConfigDialogType').val(data.type);
                 $('#typeConfigDialog .modal-body-content').html(data.html);
-                $('#typeConfigDialog .modal-body-preloader').hide();
-                $('#typeConfigDialog .modal-body-content').show();
             }, 'json');
         });
         $( ".tbody-sortable").sortable({
