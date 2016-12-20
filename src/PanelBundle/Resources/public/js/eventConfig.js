@@ -24,6 +24,17 @@ $(document).ready(function(){
         $('.colorpicker-component').colorpicker({
             'format' : 'hex'
         });
+        $('button.typeConfig').unbind().click(function(){
+            $('#typeConfigDialog .modal-body-content').hide();
+            $('#typeConfigDialog .modal-body-preloader').show();
+            var type = $(this).closest( "tr" ).find('.inputType').val();
+            var routing = Routing.generate('panel_event_config_type_config', { type: type});
+            $.get( routing, function( data ) {
+                $('#typeConfigDialog .modal-body-content').html(data.html);
+                $('#typeConfigDialog .modal-body-preloader').hide();
+                $('#typeConfigDialog .modal-body-content').show();
+            }, 'json');
+        });
         $( ".tbody-sortable").sortable({
             placeholder: '<tr class="placeholder"/>',
             handle: ".holder",

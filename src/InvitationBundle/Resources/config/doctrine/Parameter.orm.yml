@@ -19,10 +19,10 @@ InvitationBundle\Entity\Parameter:
             type: string
             length: 2048
             nullable: true
-        valueDetails:
+        typeConfig:
             type: text
             nullable: true
-            column: value_details
+            column: type_config
         innerOrder:
             type: integer
             column: inner_order

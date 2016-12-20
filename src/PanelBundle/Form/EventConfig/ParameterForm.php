@@ -36,6 +36,7 @@ class ParameterForm extends AbstractType {
                 'label' => 'eventConfig.form.parameter.type',
                 'choices'  => $paramFormList,
             ])
+            ->add('typeConfig', HiddenType::class)
             ->add('innerOrder', HiddenType::class)
             ;
     }

@@ -39,3 +39,9 @@ panel_event_config:
 panel_event_config_save:
     path:  /event/{slug}/config/save
     defaults: { _controller: PanelBundle:EventConfig:save }
+
+panel_event_config_type_config:
+    path:  /event/typeConfig/{type}
+    defaults: { _controller: PanelBundle:EventConfig:typeConfig }
+    options:
+        expose: true

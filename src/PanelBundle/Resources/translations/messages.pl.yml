@@ -58,6 +58,15 @@ eventConfig:
             configureType: Konfiguruj
             addParameter: Dodaj parametr
             removeQuestion: Czy napewno chcesz usunąć parametr?
+            dialog:
+                title: Konfiguracja parametru
+                loading: Proszę czekać - trwa ładowanie..
+                buttonSave: Zapisz
+                buttonCancel: Anuluj
+    typeConfig:
+        boolean:
+            undefined: Możliwa wartość niezdefiniowana
+            
 invitationsManager:
     title: ': zaproszenia'
     addButton: Dodaj zaproszenie

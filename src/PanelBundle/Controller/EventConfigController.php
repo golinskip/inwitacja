@@ -5,6 +5,8 @@ namespace PanelBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use PanelBundle\Form\EventConfigForm;
+use Symfony\Component\HttpFoundation\Response;
+use InvitationBundle\Entity\Parameter;
 
 class EventConfigController extends Controller
 {
@@ -57,6 +59,26 @@ class EventConfigController extends Controller
         return $this->redirectToRoute('panel_event_config', [
             'slug' => $slug,
         ]);
+    }
+    
+    public function typeConfigAction($type) {
+        
+        if(!in_array ( $type , Parameter::$typeList )) {
+            throw $this->createNotFoundException('Type not exists');
+        }
+        
+        $formClass = 'PanelBundle\\Form\\TypeConfig\\'.ucfirst ( $type ).'Form';
+        $form = $this->createForm($formClass);
+        
+        $data = [
+            'type' => $type,
+            'html' => $this->renderView("PanelBundle:EventConfig:typeConfig/$type.html.twig", [
+                'form' => $form->createView(),
+            ]),
+        ];
+
+        $response = new Response(json_encode($data));
+        return $response;
     }
     
     /**

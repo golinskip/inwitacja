@@ -2,6 +2,7 @@
     <td>
         {{ form_errors(form.name) }}
         {{ form_widget(form.name) }}
+        {{ form_widget(form.typeConfig, { 'attr': {'class': 'inputTypeConfig'} }) }}
         {{ form_widget(form.innerOrder, { 'attr': {'class': 'inputInnerOrder'} }) }}
     </td>
     <td>
@@ -10,10 +11,12 @@
     </td>
     <td>
         {{ form_errors(form.type) }}
-        {{ form_widget(form.type) }}
+        {{ form_widget(form.type, { 'attr': {'class': 'inputType'} }) }}
     </td>
     <td>
-        <button type="button" class="btn btn-default">{{'eventConfig.form.parameter.configureType'|trans}}</button>
+        <button type="button" class="btn btn-default typeConfig"  data-toggle="modal" data-target="#typeConfigDialog">
+            {{'eventConfig.form.parameter.configureType'|trans}}
+        </button>
         <a class="text-primary holder move">
             <i class="fa fa-arrows" aria-hidden="true"></i>
         </a>

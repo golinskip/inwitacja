@@ -45,7 +45,7 @@ class Parameter
     
     private $predefiniedParameter;
     
-    private $valueDetails;
+    private $typeConfig;
 
     /**
      * @var int
@@ -204,27 +204,27 @@ class Parameter
     }
     
     /**
-     * Set valueDetails
+     * Set typeConfig
      *
-     * @param string $valueDetails
+     * @param string $typeConfig
      *
      * @return Parameter
      */
-    public function setValueDetails($valueDetails)
+    public function setTypeConfig($typeConfig)
     {
-        $this->valueDetails = $valueDetails;
+        $this->typeConfig = $typeConfig;
 
         return $this;
     }
 
     /**
-     * Get valueDetails
+     * Get typeConfig
      *
      * @return string
      */
-    public function getValueDetails()
+    public function getTypeConfig()
     {
-        return $this->valueDetails;
+        return $this->typeConfig;
     }
     
     public function getTypeList() {
