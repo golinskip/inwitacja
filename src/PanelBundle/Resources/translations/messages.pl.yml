@@ -51,9 +51,9 @@ eventConfig:
             description: Opis
             type: Typ
             types:
-                boolean: Wybór tak/nie
-                integer: Liczba
-                string: Tekst
+                logic: Wybór tak/nie
+                number: Liczba
+                text: Tekst
                 enum: Lista wyboru
             configureType: Konfiguruj
             addParameter: Dodaj parametr
@@ -63,7 +63,7 @@ eventConfig:
                 buttonSave: Zapisz
                 buttonCancel: Anuluj
     typeConfig:
-        boolean:
+        logic:
             enableEmpty: Możliwa wartość niezdefiniowana
             default: Domyślna wartość
             defaultList:
@@ -77,6 +77,27 @@ eventConfig:
                 button: Przycisk
                 checkbox: Checkbox
                 dropdown: Lista rozwijana
+        text:
+            maxLength: Maksymalna długość
+            nullable: Dopuszczalna pusta wartość
+            inputType: Pole do wpisywania
+            inputTypes:
+                textarea: Wielolinijkowe
+                text: Jednolinijkowe
+        number:            
+            maxNum: Wartość maksymalna
+            minNum: Wartość minimalna
+            decimals: Wartości dziesiętne
+            priceFactor: Dodatkowe koszty (będą pomnożone przez podaną ilość)
+        enum:
+            enumRecord: Tablica rekordów
+            showLimits: Pokaż limit
+            nullable:  Czy jest możliwość nie wybrania niczego?
+            enumRecords:
+                name: Nazwa
+                priceModifier: Modyfikator kosztów dla tego wyboru
+                limit: Górny limit osób, które wybiorą tę opcję
+                default: Domyślna wartość
 invitationsManager:
     title: ': zaproszenia'
     addButton: Dodaj zaproszenie

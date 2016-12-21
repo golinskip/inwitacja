@@ -7,15 +7,15 @@ namespace InvitationBundle\Entity;
  */
 class Parameter
 {
-    const TYPE_BOOLEAN = 'boolean';
-    const TYPE_INTEGER = 'integer';
-    const TYPE_STRING = 'string';
+    const TYPE_LOGIC = 'logic';
+    const TYPE_NUMBER = 'number';
+    const TYPE_TEXT = 'text';
     const TYPE_ENUM = 'enum';
     
     public static $typeList = [
-        self::TYPE_BOOLEAN,
-        self::TYPE_INTEGER,
-        self::TYPE_STRING,
+        self::TYPE_LOGIC,
+        self::TYPE_NUMBER,
+        self::TYPE_TEXT,
         self::TYPE_ENUM,
     ];
     

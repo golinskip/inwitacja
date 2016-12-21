@@ -71,7 +71,15 @@ class EventConfigController extends Controller {
         }
         $typeClass = 'InvitationBundle\\Entity\\ParameterType\\'.ucfirst ( $type );
         $formClass = 'PanelBundle\\Form\\TypeConfig\\'.ucfirst ( $type ).'Form';
-        $TypeObject = new $typeClass;
+        $data = $request->request->get('data');
+        if($data !== null && strlen($data) > 0) {
+            $TypeObject = @unserialize(base64_decode($data));
+            if($TypeObject == false) {
+                $TypeObject = new $typeClass;
+            }
+        } else {
+            $TypeObject = new $typeClass;
+        }
         $form = $this->createForm($formClass, $TypeObject);
         
         $data = [
@@ -86,11 +94,10 @@ class EventConfigController extends Controller {
         
         if($output == self::OUTPUT_VALUE) {
             $form->handleRequest($request);
-            /*if ($form->isSubmitted() && $form->isValid()) {
-                $TypeClass = $form->getData();*/
-                //$data[self::OUTPUT_VALUE] = serialize($TypeClass);
-                //$data[self::OUTPUT_VALUE] = $_POST;
-            //}
+            if ($form->isSubmitted() && $form->isValid()) {
+                $TypeClass = $form->getData();
+                $data[self::OUTPUT_VALUE] = base64_encode(serialize($TypeClass));
+            }
         }
 
         $response = new Response(json_encode($data));

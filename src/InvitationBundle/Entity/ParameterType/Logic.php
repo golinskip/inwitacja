@@ -1,7 +1,7 @@
 <?php
 namespace InvitationBundle\Entity\ParameterType;
 
-class Boolean {
+class Logic {
     const LAYOUT_BUTTON = 'button';
     const LAYOUT_CHECKBOX = 'checkbox';
     const LAYOUT_DROPDOWN = 'dropdown';
@@ -14,7 +14,7 @@ class Boolean {
     
     /**
      * Możliwa wartość niezdefiniowana
-     * @var boolean 
+     * @var logic 
      */
     private $enableEmpty;
     
@@ -54,17 +54,17 @@ class Boolean {
         return $this->layout;
     }
 
-    public function setTruePrice(type $truePrice) {
+    public function setTruePrice($truePrice) {
         $this->truePrice = $truePrice;
         return $this;
     }
 
-    public function setFalsePrice(type $falsePrice) {
+    public function setFalsePrice($falsePrice) {
         $this->falsePrice = $falsePrice;
         return $this;
     }
 
-    public function setLayout(type $layout) {
+    public function setLayout($layout) {
         $this->layout = $layout;
         return $this;
     }

@@ -32,6 +32,7 @@ $(document).ready(function(){
             var type = $(this).closest( "tr" ).find('.inputType').val();
             var typeConfig = $(this).closest( "tr" ).find('.inputTypeConfig').val();
             var routing = Routing.generate('panel_event_config_type_config', { type: type, output: 'html'});
+            $('#typeConfigFieldID').val($(this).closest( "tr" ).find('.inputTypeConfig').attr('id'));
             $.post( routing, {
                 data: typeConfig
             }, function( data ) {
