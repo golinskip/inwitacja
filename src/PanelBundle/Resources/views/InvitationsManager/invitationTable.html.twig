@@ -7,7 +7,7 @@
             </thead>
             {% for Invitation in pagination %}
                 <tr class="tr-clickable" data-href="">
-                    <td class="col-md-9">{{Invitation.name}}</td>
+                    <td class="col-md-9">{{Invitation.name}}<br/><small>(kod: {{Invitation.code}})</small></td>
                     <td class="col-md-3">
                         <a href="{{path('panel_invitations_manager_invitation', 
                             {'slug': Event.urlName, 'invitation':Invitation.id})

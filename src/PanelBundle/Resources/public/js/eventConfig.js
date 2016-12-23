@@ -13,6 +13,12 @@ $(document).ready(function(){
             $('#typeConfigDialog .modal-body-content').html('');
         });
         
+        var innerOrderVal = 0;
+        $(this).closest( "tbody" ).find('.inputInnerOrder').each(function(){
+            $(this).val(innerOrderVal);
+            innerOrderVal++;
+        });
+        
         e.preventDefault();
         return false;
     });

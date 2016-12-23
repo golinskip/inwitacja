@@ -21,16 +21,12 @@ class Enum {
     /**
     * Czy jest możliwość nie wybrania niczego?
     */
-    private $nullable
+    private $nullable;
     
-    public function getEnumRecord(){
-		return $this->enumRecords;
-	}
-
-	public function setEnumRecord($enumRecords){
-		$this->enumRecords = $enumRecords;
-        return $this;
-	}
+    /**
+    * Pokaż elementy z przekroczonym limitem
+    */
+    private $showDisabled;
 
 	public function getShowLimits(){
 		return $this->showLimits;
@@ -47,6 +43,15 @@ class Enum {
 
 	public function setNullable($nullable){
 		$this->nullable = $nullable;
+        return $this;
+    }
+
+	public function getShowDisabled(){
+		return $this->showDisabled;
+	}
+
+	public function setShowDisabled($showDisabled){
+		$this->showDisabled = $showDisabled;
         return $this;
     }
 	

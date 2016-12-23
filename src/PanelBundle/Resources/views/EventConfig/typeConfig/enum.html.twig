@@ -1,8 +1,58 @@
     {% javascripts
         '@PanelBundle/Resources/public/js/typeConfig.js'
+        '@PanelBundle/Resources/public/js/typeConfigEnum.js'
         %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+    
 {{ form_start(form) }}
-{{ form_widget(form) }}
+
+<div class='row'>
+    <div class='col-md-12'>
+        {{ form_errors(form.showLimits) }}
+        {{ form_widget(form.showLimits) }}
+        {{ form_label(form.showLimits) }}
+    </div>
+    <div class='col-md-12'>
+        {{ form_errors(form.nullable) }}
+        {{ form_widget(form.nullable) }}
+        {{ form_label(form.nullable) }}
+    </div>
+    <div class='col-md-12'>
+        {{ form_errors(form.showDisabled) }}
+        {{ form_widget(form.showDisabled) }}
+        {{ form_label(form.showDisabled) }}
+    </div>
+    <div class='col-md-12'>
+        <hr/>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        {{'eventConfig.typeConfig.enum.enumRecords.name'|trans}}
+                    </th>
+                    <th>
+                        {{'eventConfig.typeConfig.enum.enumRecords.priceModifier'|trans}}
+                    </th>
+                    <th>
+                        {{'eventConfig.typeConfig.enum.enumRecords.limit'|trans}}
+                    </th>
+                    <th>
+                        {{'eventConfig.typeConfig.enum.enumRecords.default'|trans}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="enumRecordsTable" data-prototype="{% filter escape %}{% include 'PanelBundle:EventConfig:typeConfig/enumRecord.html.twig' with {'form': form.children.enumRecord.vars.prototype} %}{% endfilter %}">
+                {% for enumRecord in form.children.enumRecord.children %}
+                    {% include 'PanelBundle:EventConfig:typeConfig/enumRecord.html.twig' with {'form': enumRecord} %}
+                {% endfor %}
+            </tbody>
+        </table>
+        {{ form_widget(form.enumRecord) }}
+        <a id="addEnumRedord" data-table="enumRecordsTable" href="#">
+            <i class="fa fa-plus"></i> {{'eventConfig.typeConfig.enum.addRecord'|trans}}
+        </a>
+    </div>
+</div>
+
 {{ form_end(form) }}

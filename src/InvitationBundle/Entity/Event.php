@@ -71,6 +71,8 @@ class Event
     
     private $permissionSet;
     
+    private $domain;
+    
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
@@ -259,6 +261,30 @@ class Event
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set domain
+     *
+     * @param \String $domain
+     *
+     * @return Event
+     */
+    private function setDomain($domain)
+    {
+        $this->domain = $domain;
+
+        return $this;
+    }
+
+    /**
+     * Get domain
+     *
+     * @return \String
+     */
+    public function getDomain()
+    {
+        return $this->domain;
     }
 
     /**

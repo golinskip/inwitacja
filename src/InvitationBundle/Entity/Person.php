@@ -24,7 +24,7 @@ class Person
     /**
      * @var int
      */
-    private $status;
+    private $status = 0;
 
     /**
      * @var int

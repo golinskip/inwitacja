@@ -23,6 +23,7 @@ eventManager:
         place: Miejsce
         date: Data
         goToEvent: Przejdź do wydarzenia
+        edit: Edytuj
 eventDashboard:
     button:
         invitations: Edytuj zaproszenia
@@ -92,12 +93,14 @@ eventConfig:
         enum:
             enumRecord: Tablica rekordów
             showLimits: Pokaż limit
+            showDisabled: Pokaż elementy z przekroczonym limitem
             nullable:  Czy jest możliwość nie wybrania niczego?
+            addRecord: Dodaj nowy rekord
             enumRecords:
                 name: Nazwa
-                priceModifier: Modyfikator kosztów dla tego wyboru
-                limit: Górny limit osób, które wybiorą tę opcję
-                default: Domyślna wartość
+                priceModifier: Koszty
+                limit: Limit
+                default: Domyślne
 invitationsManager:
     title: ': zaproszenia'
     addButton: Dodaj zaproszenie

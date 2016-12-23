@@ -1,0 +1,26 @@
+<tr data-index="{{form.vars.name}}">
+    <td>
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name) }}
+    </td>
+    <td>
+        {{ form_errors(form.priceModifier) }}
+        {{ form_widget(form.priceModifier) }}
+    </td>
+    <td>
+        {{ form_errors(form.limit) }}
+        {{ form_widget(form.limit) }}
+    </td>
+    <td>
+        {{ form_errors(form.default) }}
+        {{ form_widget(form.default) }}
+    </td>
+    <td>
+        <a class="text-primary holder move">
+            <i class="fa fa-arrows" aria-hidden="true"></i>
+        </a>
+        <a class="text-danger pull-right remove clickable">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+    </td>
+</tr>

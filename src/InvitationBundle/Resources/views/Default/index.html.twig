@@ -1,1 +1,25 @@
-Hello World!
+{% extends 'InvitationBundle::base.html.twig' %}
+
+{% block javascript%}
+    <script type="text/javascript">
+        $('input[name=code]').focus();
+    </script>
+{% endblock %}
+
+
+{% block body %}
+	<div class="outer">
+		<div class="middle">
+            <div class="inner">
+                <div class="homesplash">
+                    <h1>{{Event.name}}</h1>
+                    {{ form_start(form, {'action': path('invitation_code_authentication', {'slug': app.request.get('slug') } ) } ) }}
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                    <p>{{'default.loginPanel.hint'|trans}}</p>
+                </div>
+            </div>
+        </div>
+	</div>
+{% endblock %}

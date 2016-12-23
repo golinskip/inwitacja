@@ -38,6 +38,10 @@ InvitationBundle\Entity\Event:
         updatedAt:
             type: datetime
             column: updated_at
+        domain:
+            type: string
+            length: 128
+            nullable: true
     lifecycleCallbacks:
         prePersist: [ fillEmptyFields ]
         postPersist: [ assignAsOwner ]

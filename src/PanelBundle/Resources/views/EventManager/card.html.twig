@@ -17,7 +17,14 @@
                     <p><b>{{'eventManager.card.date'|trans}}:</b> {{Event.date|date('Y-m-d')}}</p>
                 </div>
                 {% if Event.checkPermission('event.view') %}
-                    <a href="{{ path('panel_event_dashboard', {'slug': Event.urlName}) }}" type="button" class="btn btn-primary btn-update btn-add-card">{{'eventManager.card.goToEvent'|trans}}</a>
+                    <a href="{{ path('panel_event_dashboard', {'slug': Event.urlName}) }}" type="button" class="btn btn-primary btn-update btn-add-card">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        {{'eventManager.card.edit'|trans}}
+                    </a>
+                    <a href="{{ path('invitation_homepage', {'slug': Event.urlName}) }}" type="button" target="_blank" class="btn btn-success btn-update btn-add-card">
+                        {{'eventManager.card.goToEvent'|trans}}
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </a>
                 {% endif %}
             </div>
           </div>

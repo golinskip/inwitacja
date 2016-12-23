@@ -1,3 +1,8 @@
 invitation_homepage:
     path:     /
     defaults: { _controller: InvitationBundle:Default:index }
+
+invitation_code_authentication:
+    path: /codeAuthentication
+    defaults: { _controller: InvitationBundle:Default:authenticate }
+    

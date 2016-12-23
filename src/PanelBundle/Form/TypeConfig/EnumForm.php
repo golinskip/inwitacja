@@ -6,25 +6,37 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use InvitationBundle\Entity\ParameterType\Enum;
 
-class LogicForm extends AbstractType {
+class EnumForm extends AbstractType {
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('enableEmpty', CheckboxType::class, array(
-                'label' => 'eventConfig.typeConfig.enum.enableEmpty',
+            ->add('nullable', CheckboxType::class, array(
+                'label' => 'eventConfig.typeConfig.enum.nullable',
                 'required' => false,
             ))
-            ->add('truePrice', NumberType::class, array(
-                'label' => 'eventConfig.typeConfig.enum.truePrice',
+            ->add('showDisabled', CheckboxType::class, array(
+                'label' => 'eventConfig.typeConfig.enum.showDisabled',
                 'required' => false,
             ))
-            ->add('falsePrice', NumberType::class, array(
-                'label' => 'eventConfig.typeConfig.enum.falsePrice',
+            ->add('showLimits', CheckboxType::class, array(
+                'label' => 'eventConfig.typeConfig.enum.showLimits',
                 'required' => false,
             ))
+           ->add('enumRecord', CollectionType::class, [
+                'label' => 'eventConfig.typeConfig.enum.enumRecord',
+                'entry_type'    => EnumRecordForm::class,
+                'entry_options'  => array(
+                    'label' => false,
+                ),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'required'     => false,
+           ])
             ;
     }
     
