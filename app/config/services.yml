@@ -7,4 +7,5 @@ parameters:
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
 services:
     invitation.auhenticator:
-        class: InvitationBundle\Repository\InvitationRepository
+        class: InvitationBundle\Security\InvitationProvider
+        arguments: [ "@doctrine.orm.entity_manager" ]

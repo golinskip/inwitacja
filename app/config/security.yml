@@ -13,9 +13,7 @@ security:
         fos_userbundle:
             id: fos_user.user_provider.username
         invitation_provider:
-            entity:
-                class: InvitationBundle:Invitation
-                property: code
+            id: invitation.auhenticator
 
     firewalls:
         panel:
@@ -29,10 +27,9 @@ security:
             anonymous:    true
         invitation:
             host: ^*\.%domain%
+            http_basic: ~
+            provider: invitation_provider
             #pattern: ^/invitation
-            form_login:
-                login_path: invitation_code_authentication
-                check_path: invitation_code_authentication
 
     access_control:
         - { path: ^/panel/, role: ROLE_USER }

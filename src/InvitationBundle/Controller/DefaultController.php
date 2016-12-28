@@ -4,6 +4,9 @@ namespace InvitationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use InvitationBundle\Form\LoginForm;
 
 class DefaultController extends Controller
@@ -20,6 +23,7 @@ class DefaultController extends Controller
     }
     
     public function authenticateAction(Request $request, $slug) {
+        
         $Event = $this->getEvent($slug);
         
         $form = $this->createForm(LoginForm::class);
@@ -35,6 +39,20 @@ class DefaultController extends Controller
             ])
             ;
         
+        if (!$Invitation) {
+            throw new UsernameNotFoundException("User not found");
+        } else {
+            $token = new UsernamePasswordToken($Invitation, null, "invitation", $Invitation->getRoles());
+            $this->get("security.token_storage")->setToken($token); //now the user is logged in
+
+            //now dispatch the login event
+            $event = new InteractiveLoginEvent($request, $token);
+            $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
+        }
+        
+        return $this->redirectToRoute('invitation_dashboard', [
+            'slug' => $Event->getUrlName(),
+        ]);
     }
     
     /**

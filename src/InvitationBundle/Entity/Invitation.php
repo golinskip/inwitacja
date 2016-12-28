@@ -8,8 +8,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Invitation
  */
-class Invitation implements UserInterface
-{
+class Invitation implements UserInterface {
     
     const URL_SPLITTER = '-';
     
@@ -491,6 +490,7 @@ class Invitation implements UserInterface
         } while(true);
         $this->setUrlName($urlNameCurrent);
         if($this->getCode() === null) {
+            
             $this->setCode($this->generateCode());
         }
     }
@@ -518,7 +518,7 @@ class Invitation implements UserInterface
     }
 
     public function getUsername() {
-        return $this->code."@".$this->getEvent()->getUrlName();
+        return $this->getUrlName();
     }
 
     public function eraseCredentials() {}
