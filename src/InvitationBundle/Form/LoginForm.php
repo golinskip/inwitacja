@@ -11,13 +11,13 @@ class LoginForm extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('code', NumberType::class, [
-                'label' => 'default.loginPanel.input',
+                'label' => 'loginPanel.input',
                 'attr' => [
-                    'placeholder' => 'default.loginPanel.input',
+                    'placeholder' => 'loginPanel.input',
                 ],
             ])
             ->add('login', SubmitType::class, [
-                'label' => 'default.loginPanel.login'
+                'label' => 'loginPanel.login'
             ])
             ;
     }

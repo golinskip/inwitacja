@@ -29,6 +29,10 @@ security:
             host: ^*\.%domain%
             http_basic: ~
             provider: invitation_provider
+            form_login:
+                failure_path: invitation_homepage
+                check_path: invitation_homepage
+                failure_path: invitation_homepage
             #pattern: ^/invitation
 
     access_control:

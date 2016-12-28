@@ -22,6 +22,15 @@ class DefaultController extends Controller
         ]);
     }
     
+    public function logoutAction(Request $request, $slug) {
+        $this->get('security.token_storage')->setToken(null);
+        $this->get('request')->getSession()->invalidate();
+        
+        return $this->redirectToRoute('invitation_homepage', [
+            'slug' => $slug,
+        ]);
+    }
+    
     public function authenticateAction(Request $request, $slug) {
         
         $Event = $this->getEvent($slug);
@@ -40,6 +49,10 @@ class DefaultController extends Controller
             ;
         
         if (!$Invitation) {
+            $request->getSession()
+                ->getFlashBag()
+                ->add('warning', $this->get('translator')->trans('loginPanel.messages.invalidCode'))
+            ;
             throw new UsernameNotFoundException("User not found");
         } else {
             $token = new UsernamePasswordToken($Invitation, null, "invitation", $Invitation->getRoles());

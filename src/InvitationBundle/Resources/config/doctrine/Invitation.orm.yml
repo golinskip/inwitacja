@@ -27,7 +27,6 @@ InvitationBundle\Entity\Invitation:
             nullable: true
         code:
             type: integer
-            unique: true
         status:
             type: integer
         innerOrder:

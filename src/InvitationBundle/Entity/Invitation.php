@@ -490,8 +490,15 @@ class Invitation implements UserInterface {
         } while(true);
         $this->setUrlName($urlNameCurrent);
         if($this->getCode() === null) {
-            
-            $this->setCode($this->generateCode());
+            $result = $em->createQuery("SELECT i.code FROM InvitationBundle:Invitation i JOIN InvitationBundle:Event e WHERE e.id = :event")
+                    ->setParameters([
+                        ':event' => $this->getEvent()->getId(),
+                    ])
+                    ->getScalarResult();
+            $codeArray = array_map('current', $result);
+            do {
+                $this->setCode($this->generateCode());
+            } while(in_array($this->getCode(), $codeArray));
         }
     }
     

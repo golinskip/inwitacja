@@ -2,6 +2,14 @@ invitation_homepage:
     path:     /
     defaults: { _controller: InvitationBundle:Default:index }
 
+invitation_homepage_login:
+    path:     /login
+    defaults: { _controller: InvitationBundle:Default:index }
+
+invitation_logout:
+    path:     /logout
+    defaults: { _controller: InvitationBundle:Default:logout }
+
 invitation_code_authentication:
     path: /codeAuthentication
     defaults: { _controller: InvitationBundle:Default:authenticate }

@@ -1,5 +1,6 @@
-default:
-    loginPanel:
-        input: Wpisz swój numer...
-        hint: Aby potwierdzić swoje zaproszenie wpisz numer otrzymany razem z zaproszeniem i naciśnij przycisk "zaloguj".
-        login: Zaloguj
+loginPanel:
+    input: Wpisz swój numer...
+    hint: Aby potwierdzić swoje zaproszenie wpisz numer otrzymany razem z zaproszeniem i naciśnij przycisk "zaloguj".
+    login: Zaloguj
+    messages:
+        invalidCode: Nie udało się zalogować. Nie rozpoznano kodu.
