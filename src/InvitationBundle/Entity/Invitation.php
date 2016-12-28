@@ -4,10 +4,11 @@ namespace InvitationBundle\Entity;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\PersistentCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Invitation
  */
-class Invitation
+class Invitation implements UserInterface
 {
     
     const URL_SPLITTER = '-';
@@ -15,6 +16,8 @@ class Invitation
     const URL_MAX_CHAR = 255;
     
     const CODE_LENGTH = 6;
+    
+    const GUEST_ROLE = 'ROLE_GUEST';
     
     /**
      * @var int
@@ -501,4 +504,22 @@ class Invitation
     public function beforeUpdate(LifecycleEventArgs $e) {
         $this->setUpdatedAt(new \DateTime());
     }
+    
+    public function getRoles() {
+        return [self::GUEST_ROLE];
+    }
+
+    public function getPassword() {
+        return $this->code;
+    }
+
+    public function getSalt() {
+        return null;
+    }
+
+    public function getUsername() {
+        return $this->code."@".$this->getEvent()->getUrlName();
+    }
+
+    public function eraseCredentials() {}
 }

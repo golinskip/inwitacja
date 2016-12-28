@@ -5,25 +5,38 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
+        ROLE_USER:        ROLE_GUEST
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     providers:
         fos_userbundle:
             id: fos_user.user_provider.username
+        invitation_provider:
+            entity:
+                class: InvitationBundle:Invitation
+                property: code
 
     firewalls:
-        main:
-            pattern: ^/
+        panel:
+            host: %domain%
+            #pattern: ^/
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
                 default_target_path: panel_event_manager
             logout:       true
             anonymous:    true
+        invitation:
+            host: ^*\.%domain%
+            #pattern: ^/invitation
+            form_login:
+                login_path: invitation_code_authentication
+                check_path: invitation_code_authentication
 
     access_control:
+        - { path: ^/panel/, role: ROLE_USER }
+        - { path: ^/invitation/, role: ROLE_GUEST }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/panel/, role: ROLE_USER }
