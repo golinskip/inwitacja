@@ -1,4 +1,5 @@
-<?// src/AppBundle/Security/TokenAuthenticator.php
+<?php
+// src/AppBundle/Security/TokenAuthenticator.php
 namespace InvitationBundle\Security;
 
 use Symfony\Component\HttpFoundation\Request;

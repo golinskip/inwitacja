@@ -63,6 +63,13 @@ eventConfig:
                 title: Konfiguracja parametru
                 buttonSave: Zapisz
                 buttonCancel: Anuluj
+        config:
+            name: Nazwa
+            type: Typ imprezy
+            description: Opis
+            date: Data
+            place: Miejsce
+            slug: Nazwa w adresie www
     typeConfig:
         logic:
             enableEmpty: Możliwa wartość niezdefiniowana

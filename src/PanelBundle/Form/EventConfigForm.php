@@ -49,24 +49,27 @@ class EventConfigForm extends AbstractType {
                 'prototype'    => true,
            ])
             ->add('name', TextType::class, [
-                'label' => 'eventManager.addDialog.name'
+                'label' => 'eventConfig.form.config.name'
+            ])
+            ->add('urlName', TextType::class, [
+                'label' => 'eventConfig.form.config.slug'
             ])
             ->add('eventType', EntityType::class, [
-                'label' => 'eventManager.addDialog.type',
+                'label' => 'eventConfig.form.config.type',
                 'class' => 'InvitationBundle:EventType',
                 'choice_label' => function ($value, $key, $index) use ($locale){
                     return $value->getNameTranslation()->getValue($locale);
                 },
             ])
             ->add('description', TextType::class, [
-                'label' => 'eventManager.addDialog.description',
+                'label' => 'eventConfig.form.config.description',
                 'required' => false,
             ])
             ->add('date', DateType::class, [
-                'label' => 'eventManager.addDialog.date',
+                'label' => 'eventConfig.form.config.date',
             ])
             ->add('place', TextType::class, [
-                'label' => 'eventManager.addDialog.place',
+                'label' => 'eventConfig.form.config.place',
                 'required' => false,
             ])
             ;

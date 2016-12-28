@@ -112,7 +112,7 @@ class EventConfigController extends Controller {
         }
         
         return $this->redirectToRoute('panel_event_config', [
-            'slug' => $slug,
+            'slug' => $Event->getUrlName(),
         ]);
     }
     

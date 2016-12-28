@@ -7,4 +7,4 @@ parameters:
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
 services:
     invitation.auhenticator:
-        class: InvitationBundle\Security\InvitationAuthenticator
+        class: InvitationBundle\Repository\InvitationRepository

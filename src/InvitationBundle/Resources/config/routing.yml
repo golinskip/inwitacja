@@ -6,3 +6,6 @@ invitation_code_authentication:
     path: /codeAuthentication
     defaults: { _controller: InvitationBundle:Default:authenticate }
     
+invitation_area:
+    resource: "@InvitationBundle/Resources/config/routing_invitation.yml"
+    prefix:   /invitation
