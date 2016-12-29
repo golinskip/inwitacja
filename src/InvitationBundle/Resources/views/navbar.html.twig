@@ -7,10 +7,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{path('panel_event_manager') }}">Inwitacja - zaproszenie</a>
+            <a class="navbar-brand" href="{{path('invitation_dashboard', {'slug': app.user.event.urlName}) }}"> {{ app.user.event.name }}{{'title'|trans}}</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            {{ knp_menu_render('InvitationBundle:Builder:mainMenu', {'style' : 'navbar-right'}) }}
+            {% set menuItem = knp_menu_get('InvitationBundle:Builder:mainMenu', [], {'slug': app.user.event.urlName}) %}
+            {{ knp_menu_render(menuItem, {'style' : 'navbar-right'}) }}
         </div>
     </div>
 </nav>

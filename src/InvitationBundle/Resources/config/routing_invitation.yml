@@ -1,3 +1,15 @@
 invitation_dashboard:
     path:     /
     defaults: { _controller: InvitationBundle:Dashboard:index }
+
+invitation_confirmator:
+    path:     /confirmator
+    defaults: { _controller: InvitationBundle:Confirmator:index }
+
+invitation_personal_data:
+    path:     /personalData
+    defaults: { _controller: InvitationBundle:PersonalData:index }
+
+invitation_personal_data_save:
+    path:     /personalData/save
+    defaults: { _controller: InvitationBundle:PersonalData:save }

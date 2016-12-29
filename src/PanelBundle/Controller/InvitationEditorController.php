@@ -68,8 +68,6 @@ class InvitationEditorController extends Controller
             ;
         }
         
-        $this->breadcrumb($Event, $Invitation);
-        
         return $this->redirectToRoute('panel_invitations_manager_invitation', [
             'slug' => $slug,
             'invitation' => $invitation,

@@ -30,9 +30,8 @@
 
 <body>
     {% if is_granted('ROLE_GUEST') %}
-        {% include 'PanelBundle::navbar.html.twig' %}
+        {% include 'InvitationBundle::navbar.html.twig' %}
     {% endif %}
-	{% include 'InvitationBundle::flashbag.html.twig' %}
     <div class="container">
         <div class="row">
             <h3>{% block title %}{% endblock %}</h3>

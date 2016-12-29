@@ -5,15 +5,16 @@ use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-class Builder implements ContainerAwareInterface
-{
+class Builder implements ContainerAwareInterface {
     use ContainerAwareTrait;
 
-    public function mainMenu(FactoryInterface $factory, array $options)
-    {
+    public function mainMenu(FactoryInterface $factory, array $options) {
+        
         $menu = $factory->createItem('root');
-		$menu->addChild('menu.logout', array('route' => 'invitation_logout'));
-
+		$menu->addChild('menu.logout', [
+            'route' => 'invitation_logout', 
+            'routeParameters' => ['slug' => $options['slug']]
+        ]);
         return $menu;
     }
 }

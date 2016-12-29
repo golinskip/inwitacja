@@ -1,6 +1,23 @@
+title: " - zaproszenie"
 loginPanel:
     input: Wpisz swój numer...
     hint: Aby potwierdzić swoje zaproszenie wpisz numer otrzymany razem z zaproszeniem i naciśnij przycisk "zaloguj".
     login: Zaloguj
     messages:
         invalidCode: Nie udało się zalogować. Nie rozpoznano kodu.
+dashboard:
+    buttons:
+        confirm: Potwierdź obecność
+        contact: Dane kontaktowe
+personalData:
+    email: Adres e-mail
+    phone: Telefon kontaktowy
+    submit: Zapisz
+    messages:
+        success: Dane zostały zapisane
+confirmator:
+    form:
+        submit: Zapisz
+        persons: Osoby
+        person:
+            name: Imię i nazwisko

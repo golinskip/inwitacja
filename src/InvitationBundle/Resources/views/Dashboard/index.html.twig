@@ -1,5 +1,21 @@
 {% extends 'InvitationBundle::base.html.twig' %}
 
 {% block body %}
-<h1>Welcome to the Dashboard:index page</h1>
+<div class="container-fluid spaced">
+    <div class="container">
+        {% include 'InvitationBundle::flashbag.html.twig' %}
+        <div class="col-md-7">
+            <h1>{{Invitation.name}}</h1>
+        </div>
+        <div class="col-md-5">
+            <a class="btn btn-primary btn-lg btn-block kp-home-button" href="{{path('invitation_confirmator', {'slug': app.user.event.urlName}) }}">
+                <i class="fa fa-check-circle-o"></i> {{'dashboard.buttons.confirm'|trans}}
+            </a>
+            <a class="btn btn-default btn-lg btn-block kp-home-button" href="{{path('invitation_personal_data', {'slug': app.user.event.urlName}) }}">
+                <i class="fa fa-check-circle-o"></i> {{'dashboard.buttons.contact'|trans}}
+            </a>
+        </div>
+</div>
+
+
 {% endblock %}
