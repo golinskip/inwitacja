@@ -21,3 +21,10 @@ confirmator:
         persons: Osoby
         person:
             name: Imię i nazwisko
+            statuses: Czy będzie?
+            status:
+                present: Obecny
+                absent: Nieobecny
+                undefined: Nie wiem
+            parameters: Parametry
+literal: %var%

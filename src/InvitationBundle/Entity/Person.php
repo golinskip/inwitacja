@@ -8,11 +8,9 @@ namespace InvitationBundle\Entity;
 class Person
 {
     const STATUS_UNDEFINED = 0;
-    const STATUS_ENABLE = 1;
-    const STATUS_DISABLE = 2;
+    const STATUS_PRESENT = 1;
+    const STATUS_ABSENT = 2;
     
-    const PERSON_PRESENT = 'present';
-    const PERSON_ABSENT = 'absent';
     
     /**
      * @var int

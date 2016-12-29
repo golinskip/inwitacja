@@ -227,6 +227,15 @@ class Parameter
         return $this->typeConfig;
     }
     
+    public function getTypeConfigObj() {
+        $TypeObj = unserialize($this->getTypeConfig());
+        $TypeObjClass = "InvitationBundle\\Entity\\ParameterType\\".ucfirst($this->getType());
+        if(!is_object($TypeObjClass) || get_class($TypeObj) != $TypeObjClass) {
+            $TypeObj = new $TypeObjClass;
+        }
+        return $TypeObj;
+    }
+    
     public function getTypeList() {
         return self::$typeList;
     }
