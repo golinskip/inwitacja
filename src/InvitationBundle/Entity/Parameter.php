@@ -228,9 +228,9 @@ class Parameter
     }
     
     public function getTypeConfigObj() {
-        $TypeObj = unserialize($this->getTypeConfig());
+        $TypeObj = @unserialize(base64_decode($this->getTypeConfig()));
         $TypeObjClass = "InvitationBundle\\Entity\\ParameterType\\".ucfirst($this->getType());
-        if(!is_object($TypeObjClass) || get_class($TypeObj) != $TypeObjClass) {
+        if(!is_object($TypeObj) || get_class($TypeObj) !== $TypeObjClass ) {
             $TypeObj = new $TypeObjClass;
         }
         return $TypeObj;

@@ -10,9 +10,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use InvitationBundle\Entity\ParameterType\Logic;
 
 class LogicForm extends AbstractType {
-    const VALUE_EMPTY = 'empty';
-    const VALUE_TRUE = 'true';
-    const VALUE_FALSE = 'false';
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $layoutList = [];
@@ -28,9 +25,9 @@ class LogicForm extends AbstractType {
             ->add('default', ChoiceType::class, array(
                 'label' => 'eventConfig.typeConfig.logic.default',
                 'choices'  => [
-                    'eventConfig.typeConfig.logic.defaultList.empty' => self::VALUE_EMPTY,
-                    'eventConfig.typeConfig.logic.defaultList.trueVal' => self::VALUE_TRUE,
-                    'eventConfig.typeConfig.logic.defaultList.falseVal' => self::VALUE_FALSE,
+                    'eventConfig.typeConfig.logic.defaultList.empty' => Logic::VALUE_EMPTY,
+                    'eventConfig.typeConfig.logic.defaultList.trueVal' => Logic::VALUE_TRUE,
+                    'eventConfig.typeConfig.logic.defaultList.falseVal' => Logic::VALUE_FALSE,
                 ],
             ))
             ->add('truePrice', NumberType::class, array(

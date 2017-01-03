@@ -6,6 +6,10 @@ class Logic {
     const LAYOUT_CHECKBOX = 'checkbox';
     const LAYOUT_DROPDOWN = 'dropdown';
     
+    const VALUE_EMPTY = 'empty';
+    const VALUE_TRUE = 'true';
+    const VALUE_FALSE = 'false';
+    
     public static $layoutList = [
         self::LAYOUT_BUTTON,
         self::LAYOUT_CHECKBOX,
@@ -85,6 +89,14 @@ class Logic {
     public function setEnableEmpty($value) {
         $this->enableEmpty = $value;
         return $this;
+    }
+    
+    public function __construct() {
+        $this->enableEmpty = true;
+        $this->default = 0;
+        $this->truePrice = 0;
+        $this->falsePrice = 0;
+        $this->layout = self::$layoutList[0];
     }
     
 }
