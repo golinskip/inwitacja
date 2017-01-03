@@ -4,7 +4,6 @@ namespace PanelBundle\Form\TypeConfig;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use InvitationBundle\Entity\ParameterType\Logic;
@@ -18,30 +17,25 @@ class LogicForm extends AbstractType {
         }
         
         $builder
-            ->add('enableEmpty', CheckboxType::class, array(
-                'label' => 'eventConfig.typeConfig.logic.enableEmpty',
-                'required' => false,
-            ))
-            ->add('default', ChoiceType::class, array(
+            ->add('default', ChoiceType::class, [
                 'label' => 'eventConfig.typeConfig.logic.default',
                 'choices'  => [
-                    'eventConfig.typeConfig.logic.defaultList.empty' => Logic::VALUE_EMPTY,
                     'eventConfig.typeConfig.logic.defaultList.trueVal' => Logic::VALUE_TRUE,
                     'eventConfig.typeConfig.logic.defaultList.falseVal' => Logic::VALUE_FALSE,
                 ],
-            ))
-            ->add('truePrice', NumberType::class, array(
+            ])
+            ->add('truePrice', NumberType::class, [
                 'label' => 'eventConfig.typeConfig.logic.truePrice',
                 'required' => false,
-            ))
-            ->add('falsePrice', NumberType::class, array(
+            ])
+            ->add('falsePrice', NumberType::class, [
                 'label' => 'eventConfig.typeConfig.logic.falsePrice',
                 'required' => false,
-            ))
-            ->add('layout', ChoiceType::class, array(
+            ])
+            ->add('layout', ChoiceType::class, [
                 'label' => 'eventConfig.typeConfig.logic.layout',
                 'choices' => $layoutList,
-            ))
+            ])
             ;
     }
     

@@ -1,12 +1,23 @@
 <?php
 namespace InvitationBundle\Form\ParameterType;
 
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use InvitationBundle\Entity\ParameterType\Enum as EnumEntity;
 
 class Enum implements ParameterTypeInterface {
     public function addField($form, $name, $TypeConfig) {
-        $form->add('value', TextType::class, [
+        $choices = [];
+        foreach($TypeConfig->getEnumRecord() as $EnumRecord) {
+            $choices[$EnumRecord->getName()] = $EnumRecord->getName();
+        }
+        
+        $expanded = ($TypeConfig->getLayout() == EnumEntity::LAYOUT_DROPDOWN)?false:true;
+        
+        $form->add('value', ChoiceType::class, [
             'label' => $name,
+            'choices' => $choices,
+            'multiple' => false,
+            'expanded' => $expanded,
         ]);
     }
 }

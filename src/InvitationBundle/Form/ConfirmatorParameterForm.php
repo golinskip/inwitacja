@@ -3,10 +3,6 @@ namespace InvitationBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -25,7 +21,11 @@ class ConfirmatorParameterForm extends AbstractType {
                 $form = $event->getForm();
                 $ParameterTypeFieldClass = "InvitationBundle\\Form\\ParameterType\\".ucfirst($Parameter->getType());
                 $ParameterTypeField = new $ParameterTypeFieldClass;
-                $ParameterTypeField->addField($form, $Parameter->getName(), $Parameter->getTypeConfigObj());
+                $ParameterType = $Parameter->getTypeConfigObj();
+                if($ParameterValue->getValue() === null ) {
+                    $ParameterValue->setValue($ParameterType->getDefault());
+                }
+                $ParameterTypeField->addField($form, $Parameter->getName(), $ParameterType);
             })
             ;
     }

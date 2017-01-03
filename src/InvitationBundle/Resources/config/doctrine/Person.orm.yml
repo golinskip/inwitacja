@@ -22,6 +22,7 @@ InvitationBundle\Entity\Person:
     lifecycleCallbacks: {  }
     oneToMany:
         parameterValue:
+            cascade: ['persist', 'remove']
             targetEntity: ParameterValue
             mappedBy: person
     manyToOne:

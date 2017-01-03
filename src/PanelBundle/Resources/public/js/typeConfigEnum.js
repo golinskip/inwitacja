@@ -24,9 +24,15 @@ $(document).ready(function(){
             e.preventDefault();
             return false;
         });
+        $("#enumRecordsTable .is_default").click(function(){
+            $("#enumRecordsTable .is_default").each(function(){
+               $(this).prop('checked', false);
+            });
+            $(this).prop('checked', true);
+        });
         $( "#enumRecordsTable").sortable({
             placeholder: '<tr class="placeholder"/>',
-            handle: ".holder",
+            handle: ".holder"
         });
     }
     enumRecordsReinitRows();

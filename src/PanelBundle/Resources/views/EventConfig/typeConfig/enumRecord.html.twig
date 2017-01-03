@@ -13,7 +13,7 @@
     </td>
     <td>
         {{ form_errors(form.default) }}
-        {{ form_widget(form.default) }}
+        {{ form_widget(form.default, { 'attr': {'class': 'is_default'} }) }}
     </td>
     <td>
         <a class="text-primary holder move">

@@ -8,6 +8,14 @@ namespace InvitationBundle\Entity\ParameterType;
  */
 class Enum {
     
+    const LAYOUT_DROPDOWN = 'dropdown';
+    const LAYOUT_RADIOBUTTON = 'radio';
+    
+    public static $layoutList = [
+        self::LAYOUT_RADIOBUTTON,
+        self::LAYOUT_DROPDOWN,
+    ];
+    
     /**
     * Tablica rekordów
     */
@@ -19,9 +27,10 @@ class Enum {
     private $showLimits;
     
     /**
-    * Czy jest możliwość nie wybrania niczego?
-    */
-    private $nullable;
+     * Sposób wyboru: radio, combobox
+     * @var string
+     */
+    private $layout;
     
     /**
     * Pokaż elementy z przekroczonym limitem
@@ -37,15 +46,6 @@ class Enum {
         return $this;
 	}
 
-	public function getNullable(){
-		return $this->nullable;
-	}
-
-	public function setNullable($nullable){
-		$this->nullable = $nullable;
-        return $this;
-    }
-
 	public function getShowDisabled(){
 		return $this->showDisabled;
 	}
@@ -54,9 +54,21 @@ class Enum {
 		$this->showDisabled = $showDisabled;
         return $this;
     }
+
+    public function getLayout() {
+        return $this->layout;
+    }
+
+    public function setLayout($layout) {
+        $this->layout = $layout;
+        return $this;
+    }
 	
     
     public function __construct() {
+        $this->showDisabled = false;
+        $this->showLimits = false;
+        $this->layout = self::$layoutList[0];
         $this->enumRecord = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -92,5 +104,14 @@ class Enum {
     public function getEnumRecord()
     {
         return $this->enumRecord;
+    }
+    
+    public function getDefault() {
+        foreach($this->getEnumRecord() as $EnumRecord) {
+            if($EnumRecord->getDefault()) {
+                return $EnumRecord->getName();
+            }
+        }
+        return null;
     }
 }

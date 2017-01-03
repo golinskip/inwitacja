@@ -9,7 +9,7 @@ use InvitationBundle\Entity\ParameterValue;
 
 class ConfirmatorController extends Controller
 {
-    public function indexAction() {
+    public function indexAction(Request $request, $slug) {
         
         $Invitation = $this->getUser();
         
@@ -20,11 +20,24 @@ class ConfirmatorController extends Controller
                 $ParameterValue = new ParameterValue;
                 $ParameterValue->setParameter($Parameter);
                 $ParameterValue->setPerson($Person);
+                $ParameterValue->setValue(null);
                 $Person->addParameterValue($ParameterValue);
             }
         }
         
         $form = $this->createForm(ConfirmatorForm::class, $Invitation);
+        
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $Invitation = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($Invitation);
+            $em->flush();
+
+            return $this->redirectToRoute('invitation_confirmator', ['slug' => $slug]);
+        }
         
         return $this->render('InvitationBundle:Confirmator:index.html.twig', array(
             'Invitation' => $Invitation,

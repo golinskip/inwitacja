@@ -72,10 +72,8 @@ eventConfig:
             slug: Nazwa w adresie www
     typeConfig:
         logic:
-            enableEmpty: Możliwa wartość niezdefiniowana
             default: Domyślna wartość
             defaultList:
-                empty: Niezdefiniowane
                 trueVal: Tak
                 falseVal: Nie
             truePrice: Dodatkowe koszty, gdy zaznaczone "Tak"
@@ -85,6 +83,7 @@ eventConfig:
                 button: Przycisk
                 checkbox: Checkbox
                 dropdown: Lista rozwijana
+                radio: Przełącznik
         text:
             maxLength: Maksymalna długość
             nullable: Dopuszczalna pusta wartość
@@ -106,8 +105,12 @@ eventConfig:
             enumRecords:
                 name: Nazwa
                 priceModifier: Koszty
-                limit: Limit
+                limit: Limit (0 - bez limitu)
                 default: Domyślne
+            layout: Sposób wyboru
+            layoutList:
+                dropdown: Lista rozwijana
+                radio: Przełącznik
 invitationsManager:
     title: ': zaproszenia'
     addButton: Dodaj zaproszenie

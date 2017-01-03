@@ -14,7 +14,7 @@ class Parameter
     
     public static $typeList = [
         self::TYPE_LOGIC,
-        self::TYPE_NUMBER,
+        //self::TYPE_NUMBER,
         self::TYPE_TEXT,
         self::TYPE_ENUM,
     ];

@@ -4,7 +4,7 @@
 <div class="container-fluid spaced">
     <div class="container">
         {% include 'InvitationBundle::flashbag.html.twig' %}
-        {{ form_start(form, {'action': path('invitation_personal_data_save', {'slug': app.request.get('slug')}) }) }}
+        {{ form_start(form) }}
         {{ form_start(form) }}
         {{ form_widget(form) }}
         {{ form_end(form) }}

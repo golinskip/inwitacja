@@ -113,6 +113,7 @@ class ParameterValue
      */
     public function setParameter(\InvitationBundle\Entity\Parameter $parameter = null)
     {
+        $this->setParameterId($parameter->getId());
         $this->parameter = $parameter;
 
         return $this;
@@ -125,6 +126,7 @@ class ParameterValue
      */
     public function getParameter()
     {
+        
         return $this->parameter;
     }
 
@@ -137,6 +139,7 @@ class ParameterValue
      */
     public function setPerson(\InvitationBundle\Entity\Person $person = null)
     {
+        $this->setPersonId($person->getId());
         $this->person = $person;
 
         return $this;

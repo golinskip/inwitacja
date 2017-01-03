@@ -5,22 +5,16 @@ class Logic {
     const LAYOUT_BUTTON = 'button';
     const LAYOUT_CHECKBOX = 'checkbox';
     const LAYOUT_DROPDOWN = 'dropdown';
+    const LAYOUT_RADIOBUTTON = 'radio';
     
-    const VALUE_EMPTY = 'empty';
     const VALUE_TRUE = 'true';
     const VALUE_FALSE = 'false';
     
     public static $layoutList = [
         self::LAYOUT_BUTTON,
-        self::LAYOUT_CHECKBOX,
+        self::LAYOUT_RADIOBUTTON,
         self::LAYOUT_DROPDOWN,
     ];
-    
-    /**
-     * Możliwa wartość niezdefiniowana
-     * @var logic 
-     */
-    private $enableEmpty;
     
     /**
      * Domyślna wartość
@@ -81,19 +75,9 @@ class Logic {
         $this->default = $default;
         return $this;
     }
-
-    public function getEnableEmpty() {
-        return $this->enableEmpty;
-    }
-    
-    public function setEnableEmpty($value) {
-        $this->enableEmpty = $value;
-        return $this;
-    }
     
     public function __construct() {
-        $this->enableEmpty = true;
-        $this->default = 0;
+        $this->default = self::VALUE_FALSE;
         $this->truePrice = 0;
         $this->falsePrice = 0;
         $this->layout = self::$layoutList[0];

@@ -53,4 +53,8 @@ class Text {
 	public function setInputType($inputType){
 		$this->inputType = $inputType;
 	}
+    
+    public function getDefault() {
+        return "";
+    }
 }
