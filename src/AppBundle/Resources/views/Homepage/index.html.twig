@@ -8,7 +8,7 @@
     {% include 'AppBundle:Homepage:header.html.twig' %}
 
     <!-- Register section -->
-    {% include 'AppBundle:Homepage:register.html.twig' %}
+    {% include 'AppBundle:Homepage:register.html.twig' with {'form' : formRegistration} %}
 
     <!-- About Section -->
     {% include 'AppBundle:Homepage:about.html.twig' %}
@@ -19,6 +19,8 @@
     <!-- Footer -->
     {% include 'AppBundle:Homepage:footer.html.twig' %}
 
+    <!-- Login Modal -->
+    {% include 'AppBundle:Homepage:login.html.twig' %}
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
