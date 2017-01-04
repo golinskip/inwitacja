@@ -16,6 +16,11 @@ personalData:
     messages:
         success: Dane zostały zapisane
 confirmator:
+    title: Potwierdź obecność
+    instructions:
+        - Wpisz lub popraw imię i nazwisko osób, jeśli się nie zgadza
+        - Określ, czy dana osoba będzie obecna, klikając na przycisk obok imienia i nazwiska
+        - W przypadku osób obecnych wypełnij formularz, który pojawi się poniżej
     form:
         submit: Zapisz
         persons: Osoby

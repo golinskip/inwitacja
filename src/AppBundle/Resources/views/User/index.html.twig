@@ -1,5 +1,10 @@
-{% extends 'AppBundle::index.html.twig' %}
+{% extends 'AppBundle::base.html.twig' %}
 
-{% block content %}
-				{% block fos_user_content %}{% endblock %}
+{% block body %}
+    {% include 'AppBundle:User:navbar.html.twig' %}
+        <section class="success fill" id="about" style="">
+        <div class="container">
+            {% block fos_user_content %}{% endblock %}
+        </div>
+    </section>
 {% endblock %}

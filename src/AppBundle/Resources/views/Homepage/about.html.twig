@@ -1,0 +1,22 @@
+    <section class="success fill" id="about" style="height:100%;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>{{'menu.about'|trans}}</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>{{'about.pointsHeader'|trans}}</p>
+                    <ul>
+                    {% for i in range(0,4) -%}
+                        <li><p>{{('about.points.'~i)|trans}}</p></li>
+                    {%- endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <p>{{'about.info'|trans}}</p>
+                </div>
+            </div>
+    </section>

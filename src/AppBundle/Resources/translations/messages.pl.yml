@@ -1,0 +1,16 @@
+maintitle: Inwitacja.pl
+subtitle: NOWOCZESNE ZAPROSZENIA NA TWOJĄ UROCZYSTOŚĆ
+menu:
+    login: Zaloguj się
+    register: Rejestracja
+    about: O inwitacji
+    contact: Kontakt
+about:
+    pointsHeader: Dlaczego warto skorzystać z portalu:
+    info: Inwitacja.pl to nowoczesny sposób zapraszania na uroczystości. Do tradycyjnych zaproszeń przyklejasz naklejkę z adresem internetowym i unikalnym kodem za pomocą którego goście potwierdzają swoje przybycie. Za pomocą aplikacji możesz też sam potwierdzić osoby, które wolą dać Ci znać osobiście. Dzięki temu dokładnie zaplanujesz imprezę i nie zapomnisz o żadnych specjalnych preferencjach Twoich gości.
+    points:
+        - Wygodna, nowoczesna forma zapraszania gości.
+        - Tradycyjna elegancja i takt.
+        - Porządek w planowaniu Twojej uroczystości.
+        - Informacja o niezdecydowanych.
+        - Łatwe zarządzanie osobami nie korzystającymi z internetu

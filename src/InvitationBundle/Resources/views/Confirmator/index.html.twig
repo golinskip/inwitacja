@@ -1,11 +1,28 @@
 {% extends 'InvitationBundle::base.html.twig' %}
 
+{% block javascripts %}
+    {% javascripts
+        '@InvitationBundle/Resources/public/js/confirmator.js'
+        %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}    
+{% endblock %}
+
 {% block body %}
 <div class="container-fluid spaced">
     <div class="container">
         {% include 'InvitationBundle::flashbag.html.twig' %}
+        <h1>{{'confirmator.title'|trans}}</h1>
+        <ul>
+        {% for i in range(0,2) -%}
+           <li>{{('confirmator.instructions.'~i)|trans}}</li>
+        {%- endfor %}
+        </ul>
         {{ form_start(form) }}
-        {{ form_start(form) }}
+        {% for formPerson in form.children.person.children %}
+            {% include 'InvitationBundle:Confirmator:rowPerson.html.twig' with {'form': formPerson} %}
+        {% endfor %}
+        {{ form_widget(form.submit, {'attr': {'class' : 'btn-lg btn-block'}} ) }}
         {{ form_widget(form) }}
         {{ form_end(form) }}
     </div>

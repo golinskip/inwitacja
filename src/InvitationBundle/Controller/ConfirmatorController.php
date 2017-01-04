@@ -15,15 +15,7 @@ class ConfirmatorController extends Controller
         
         $Parameters = $Invitation->getEvent()->getParameter();
         
-        foreach($Invitation->getPerson() as $Person) {
-            foreach($Invitation->getEvent()->getParameter() as $Parameter) {
-                $ParameterValue = new ParameterValue;
-                $ParameterValue->setParameter($Parameter);
-                $ParameterValue->setPerson($Person);
-                $ParameterValue->setValue(null);
-                $Person->addParameterValue($ParameterValue);
-            }
-        }
+        $this->fillParameterValue($Invitation, $Parameters);
         
         $form = $this->createForm(ConfirmatorForm::class, $Invitation);
         
@@ -44,6 +36,25 @@ class ConfirmatorController extends Controller
             'Parameters' => $Parameters,
             'form' => $form->createView(),
         ));
+    }
+    
+    protected function fillParameterValue($Invitation, $Parameters) {
+        foreach($Invitation->getPerson() as $Person) {
+            $parameterSet = [];
+            foreach($Person->getParameterValue() as $Parameter) {
+                $parameterSet[] = $Parameter->getParameterId();
+            }
+            foreach($Invitation->getEvent()->getParameter() as $Parameter) {
+                if(in_array($Parameter->getId(), $parameterSet)) {
+                    continue;
+                }
+                $ParameterValue = new ParameterValue;
+                $ParameterValue->setParameter($Parameter);
+                $ParameterValue->setPerson($Person);
+                $ParameterValue->setValue(null);
+                $Person->addParameterValue($ParameterValue);
+            }
+        }
     }
 
 }

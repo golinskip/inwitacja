@@ -1,0 +1,31 @@
+{% set status = form.status.vars.value %}
+{% if status == 0 %}
+    {% set icon = 'question' %}
+    {% set class = 'warning' %}
+{% endif %}
+{% if status == 1 %}
+    {% set icon = 'smile-o' %}
+    {% set class = 'success' %}
+{% endif %}
+{% if status == 2 %}
+    {% set icon = 'frown-o' %}
+    {% set class = 'error' %}
+{% endif %}
+<div class="container person-row">
+  <div class="row">
+    <div class="col-sm-12">
+        <div class="input-group input-group-md has-{{class}}">
+            <span class="input-group-addon" id="sizing-addon1">
+            <i class="fa fa-{{icon}}"></i></span>
+            {{ form_widget(form.name) }}
+            {{ form_widget(form.status, { 'attr' : {'class' : 'person-status'}}) }}
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="person-parameters" style="{% if status != 1 %}display:none;{% endif %}">
+            {{ form_widget(form.parameterValue) }}
+        </div>
+        <hr/>
+    </div>
+  </div>
+</div>

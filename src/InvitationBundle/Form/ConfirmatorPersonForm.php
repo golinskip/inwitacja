@@ -30,7 +30,7 @@ class ConfirmatorPersonForm extends AbstractType {
                 ],
             ))
            ->add('parameterValue', CollectionType::class, [
-                'label' => 'confirmator.form.person.parameters',
+                'label' => false,
                 'entry_type'    => ConfirmatorParameterForm::class,
                 'entry_options'  => array(
                     'label' => false,
