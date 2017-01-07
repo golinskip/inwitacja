@@ -21,3 +21,19 @@ register:
         password: Podaj swoje hasło
         repeatPassword: Powtórz hasło
     register: Zarejestruj
+contact:
+    name: Imię
+    email: E-mail
+    subject: Temat
+    message: Wiadomość
+    submit: Wyślij wiadomość
+    placeholder:
+        name: Jak masz na imię?
+        email: Adres na który wyślemy odpowiedź.
+        subject: Temat wiadomości
+        message: I twoja wiadomość
+    messages:
+        success: Pomyślnie wysłano wiadomość
+    emailView:
+        from: Nowa wiadomość od
+        ip: Numer IP

@@ -1,18 +1,24 @@
 
-                        <div class="login-form">
-                            <form id="signin" method="POST" action="{{ path('fos_user_security_check') }}" role="form">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input type="text" id="username" name="_username" class="form-control" value="" placeholder="Username"/>
-                                </div>
+<div class="login-form">
+    <form id="signin" method="POST" action="{{ path('fos_user_security_check') }}" role="form">
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input type="text" id="username" name="_username" class="form-control" value="" required="required" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}"/>
+        </div>
 
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                    <input id="password" type="password" class="form-control" name="_password" value="" placeholder="Password">                                        
-                                </div>
-                                
-                                <input type="checkbox" id="remember_me" name="_remember_me" value="on"> Remember me
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input id="password" type="password" class="form-control" name="_password" required="required" value="" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}">                                        
+        </div>
 
-                                <button type="submit" class="btn btn-primary btn-block">Login</button>
-                            </form>
-                        </div>
+
+        {% if csrf_token %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        {% endif %}
+
+        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+        <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+
+        <button type="submit" class="btn btn-lg btn-primary btn-block">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+    </form>
+</div>

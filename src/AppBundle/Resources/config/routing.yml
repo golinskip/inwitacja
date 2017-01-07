@@ -2,3 +2,7 @@
 index:
     path:     /
     defaults: { _controller: AppBundle:Homepage:index }
+
+send_message_action:
+    path:   /action/sendMessage
+    defaults: { _controller: AppBundle:Homepage:sendMessage }

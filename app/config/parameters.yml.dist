@@ -19,3 +19,4 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
     
     domain: inwitacja.pl
+    contact_email: admin@inwitacja.pl
