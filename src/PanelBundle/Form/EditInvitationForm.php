@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use PanelBundle\Form\PersonInInvitationForm;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use InvitationBundle\Entity\Invitation;
 
 class EditInvitationForm extends AbstractType {
@@ -63,9 +64,9 @@ class EditInvitationForm extends AbstractType {
             ;
     }
     
-    public function getDefaultOptions(array $options) {
-        return array(
+    public function configureOptions(OptionsResolver $resolver) {
+        $resolver->setDefaults(array(
             'data_class' => Invitation::class,
-        );
+        ));
     }
 }

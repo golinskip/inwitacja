@@ -2,6 +2,10 @@ panel_event_manager:
     path:     /
     defaults: { _controller: PanelBundle:EventManager:index }
 
+panel_event_manager_delete:
+    path:     /event/delete/{slug}
+    defaults: { _controller: PanelBundle:EventManager:delete }
+
 panel_event_dashboard:
     path:     /event/{slug}
     defaults: { _controller: PanelBundle:EventDashboard:index }

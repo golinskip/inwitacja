@@ -1,4 +1,4 @@
-{% extends 'PanelBundle::base.html.twig' %}
+{% extends 'PanelBundle:PanelEvent:event.html.twig' %}
 {% block title %}{{Event.name}}{{'invitationsManager.title'|trans}}{% endblock %}
 
 {% block javascripts %}
@@ -14,8 +14,7 @@
     </script>
 {% endblock %}
 
-{% block body %}
-    <div class="container">
+{% block content %}
         <div class="row">
             <div class="col-lg-6">
                 {% if Event.checkPermission('event.invitation.add') %}
@@ -29,9 +28,8 @@
             
             </div>
         </div>
-    </div>
     
-    <div class="container">
+    <div class="row">
         {% include 'PanelBundle:InvitationsManager:invitationTable.html.twig' with { 'pagination' : pagination, 'Event' : Event } %}
     </div>
                     

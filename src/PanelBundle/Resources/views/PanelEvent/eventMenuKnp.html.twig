@@ -1,0 +1,12 @@
+{% extends 'BraincraftedBootstrapBundle:Menu:bootstrap.html.twig' %}
+
+{% block label %}
+    {% if item.attribute('icon') is defined %}
+        <i class="fa {{item.attribute('icon')}}" aria-hidden="true"></i>
+    {% endif %}
+    {% if options.allow_safe_labels and item.getExtra('safe_label', false) %}
+        {{ item.label|trans(item.getExtra('translation_params', {}), item.getExtra('translation_domain', 'messages'))|raw|parse_icons }}
+    {% else %}
+        {{ item.label|trans(item.getExtra('translation_params', {}), item.getExtra('translation_domain', 'messages'))|parse_icons }}
+    {% endif %}
+{% endblock %}

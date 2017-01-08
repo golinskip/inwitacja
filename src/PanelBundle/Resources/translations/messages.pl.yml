@@ -1,6 +1,10 @@
 menu:
     personManager: Zaproszenia
     logout: Wyloguj
+eventMenu:
+    dashboard: Panel
+    invitations: Zaproszenia
+    config: Ustawienia
 breadcrumb:
     home: Panel
     invitation:
@@ -15,6 +19,7 @@ eventManager:
         buttonSubmit: Dodaj
         buttonCancel: Anuluj
         name: Nazwa
+        urlName: Adres www
         type: Typ imprezy
         description: Opis
         date: Data
@@ -22,8 +27,17 @@ eventManager:
     card:
         place: Miejsce
         date: Data
-        goToEvent: Przejdź do wydarzenia
+        goToEvent: Strona wydarzenia
         edit: Edytuj
+        remove: usuń
+    questions:
+        remove: Czy na pewno chcesz usunąć to wydarzenie?
+    messages:
+        eventAdd: Pomyślnie dodano nowe wydarzenie %event%
+        eventRemove: Usunięto wydarzenie %event%
+        eventRemoveFailure:
+            NotFound: Nie można znaleźć wydarzenia
+            PermissionDeined: Brak uprawnień do usuwania wydarzenia
 eventDashboard:
     button:
         invitations: Edytuj zaproszenia

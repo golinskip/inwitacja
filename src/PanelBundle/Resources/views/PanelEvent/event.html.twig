@@ -1,0 +1,14 @@
+{% extends 'PanelBundle::base.html.twig' %}
+{% block body %}
+{% include 'PanelBundle:PanelEvent:navbar.html.twig' %}
+{% include 'PanelBundle:PanelEvent:eventMenu.html.twig'  with { 'Event' : Event } %}
+<!-- Main Content -->
+<div class="container-fluid">
+    <div class="side-body">
+        {{ wo_render_breadcrumbs() }}
+        {% include 'PanelBundle::flashbag.html.twig' %}
+        <h3>{% block title %}{% endblock %}</h3>
+    {% block content %}{% endblock %}
+</div>
+</div>
+{% endblock %}

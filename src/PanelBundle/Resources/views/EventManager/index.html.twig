@@ -1,34 +1,38 @@
-{% extends 'PanelBundle::base.html.twig' %}
+{% extends 'PanelBundle:PanelEvent:list.html.twig' %}
 {% block title %}{{'eventManager.title'|trans}}{% endblock %}
 
 {% block javascripts %}
     {% javascripts
         '@PanelBundle/Resources/public/js/eventManager.js'
-        %}
-        <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}    
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}  
+    <script type="text/javascript">
+        var translations = {
+            'removeEvent': '{{ 'eventManager.questions.remove' | trans }}'
+        };
+    </script>  
 {% endblock %}
 
-{% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <button type="button" class="btn btn-primary btn-lg btn-block" id="addEventButton" data-toggle="modal" data-target="#addEventDialog">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                    {{ "eventManager.addButton" |trans }}
-                </button>
-            </div>
-            <div class="col-lg-6">
-            
-            </div>
+{% block content %}
+    <div class="row">
+        <div class="col-lg-6">
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="addEventButton" data-toggle="modal" data-target="#addEventDialog">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                {{ "eventManager.addButton" |trans }}
+            </button>
+        </div>
+        <div class="col-lg-6">
+
         </div>
     </div>
-    
-    <div class="container">
+
+    <div class="row">
+        <hr/>
         {% for Event in Events %}
             {% include 'PanelBundle:EventManager:card.html.twig' with { 'Event' : Event } %}
         {% endfor %}
     </div>
-                    
+
     {% include 'PanelBundle:EventManager:addFormDialog.html.twig' with { 'form' : form } %}
 {% endblock %}

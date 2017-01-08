@@ -1,0 +1,13 @@
+<!-- Menu -->
+<div class="side-menu">
+
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- Main Menu -->
+        <div class="navbar">
+            {% set menuItem = knp_menu_get('PanelBundle:Builder:eventMenu', [], {'Event' : Event}) %}
+            {{ knp_menu_render(menuItem, {'template': 'PanelBundle:PanelEvent:eventMenuKnp.html.twig'}) }}
+        </div><!-- /.navbar-collapse -->
+    </nav>
+
+</div>
+        

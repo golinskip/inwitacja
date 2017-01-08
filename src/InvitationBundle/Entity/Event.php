@@ -9,6 +9,10 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
  */
 class Event
 {
+    const STATUS_ENABLED  = 1;
+    const STATUS_DELETED = 9;
+    
+    const DEFAULT_STATUS = self::STATUS_ENABLED;
     
     const DEFAULT_ROLE = 'owner';
     
@@ -72,6 +76,8 @@ class Event
     private $permissionSet;
     
     private $domain;
+    
+    private $status;
     
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -270,7 +276,7 @@ class Event
      *
      * @return Event
      */
-    private function setDomain($domain)
+    public function setDomain($domain)
     {
         $this->domain = $domain;
 
@@ -285,6 +291,30 @@ class Event
     public function getDomain()
     {
         return $this->domain;
+    }
+
+    /**
+     * Set status
+     *
+     * @param \String $status
+     *
+     * @return Event
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return \Integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 
     /**
@@ -485,7 +515,7 @@ class Event
     /**
      * Set createdBy
      *
-     * @param \AppBundle\Entity\User $eventType
+     * @param \AppBundle\Entity\User $createdBy
      *
      * @return Event
      */
@@ -548,23 +578,25 @@ class Event
         $em = $e->getObjectManager();
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
+        $this->status = self::DEFAULT_STATUS;
+        // @todo - to właściwie można będzie usunąć
         if($this->getUrlName() == null) {
             $urlName = $this->slug($this->getName());
+            $tryCount = 1;
+            $urlNameCurrent = $urlName;
+            do {
+                $ExistedEvent = $em
+                    ->getRepository('InvitationBundle:Event')
+                    ->findOneByUrlName($urlNameCurrent);
+                if(is_null($ExistedEvent)) {
+                    break;
+                }
+                $sufx = self::URL_SPLITTER.$tryCount;
+                $urlNameCurrent = substr($urlName, 0, self::URL_MAX_CHAR-strlen($sufx)).$sufx;
+                $tryCount++;
+            } while(true);
+            $this->setUrlName($urlNameCurrent);
         }
-        $tryCount = 1;
-        $urlNameCurrent = $urlName;
-        do {
-            $ExistedEvent = $em
-                ->getRepository('InvitationBundle:Event')
-                ->findOneByUrlName($urlNameCurrent);
-            if(is_null($ExistedEvent)) {
-                break;
-            }
-            $sufx = self::URL_SPLITTER.$tryCount;
-            $urlNameCurrent = substr($urlName, 0, self::URL_MAX_CHAR-strlen($sufx)).$sufx;
-            $tryCount++;
-        } while(true);
-        $this->setUrlName($urlNameCurrent);
     }
     
     public function assignAsOwner(LifecycleEventArgs $e) {

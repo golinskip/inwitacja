@@ -1,0 +1,12 @@
+{% extends 'PanelBundle::base.html.twig' %}
+
+{% block body %}
+{% include 'PanelBundle:PanelEvent:navbar.html.twig' %}
+<!-- Main Content -->
+<div class="container">
+    {{ wo_render_breadcrumbs() }}
+    {% include 'PanelBundle::flashbag.html.twig' %}
+    <h3>{% block title %}{% endblock %}</h3>
+    {% block content %}{% endblock %}
+</div>
+{% endblock %}

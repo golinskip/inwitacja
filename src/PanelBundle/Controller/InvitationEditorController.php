@@ -23,6 +23,7 @@ class InvitationEditorController extends Controller
         
         return $this->render('PanelBundle:InvitationEditor:index.html.twig', array(
             'Invitation' => $Invitation,
+            'Event' => $Event,
             'form' => $form->createView(),
         ));
     }

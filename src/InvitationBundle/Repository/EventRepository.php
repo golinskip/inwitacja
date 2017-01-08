@@ -2,6 +2,8 @@
 
 namespace InvitationBundle\Repository;
 
+use InvitationBundle\Entity\Event;
+
 /**
  * EventRepository
  *
@@ -14,8 +16,13 @@ class EventRepository extends \Doctrine\ORM\EntityRepository {
         ->createQuery(
             'SELECT e, a FROM InvitationBundle:Event e
             JOIN e.eventAggr a
-            WHERE a.userId = :userId'
-        )->setParameter('userId', $User->getId());
+            WHERE a.userId = :userId AND e.status IN (:goodStat)' 
+        )->setParameters([
+            'userId' => $User->getId(),
+            'goodStat' => [
+                Event::STATUS_ENABLED,
+            ]
+        ]);
         return $query->getResult();
     }
 }

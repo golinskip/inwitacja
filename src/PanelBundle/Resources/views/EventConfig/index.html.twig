@@ -1,4 +1,4 @@
-{% extends 'PanelBundle::base.html.twig' %}
+{% extends 'PanelBundle:PanelEvent:event.html.twig' %}
 {% block title %}{{Event.name}}{{'eventConfig.title'|trans}}{% endblock %}
 
 {% block javascripts %}
@@ -12,8 +12,8 @@
         var translations = {
            'removeInvitationGroup' : '{{ 'eventConfig.form.invitationGroup.removeQuestion' | trans }}',
            'removePersonGroup' : '{{ 'eventConfig.form.personGroup.removeQuestion' | trans }}',
-           'removeParameter' : '{{ 'eventConfig.form.parameter.removeQuestion' | trans }}',
-        }
+           'removeParameter' : '{{ 'eventConfig.form.parameter.removeQuestion' | trans }}'
+        };
     </script>
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
@@ -27,8 +27,7 @@
     {% endstylesheets %}
 {% endblock %}
 
-{% block body %}
-    <div class="container">
+{% block content %}
         {{ form_start(form, {'action': path('panel_event_config_save', {'slug': app.request.get('slug')}) }) }}
         <div class='row'>
             <button type="submit" class="btn btn-primary btn-lg right">
@@ -62,7 +61,6 @@
           </div>
 
         </div>
-    </div>
     {{ form_end(form) }}
     {% include 'PanelBundle:EventConfig:typeConfigDialog.html.twig' %}
 {% endblock %}
