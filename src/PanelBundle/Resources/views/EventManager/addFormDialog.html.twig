@@ -8,43 +8,44 @@
             </div>
             <div class="modal-body">
                 <div id="add_event_form">
-                    <div class="form-group">
-                        {{form_errors(form.name)}}
+                    <div class="form-group {% if form.name.vars.errors|length > 0 %} has-error{% endif %}">
                         {{form_label(form.name)}}
                         {{form_widget(form.name)}}
+                        {{form_errors(form.name)}}
                     </div>
-                    <div class="form-group">
-                        {{form_errors(form.urlName)}}
+                    <div class="form-group {% if form.urlName.vars.errors|length > 0 %} has-error{% endif %}">
                         {{form_label(form.urlName)}}
                         <div class="input-group">
                             {{form_widget(form.urlName)}}
                             <span class="input-group-addon">.{{ domain }}</span>
                         </div>
+                        {{form_errors(form.urlName)}}
                     </div>
-                    <div class="form-group">
-                        {{form_errors(form.date)}}
+                    <div class="form-group {% if form.date.vars.errors|length > 0 %} has-error{% endif %}">
                         {{form_label(form.date)}}
                         {{form_widget(form.date)}}
+                        {{form_errors(form.date)}}
                     </div>
-                    <div class="form-group">
-                        {{form_errors(form.eventType)}}
+                    <div class="form-group {% if form.eventType.vars.errors|length > 0 %} has-error{% endif %}">
                         {{form_label(form.eventType)}}
                         {{form_widget(form.eventType)}}
+                        {{form_errors(form.eventType)}}
                     </div>
-                    <div class="form-group">
-                        {{form_errors(form.description)}}
+                    <div class="form-group {% if form.description.vars.errors|length > 0 %} has-error{% endif %}">
                         {{form_label(form.description)}}
                         {{form_widget(form.description)}}
+                        {{form_errors(form.description)}}
                     </div>
-                    <div class="form-group">
-                        {{form_errors(form.place)}}
+                    <div class="form-group {% if form.place.vars.errors|length > 0 %} has-error{% endif %}">
                         {{form_label(form.place)}}
                         {{form_widget(form.place)}}
+                        {{form_errors(form.place)}}
                     </div>
-                </div>
+                </div> 
                 {{ form_widget(form) }}
             </div>
             <div class="modal-footer">
+                <input type="hidden" id="addDialogFormHasError" value="{% if not form.vars.valid %}true{% else %}false{% endif %}" />
                 <button type="button" class="btn btn-default" data-dismiss="modal">{{"eventManager.addDialog.buttonCancel"|trans}}</button>
                 <button type="submit" class="btn btn-primary">{{"eventManager.addDialog.buttonSubmit"|trans}}</button>
             </div>
@@ -52,3 +53,4 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+    

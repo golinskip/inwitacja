@@ -5,4 +5,7 @@ $(document).ready(function(){
             return false;
         }
     });
+    if($("#addDialogFormHasError").val() === "true") {
+        $('#addEventDialog').modal('show');
+    }
 });

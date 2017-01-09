@@ -1,0 +1,3 @@
+event:
+    urlName:
+        invalidChars: Adres może zawierać tylko małe litery, cyfry, znak podkreślenia i pauzę

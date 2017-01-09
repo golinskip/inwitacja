@@ -36,6 +36,7 @@ $(document).ready(function(){
         });
         $('button.typeConfig').unbind().click(function(){
             var type = $(this).closest( "tr" ).find('.inputType').val();
+            var name = $(this).closest( "tr" ).find('.inputParameterName').val();
             var typeConfig = $(this).closest( "tr" ).find('.inputTypeConfig').val();
             var routing = Routing.generate('panel_event_config_type_config', { type: type, output: 'html'});
             $('#typeConfigFieldID').val($(this).closest( "tr" ).find('.inputTypeConfig').attr('id'));
@@ -44,6 +45,7 @@ $(document).ready(function(){
             }, function( data ) {
                 $('#typeConfigDialogType').val(data.type);
                 $('#typeConfigDialog .modal-body-content').html(data.html);
+                $('#typeConfigDialog .modal-title').html(name);
             }, 'json');
         });
         $( ".tbody-sortable").sortable({

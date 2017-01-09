@@ -163,6 +163,7 @@ invitationEditor:
         save: Zapisz zmiany
     messages:
         editSuccess: Edycja zaproszenia przebiegła pomyślnie
+        editInvalid: Nie można zapisać ustawień. Popraw błędy.
         removeQuestion: Czy napewno usunąć tą osobę?
 Previous: Poprzednia
 Next: Następna
