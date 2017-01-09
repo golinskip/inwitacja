@@ -11,6 +11,7 @@ use PanelBundle\Form\EventConfig\InvitationGroupForm;
 use PanelBundle\Form\EventConfig\PersonGroupForm;
 use PanelBundle\Form\EventConfig\ParameterForm;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Valid;
 use InvitationBundle\Entity\Event;
 
 class EventConfigForm extends AbstractType {
@@ -27,6 +28,7 @@ class EventConfigForm extends AbstractType {
                 'allow_add'    => true,
                 'allow_delete' => true,
                 'prototype'    => true,
+                'constraints' => new Valid(),
            ])
            ->add('personGroup', CollectionType::class, [
                 'label' => false,
@@ -37,6 +39,7 @@ class EventConfigForm extends AbstractType {
                 'allow_add'    => true,
                 'allow_delete' => true,
                 'prototype'    => true,
+                'constraints' => new Valid(),
            ])
            ->add('parameter', CollectionType::class, [
                 'label' => false,
@@ -47,12 +50,10 @@ class EventConfigForm extends AbstractType {
                 'allow_add'    => true,
                 'allow_delete' => true,
                 'prototype'    => true,
+                'constraints' => new Valid(),
            ])
             ->add('name', TextType::class, [
                 'label' => 'eventConfig.form.config.name'
-            ])
-            ->add('urlName', TextType::class, [
-                'label' => 'eventConfig.form.config.slug'
             ])
             ->add('eventType', EntityType::class, [
                 'label' => 'eventConfig.form.config.type',

@@ -28,7 +28,7 @@
 {% endblock %}
 
 {% block content %}
-        {{ form_start(form, {'action': path('panel_event_config_save', {'slug': app.request.get('slug')}) }) }}
+        {{ form_start(form, {'action': path('panel_event_config', {'slug': app.request.get('slug')}) }) }}
         <div class='row'>
             <button type="submit" class="btn btn-primary btn-lg right">
                 <i class="fa fa-floppy-o"></i> {{'invitationEditor.form.save'|trans}}

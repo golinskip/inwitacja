@@ -22,6 +22,7 @@ class InvitationGroupForm extends AbstractType {
                 'attr' => [
                     'placeholder' => 'eventConfig.form.invitationGroup.color',
                 ],
+                'required' => false,
             ])
             ;
     }

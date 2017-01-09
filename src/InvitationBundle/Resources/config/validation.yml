@@ -1,0 +1,10 @@
+InvitationBundle\Entity\InvitationGroup:
+    properties:
+        name:
+            - NotBlank: ~
+            - Length:
+                min: 2
+                max: 255
+        color:
+            - Length:
+                max: 7

@@ -40,10 +40,6 @@ panel_event_config:
     path:     /event/{slug}/config
     defaults: { _controller: PanelBundle:EventConfig:index }
 
-panel_event_config_save:
-    path:  /event/{slug}/config/save
-    defaults: { _controller: PanelBundle:EventConfig:save }
-
 panel_event_config_type_config:
     path:  /event/typeConfig/{type}/{output}
     defaults: { _controller: PanelBundle:EventConfig:typeConfig }

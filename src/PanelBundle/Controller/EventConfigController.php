@@ -19,6 +19,14 @@ class EventConfigController extends Controller {
         
         $form = $this->createForm(EventConfigForm::class, $Event, ['attr' => ['locale' => $request->getLocale()]]);
         
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->save($request, $Event, $form);
+            return $this->redirectToRoute('panel_event_config', [
+                'slug' => $Event->getUrlName(),
+            ]);
+        }
         
         $this->breadcrumb($Event);
         
@@ -28,32 +36,25 @@ class EventConfigController extends Controller {
         ));
     }
     
-    public function saveAction(Request $request, $slug) {
-        $em = $this->getDoctrine()->getManager();
-        
-        $Event = $this->getEvent($slug);
-        
-        $originalInvitationGroups = new ArrayCollection();
-        $originalPersonGroup = new ArrayCollection();
-        $originalParameter = new ArrayCollection();
+    protected function save($request, $Event, $form) {
+            $em = $this->getDoctrine()->getManager();
+                    
+            $originalInvitationGroups = new ArrayCollection();
+            $originalPersonGroup = new ArrayCollection();
+            $originalParameter = new ArrayCollection();
 
-        foreach ($Event->getInvitationGroup() as $InvitationGroup) {
-            $originalInvitationGroups->add($InvitationGroup);
-        }
+            foreach ($Event->getInvitationGroup() as $InvitationGroup) {
+                $originalInvitationGroups->add($InvitationGroup);
+            }
+            
+            foreach ($Event->getPersonGroup() as $PersonGroup) {
+                $originalPersonGroup->add($PersonGroup);
+            }
+            
+            foreach ($Event->getParameter() as $Parameter) {
+                $originalParameter->add($Parameter);
+            }
         
-        foreach ($Event->getPersonGroup() as $PersonGroup) {
-            $originalPersonGroup->add($PersonGroup);
-        }
-        
-        foreach ($Event->getParameter() as $Parameter) {
-            $originalParameter->add($Parameter);
-        }
-        
-        $form = $this->createForm(EventConfigForm::class, $Event, ['attr' => ['locale' => $request->getLocale()]]);
-        
-        $form->handleRequest($request);
-        
-        if ($form->isSubmitted() && $form->isValid()) {
             $Event = $form->getData();
             
             foreach ($originalInvitationGroups as $InvitationGroup) {
@@ -109,11 +110,6 @@ class EventConfigController extends Controller {
                 ->getFlashBag()
                 ->add('success', $this->get('translator')->trans('invitationEditor.messages.editSuccess'))
             ;
-        }
-        
-        return $this->redirectToRoute('panel_event_config', [
-            'slug' => $Event->getUrlName(),
-        ]);
     }
     
     public function typeConfigAction(Request $request, $type, $output) {
