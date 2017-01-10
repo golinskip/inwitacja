@@ -5,8 +5,12 @@ namespace InvitationBundle\Entity;
 /**
  * Changelog
  */
-class Changelog
-{
+class Changelog {
+    
+    const ENV_ANON = 0;
+    const ENV_INVIT = 1;
+    const ENV_PANEL = 2;
+    
     /**
      * @var int
      */
@@ -15,7 +19,12 @@ class Changelog
     /**
      * @var string
      */
-    private $type;
+    private $env;
+
+    /**
+     * @var string
+     */
+    private $tag;
 
     /**
      * @var \DateTime
@@ -50,27 +59,51 @@ class Changelog
     }
 
     /**
-     * Set type
+     * Get env
      *
-     * @param string $type
+     * @return int
+     */
+    public function getEnv()
+    {
+        return $this->env;
+    }
+
+    /**
+     * Set env
+     *
+     * @param string $env
      *
      * @return Changelog
      */
-    public function setType($type)
+    public function setEnv($env)
     {
-        $this->type = $type;
+        $this->env = $env;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Get tag
      *
      * @return string
      */
-    public function getType()
+    public function getTag()
     {
-        return $this->type;
+        return $this->tag;
+    }
+
+    /**
+     * Set tag
+     *
+     * @param string $tag
+     *
+     * @return Changelog
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+
+        return $this;
     }
 
     /**

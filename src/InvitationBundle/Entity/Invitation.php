@@ -77,6 +77,8 @@ class Invitation implements UserInterface {
     private $event;
     
     private $message;
+    
+    private $singleUseToken;
 
 
     /**
@@ -472,6 +474,7 @@ class Invitation implements UserInterface {
         $em = $e->getObjectManager();
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
+        $this->generateSingleUseToken();
         if($this->getUrlName() == null) {
             $urlName = $this->slug($this->getName());
         }
@@ -510,6 +513,7 @@ class Invitation implements UserInterface {
     
     public function beforeUpdate(LifecycleEventArgs $e) {
         $this->setUpdatedAt(new \DateTime());
+        $this->generateSingleUseToken();
     }
     
     public function getRoles() {
@@ -529,4 +533,17 @@ class Invitation implements UserInterface {
     }
 
     public function eraseCredentials() {}
+    
+    public function getSingleUseToken() {
+        return $this->singleUseToken;
+    }
+    
+    public function generateSingleUseToken() {
+        $this->singleUseToken = md5(
+            $this->getId().
+            date('YmdHis').
+            rand(1000, 9999)
+        );
+        return $this->singleUseToken;
+    }
 }

@@ -38,6 +38,10 @@ InvitationBundle\Entity\Invitation:
         updatedAt:
             type: datetime
             column: updated_at
+        singleUseToken:
+            type: string
+            length: 32
+            column: single_use_token
     lifecycleCallbacks:
         prePersist: [ fillEmptyFields ]
         preUpdate: [ beforeUpdate ]

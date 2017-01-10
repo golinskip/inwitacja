@@ -31,6 +31,44 @@ class DefaultController extends Controller
         ]);
     }
     
+    public function authenticateBySUTAction(Request $request, $slug, $singleUseToken) {
+        $Event = $this->getEvent($slug);
+        
+        $Invitation = $this->getDoctrine()
+            ->getRepository('InvitationBundle:Invitation')
+            ->findOneBy([
+                'event' => $Event,
+                'singleUseToken' => $singleUseToken,
+            ])
+            ;
+        if (!$Invitation) {
+            $request->getSession()
+                ->getFlashBag()
+                ->add('warning', $this->get('translator')->trans('loginPanel.messages.invalidCode'))
+            ;
+            throw new UsernameNotFoundException("User not found");
+        } else {
+            $token = new UsernamePasswordToken($Invitation, null, "invitation", $Invitation->getRoles());
+            $this->get("security.token_storage")->setToken($token); //now the user is logged in
+
+            //now dispatch the login event
+            $event = new InteractiveLoginEvent($request, $token);
+            $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
+            
+            // Regenerate new token
+            $Invitation->generateSingleUseToken();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($Invitation);
+            $em->flush();
+        }
+        
+        
+        return $this->redirectToRoute('invitation_dashboard', [
+            'slug' => $Event->getUrlName(),
+        ]);
+    }
+    
+    
     public function authenticateAction(Request $request, $slug) {
         
         $Event = $this->getEvent($slug);

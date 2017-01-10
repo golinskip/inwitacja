@@ -9,7 +9,9 @@ InvitationBundle\Entity\Changelog:
             generator:
                 strategy: AUTO
     fields:
-        type:
+        env:
+            type: integer
+        tag:
             type: string
             length: '32'
         date:
@@ -32,9 +34,11 @@ InvitationBundle\Entity\Changelog:
             joinColumn:
                 name: user_id
                 referencedColumnName: id
+                nullable: true
         invitation:
             targetEntity: Invitation
             inversedBy: changelog
             joinColumn:
                 name: invitation_id
                 referencedColumnName: id
+                nullable: true

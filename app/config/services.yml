@@ -9,3 +9,7 @@ services:
     invitation.auhenticator:
         class: InvitationBundle\Security\InvitationProvider
         arguments: [ "@doctrine.orm.entity_manager" ]
+    invitation.recorder:
+        class: InvitationBundle\Services\Recorder\Recorder
+        arguments: [ "@doctrine.orm.entity_manager", "@security.token_storage", "@request_stack" ]
+        

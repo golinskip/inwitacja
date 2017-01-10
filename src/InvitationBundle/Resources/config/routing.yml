@@ -13,6 +13,10 @@ invitation_logout:
 invitation_code_authentication:
     path: /codeAuthentication
     defaults: { _controller: InvitationBundle:Default:authenticate }
+
+invitation_code_authentication_by_sut:
+    path: /codeAuthentication/{singleUseToken}
+    defaults: { _controller: InvitationBundle:Default:authenticateBySUT }
     
 invitation_area:
     resource: "@InvitationBundle/Resources/config/routing_invitation.yml"

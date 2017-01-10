@@ -15,7 +15,7 @@
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             {{"invitationsManager.table.buttons.edit"|trans}}
                         </a>
-                        <a href="#" class="btn btn-success btn-sm" role="button">
+                        <a href="{{path('invitation_code_authentication_by_sut', {'slug': Event.urlName, 'singleUseToken':Invitation.singleUseToken})}}" class="btn btn-success btn-sm" target="blank" role="button">
                             {{"invitationsManager.table.buttons.show"|trans}}
                             <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
                         </a>

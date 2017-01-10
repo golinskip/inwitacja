@@ -8,6 +8,9 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class EventDashboardController extends Controller {
     
     public function indexAction($slug) {
+        $Recorder = $this->get('invitation.recorder')->start('really.nothing');
+        
+        
         $Event = $this->getDoctrine()
             ->getRepository('InvitationBundle:Event')
             ->findOneByUrlName($slug);

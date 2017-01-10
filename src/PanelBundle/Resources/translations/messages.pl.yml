@@ -144,7 +144,7 @@ invitationsManager:
         name: Nazwa na zaproszeniu
         buttons:
             edit: Edytuj
-            show: Przejdź do zaproszenia
+            show: Zaloguj się
 invitationEditor:
     title: ': edycja zaproszenia'
     form:
