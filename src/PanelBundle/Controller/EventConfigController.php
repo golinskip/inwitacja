@@ -78,6 +78,8 @@ class EventConfigController extends Controller {
     }
 
     protected function save($request, $Event, $form, $originals) {
+        $Recorder = $this->get('invitation.recorder')->start('event.update');
+        
         $em = $this->getDoctrine()->getManager();
 
 
@@ -117,18 +119,28 @@ class EventConfigController extends Controller {
 
         foreach ($Event->getInvitationGroup() as $InvitationGroup) {
             $InvitationGroup->setEvent($Event);
+            $Recorder->record('invitationGroup.name', $InvitationGroup->getName());
         }
 
         foreach ($Event->getPersonGroup() as $PersonGroup) {
             $PersonGroup->setEvent($Event);
+            $Recorder->record('personGroup.name', $PersonGroup->getName());
         }
 
         foreach ($Event->getParameter() as $Parameter) {
             $Parameter->setEvent($Event);
+            $Recorder->record('parameter.name', $Parameter->getName());
         }
-
+        
+        $Recorder->record('event.name', $Event->getName());
+        $Recorder->record('event.eventType', $Event->getEventType()->getName());
+        $Recorder->record('event.description', $Event->getDescription());
+        $Recorder->record('event.date', $Event->getDate());
+        $Recorder->record('event.place', $Event->getPlace());
+        
         $em->persist($Event);
         $em->flush();
+        $Recorder->commit();
     }
 
     public function typeConfigAction(Request $request, $type, $output) {

@@ -8,7 +8,6 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class EventDashboardController extends Controller {
     
     public function indexAction($slug) {
-        $Recorder = $this->get('invitation.recorder')->start('really.nothing');
         
         
         $Event = $this->getDoctrine()
@@ -24,6 +23,10 @@ class EventDashboardController extends Controller {
         return $this->render('PanelBundle:EventDashboard:index.html.twig', array(
             'Event' => $Event,
         ));
+    }
+    
+    protected function getLastChangelogs() {
+        //$Changelog = 
     }
     
     protected function breadcrumb($Event) {

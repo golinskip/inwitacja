@@ -3,9 +3,9 @@ namespace InvitationBundle\Services\Recorder;
 
 use InvitationBundle\Entity\Changelog;
 use InvitationBundle\Entity\ChangelogDetail;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Doctrine\ORM\EntityManager;
 
 use AppBundle\Entity\User;
 use InvitationBundle\Entity\Invitation;
@@ -19,6 +19,8 @@ class Recorder {
     protected $request;
     
     protected $Changelog;
+    
+    protected $ChangelogDetails = array();
 
     public function __construct(EntityManager $em, TokenStorageInterface  $context, RequestStack $requestStack) {
         $this->em = $em;
@@ -37,11 +39,28 @@ class Recorder {
     }
     
     public function record($variable, $value) {
-        
+        $ChangelogDetail = new ChangelogDetail();
+        $ChangelogDetail->setVariable($variable);
+        $ChangelogDetail->setValue($this->_parseValue($value));
+        $ChangelogDetail->setChangelog($this->Changelog);
+        $this->Changelog->addChangelogDetail($ChangelogDetail);
+        $this->ChangelogDetails[] = $ChangelogDetail;
+        return $this;
+    }
+    
+    protected function _parseValue($value) {
+        if(is_object($value) && get_class($value) == 'DateTime') {
+            return $value->format('Y-m-d H:i:s');
+        }
+        return (string)$value;
     }
     
     public function commit() {
-        
+        foreach($this->ChangelogDetails as $ChangelogDetail) {
+            $this->em->persist($ChangelogDetail);
+        }
+        $this->em->persist($this->Changelog);
+        $this->em->flush();
     }
     
     protected function setUserAndEnv() {

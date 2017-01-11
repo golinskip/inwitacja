@@ -1,8 +1,8 @@
 <tr data-index="{{form.vars.name}}">
     <td>
-        {{ form_errors(form.name) }}
         {{ form_widget(form.name) }}
         {{ form_widget(form.innerOrder, { 'attr': {'class': 'inputInnerOrder'} }) }}
+        {{ form_errors(form.name) }}
     </td>
     <td>
         {{ form_errors(form.price) }}

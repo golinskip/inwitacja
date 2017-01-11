@@ -51,6 +51,8 @@ class DefaultController extends Controller
             $token = new UsernamePasswordToken($Invitation, null, "invitation", $Invitation->getRoles());
             $this->get("security.token_storage")->setToken($token); //now the user is logged in
 
+            $Recorder = $this->get('invitation.recorder')->start('login.singleUseToken')->commit();
+            
             //now dispatch the login event
             $event = new InteractiveLoginEvent($request, $token);
             $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
@@ -96,6 +98,8 @@ class DefaultController extends Controller
             $token = new UsernamePasswordToken($Invitation, null, "invitation", $Invitation->getRoles());
             $this->get("security.token_storage")->setToken($token); //now the user is logged in
 
+            $Recorder = $this->get('invitation.recorder')->start('login.code')->commit();
+            
             //now dispatch the login event
             $event = new InteractiveLoginEvent($request, $token);
             $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);

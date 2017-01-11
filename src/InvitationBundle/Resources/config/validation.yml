@@ -23,3 +23,25 @@ InvitationBundle\Entity\Event:
             - Regex:
                 pattern: '/^[a-z0-9_-]+$/'
                 message: event.urlName.invalidChars
+InvitationBundle\Entity\Invitation:
+    properties:
+        name:
+            - NotBlank: ~
+            - Length:
+                min: 1
+                max: 255
+        email:
+            - Length:
+                max: 255
+            - Email:
+                checkMX: true
+        phone:
+            - Length:
+                max: 255
+InvitationBundle\Entity\Person:
+    properties:
+        name:
+            - NotBlank: ~
+            - Length:
+                min: 1
+                max: 255

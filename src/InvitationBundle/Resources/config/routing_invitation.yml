@@ -9,7 +9,3 @@ invitation_confirmator:
 invitation_personal_data:
     path:     /personalData
     defaults: { _controller: InvitationBundle:PersonalData:index }
-
-invitation_personal_data_save:
-    path:     /personalData/save
-    defaults: { _controller: InvitationBundle:PersonalData:save }

@@ -1,29 +1,29 @@
-{{ form_start(form, {'action': path('panel_invitations_manager_invitation_edit', {'slug': app.request.get('slug'), 'invitation' : app.request.get('invitation')}) }) }}
+{{ form_start(form) }}
 <div class='row'>
     <button type="submit" class="btn btn-primary btn-lg right">
         <i class="fa fa-floppy-o"></i> {{'invitationEditor.form.save'|trans}}
     </button>
     <hr/>
 </div>
-<div class='row'>
+<div class="form-group">
     {{ form_label(form.name) }}
-    {{ form_errors(form.name) }}
     {{ form_widget(form.name) }}
+    {{ form_errors(form.name) }}
 </div>
-<div class='row'>
+<div class="form-group">
     {{ form_label(form.phone) }}
-    {{ form_errors(form.phone) }}
     {{ form_widget(form.phone) }}
+    {{ form_errors(form.phone) }}
 </div>
-<div class='row'>
+<div class="form-group">
     {{ form_label(form.email) }}
-    {{ form_errors(form.email) }}
     {{ form_widget(form.email) }}
+    {{ form_errors(form.email) }}
 </div>
-<div class='row'>
+<div class="form-group">
     {{ form_label(form.invitationGroup) }}
-    {{ form_errors(form.invitationGroup) }}
     {{ form_widget(form.invitationGroup) }}
+    {{ form_errors(form.invitationGroup) }}
 </div>
 <div class='row'>
     <hr/>

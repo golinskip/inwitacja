@@ -58,6 +58,9 @@ class InvitationsManagerController extends Controller
             $Invitation->setInnerOrder(0);
             $Invitation->setStatus(0);
             
+            $Recorder = $this->get('invitation.recorder')->start('invitation.create');
+            $Recorder->record('invitation.name', $Invitation->getName());
+            
             $em->persist($Invitation);
             
             $innerOrder = 0;
@@ -70,6 +73,7 @@ class InvitationsManagerController extends Controller
                 $Person->setInvitation($Invitation);
                 $Person->setStatus(0);
                 $Person->setInnerOrder($innerOrder);
+                $Recorder->record('person.name', $Person->getName());
                 
                 $em->persist($Person);
                 
@@ -77,6 +81,8 @@ class InvitationsManagerController extends Controller
             }
             
             $em->flush();
+            
+                
             $request->getSession()
                 ->getFlashBag()
                 ->add('success', $this->get('translator')
@@ -94,6 +100,7 @@ class InvitationsManagerController extends Controller
         
         $em = $this->getDoctrine()->getManager();
         
+        
         $Invitation = $this->getDoctrine()
             ->getRepository('InvitationBundle:Invitation')
             ->findOneById($invitation);
@@ -107,6 +114,19 @@ class InvitationsManagerController extends Controller
         if (!$Invitation) {
             throw $this->createNotFoundException('Invitation not found');
         }
+        
+        $Recorder = $this->get('invitation.recorder')->start('invitation.remove');
+        $Recorder
+            ->record('invitation.id', $Invitation->getId())
+            ->record('invitation.code', $Invitation->getCode())
+            ->record('invitation.name', $Invitation->getName())
+            ->record('invitation.phone', $Invitation->getPhone())
+            ->record('invitation.email', $Invitation->getEmail());
+        foreach($Invitation->getPerson() as $Person) {
+            $Recorder
+                ->record('person.name', $Person->getName());
+        }
+        $Recorder->commit();
 
         $em->remove($Invitation);
         $em->flush();

@@ -10,25 +10,6 @@ use PanelBundle\Form\EditInvitationForm;
 class InvitationEditorController extends Controller
 {
     public function indexAction(Request $request, $slug, $invitation) {
-        $Event = $this->loadEvent($slug);
-        if(!$Event->checkPermission('event.invitation.edit')) {
-            throw new AccessDeniedException('Access denied.');
-        }
-        
-        $Invitation = $this->loadInvitation($invitation, $Event);
-        
-        $form = $this->createForm(EditInvitationForm::class, $Invitation, ['attr' => ['eventId' => $Event->getId()]]);
-        
-        $this->breadcrumb($Event, $Invitation);
-        
-        return $this->render('PanelBundle:InvitationEditor:index.html.twig', array(
-            'Invitation' => $Invitation,
-            'Event' => $Event,
-            'form' => $form->createView(),
-        ));
-    }
-    
-    public function editInvitationAction(Request $request, $slug, $invitation) {
         $em = $this->getDoctrine()->getManager();
         
         $Event = $this->loadEvent($slug);
@@ -48,8 +29,18 @@ class InvitationEditorController extends Controller
         
         $form->handleRequest($request);
         
+        $this->breadcrumb($Event, $Invitation);
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $Invitation = $form->getData();
+            
+            $Recorder = $this->get('invitation.recorder')->start('invitation.update');
+            $Recorder
+                ->record('invitation.id', $Invitation->getId())
+                ->record('invitation.name', $Invitation->getName())
+                ->record('invitation.phone', $Invitation->getPhone())
+                ->record('invitation.email', $Invitation->getEmail())
+                ->record('invitation.group', $Invitation->getInvitationGroup()->getName());
             
             foreach ($originalPerson as $Person) {
                 if (false === $Invitation->getPerson()->contains($Person)) {
@@ -60,19 +51,30 @@ class InvitationEditorController extends Controller
             }
             foreach($Invitation->getPerson() as $Person) {
                 $Person->setInvitation($Invitation);
+                $Recorder->record('person.name', $Person->getName());
             }
+            
             $em->persist($Invitation);
             $em->flush();
+            
             $request->getSession()
                 ->getFlashBag()
                 ->add('success', $this->get('translator')->trans('invitationEditor.messages.editSuccess'))
             ;
+            
+            $Recorder->commit();
+            
+            return $this->redirectToRoute('panel_invitations_manager_invitation', [
+                'slug' => $slug,
+                'invitation' => $invitation,
+            ]);
         }
         
-        return $this->redirectToRoute('panel_invitations_manager_invitation', [
-            'slug' => $slug,
-            'invitation' => $invitation,
-        ]);
+        return $this->render('PanelBundle:InvitationEditor:index.html.twig', array(
+            'Invitation' => $Invitation,
+            'Event' => $Event,
+            'form' => $form->createView(),
+        ));
     }
     
     protected function loadEvent($slug) {

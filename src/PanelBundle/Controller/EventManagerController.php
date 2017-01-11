@@ -24,6 +24,17 @@ class EventManagerController extends Controller {
             $Event->setCreatedBy($this->getUser());
             $em->persist($Event);
             $em->flush();
+            
+            $Recorder = $this->get('invitation.recorder')->start('event.create');
+            $Recorder
+                ->record('event.urlName', $Event->getUrlName())
+                ->record('event.name', $Event->getName())
+                ->record('event.eventType', $Event->getEventType()->getName())
+                ->record('event.description', $Event->getDescription())
+                ->record('event.date', $Event->getDate())
+                ->record('event.place', $Event->getPlace())
+            ->commit();
+            
             $request->getSession()
                 ->getFlashBag()
                 ->add('success', $this->get('translator')->trans('eventManager.messages.eventAdd', ['%event%' => $Event->getName()]))
@@ -66,6 +77,10 @@ class EventManagerController extends Controller {
             ;
             return $this->redirectToRoute('panel_event_manager');
         }
+        
+        $Recorder = $this->get('invitation.recorder')->start('event.delete');
+        $Recorder->record('event.id', $Event->getId());
+        $Recorder->commit();
         
         $Event->setStatus(Event::STATUS_DELETED);
         

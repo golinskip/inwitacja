@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use InvitationBundle\Form\ConfirmatorForm;
 use Symfony\Component\HttpFoundation\Request;
 use InvitationBundle\Entity\ParameterValue;
+use InvitationBundle\Entity\Person;
 
 class ConfirmatorController extends Controller
 {
@@ -23,11 +24,14 @@ class ConfirmatorController extends Controller
         
         if ($form->isSubmitted() && $form->isValid()) {
             
+            
             $Invitation = $form->getData();
             $em = $this->getDoctrine()->getManager();
             $em->persist($Invitation);
             $em->flush();
-
+            
+            $this->notify($Invitation);
+            
             return $this->redirectToRoute('invitation_confirmator', ['slug' => $slug]);
         }
         
@@ -36,6 +40,27 @@ class ConfirmatorController extends Controller
             'Parameters' => $Parameters,
             'form' => $form->createView(),
         ));
+    }
+    
+    protected function notify($Invitation) {
+        
+            $Recorder = $this->get('invitation.recorder')->start('invitation.confirm');
+            $Recorder->record('invitation.name', $Invitation->getName());
+            $PersonI = 0;
+            foreach($Invitation->getPerson() as $Person) {
+                $Recorder->record('person.'.$PersonI.'.name', $Person->getName());
+                $Recorder->record('person.'.$PersonI.'.status', $Person->getStatus());
+                if($Person->getStatus() === Person::STATUS_PRESENT)
+                foreach($Person->getParameterValue() as $ParameterValue) {
+                    $ParameterArr = [
+                        'name' => $ParameterValue->getParameter()->getName(),
+                        'value' => $ParameterValue->getValue(),
+                    ];
+                    $Recorder->record('person.'.$PersonI.'.parameter', serialize($ParameterArr));
+                }
+                $PersonI++;
+            }
+            $Recorder->commit();
     }
     
     protected function fillParameterValue($Invitation, $Parameters) {

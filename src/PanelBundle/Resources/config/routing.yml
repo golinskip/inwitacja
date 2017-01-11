@@ -30,12 +30,6 @@ panel_invitations_manager_invitation:
     requirements:
         invitation:     \d+
 
-panel_invitations_manager_invitation_edit:
-    path:     /invitation/{slug}/edit/{invitation}/editInvitation
-    defaults: { _controller: PanelBundle:InvitationEditor:editInvitation }
-    requirements:
-        invitation:     \d+
-
 panel_event_config:
     path:     /event/{slug}/config
     defaults: { _controller: PanelBundle:EventConfig:index }
