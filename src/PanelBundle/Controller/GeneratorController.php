@@ -24,13 +24,13 @@ class GeneratorController extends Controller
             'Event' => $Event,
         ));
         
-        $pdfGenerator = $this->get('spraed.pdf.generator');
+        $pdfGenerator = $this->get('knp_snappy.pdf');
 
         $filename = $this->get('translator')->trans('generator.stickers.filename');
         
-        return new Response($pdfGenerator->generatePDF($html), 200, [
+        return new Response($pdfGenerator->getOutputFromHtml($html), 200, [
             'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="out.pdf"'
+            'Content-Disposition' => 'inline; filename="'.$filename.'.pdf"'
         ]
         );
     }

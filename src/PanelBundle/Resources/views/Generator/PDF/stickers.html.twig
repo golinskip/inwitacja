@@ -1,16 +1,23 @@
 {% extends 'PanelBundle:Generator:PDF/base.html.twig' %}
 
 {% block styles %}
+    body {
+        font-family: sans-serif;
+    }
     .code-block {
-        display: inline-block;
+        float:left;
         margin:12px;
         border-right: #000 1px dashed;
+        width:140px;
+        height:50px;
     }
     .code-block .code {
-        font-size: 40px;
+        text-align:center;
+        font-size: 30px;
         border-bottom: #000 1px dashed;
     }
     .code-block .name {
+        text-align:center;
         font-size: 10px;
     }
 {% endblock %}

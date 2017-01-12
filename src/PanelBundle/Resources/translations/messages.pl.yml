@@ -189,6 +189,7 @@ generator:
     title: ': pliki do pobrania'
     stickers:
         title: Naklejki z kodem
+        printUrl: Dołącz adres strony
         button: Pobierz
         filename: naklejki
 Previous: Poprzednia
