@@ -14,7 +14,6 @@
                     <h4>{{Event.name}}</h4>
                 </div>
                 <div class='col-lg-12'>
-                    <p>{{Event.description}}</p>
                     {% if not Event.place is null %}
                         <p><b>{{'eventManager.card.place'|trans}}:</b> {{Event.place}}</p>
                     {% endif %}

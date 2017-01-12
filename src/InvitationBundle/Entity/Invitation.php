@@ -19,6 +19,26 @@ class Invitation implements UserInterface {
     const GUEST_ROLE = 'ROLE_GUEST';
     
     /**
+    Tablica statusów wg obecności osób w zaproszeniu (0 - nie występuje, 1 - występuje)
+    obecna - nieobecna - niepotwierdzona
+    000 = 0 - Zaproszenie jeszcze nie było potwierdzane lub nie wprowadzono osób do zaproszenia
+    001 = 1 - Wszystkie osoby niepotwierdzone
+    010 = 2 - Wszystkie osoby nieobecne
+    011 = 3 - Są nieobecne i niepotwierdzone
+    100 = 4 - Wszystkie osoby potwierdzone
+    101 = 5 - Są osoby potwierdzone i nieobecne
+    110 = 6 - Są osoby obecne i nieobecne
+    111 = 7 - Są osoby obecne, nieobecne i niepotwierdzone
+    
+    0 - nikt się jeszcze nie logował lub nie wprowadzono osób do zaproszenia
+    1,3,5,7 - Wciąż są niepotwierdzone osoby
+    4 - wszyscy będą
+    6 - część osób będzie
+    2 - nie będzie nikogo
+    
+    */
+    
+    /**
      * @var int
      */
     private $id;

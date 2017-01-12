@@ -4,13 +4,15 @@ menu:
 eventMenu:
     dashboard: Panel
     invitations: Zaproszenia
+    generator: Pliki do pobrania
     config: Ustawienia
 breadcrumb:
-    home: Panel
+    home: Wydarzenia
     invitation:
         list: Zaproszenia
     event:
         config: Ustawienia
+        generator: Pliki do pobrania
 eventManager:
     title: Panel główny
     addButton: Dodaj nowe wydarzenie
@@ -42,6 +44,24 @@ eventDashboard:
     button:
         invitations: Edytuj zaproszenia
         config: Ustawienia
+    widget:
+        changelog:
+            title: Ostatnie akcje
+            date: Data
+            invitation: Zaproszenie
+            action: Akcja
+        personStats:
+            title: Podsumowanie
+            present: Obecnych
+            absent: Nieobecnych
+            undefined: Niepotwierdzonych
+changelog:
+    invitation:
+        confirm: potwierdzenie obecności / nieobecności
+        edit: edycja danych osobowych
+    login:
+        code: logowanie kodem
+        singleUseToken: logowanie przez panel administratora
 eventConfig:
     title: ': ustawienia'
     tabs:
@@ -165,6 +185,12 @@ invitationEditor:
         editSuccess: Edycja zaproszenia przebiegła pomyślnie
         editInvalid: Nie można zapisać ustawień. Popraw błędy.
         removeQuestion: Czy napewno usunąć tą osobę?
+generator:
+    title: ': pliki do pobrania'
+    stickers:
+        title: Naklejki z kodem
+        button: Pobierz
+        filename: naklejki
 Previous: Poprzednia
 Next: Następna
 literal: %var%

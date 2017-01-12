@@ -6,6 +6,9 @@
         {% include 'InvitationBundle::flashbag.html.twig' %}
         <div class="col-md-7">
             <h1>{{Invitation.name}}</h1>
+            <div>
+                {{Event.description|raw}}
+            </div>
         </div>
         <div class="col-md-5">
             <a class="btn btn-primary btn-lg btn-block kp-home-button" href="{{path('invitation_confirmator', {'slug': app.user.event.urlName}) }}">

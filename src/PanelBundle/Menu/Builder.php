@@ -30,6 +30,11 @@ class Builder implements ContainerAwareInterface
             'routeParameters' => ['slug' => $Event->getUrlName()],
         ])->setAttribute('icon', 'fa-envelope-open-o');
         
+		$menu->addChild('eventMenu.generator', [
+            'route' => 'panel_event_generator',
+            'routeParameters' => ['slug' => $Event->getUrlName()],
+        ])->setAttribute('icon', 'fa-download');
+        
 		$menu->addChild('eventMenu.config', [
             'route' => 'panel_event_config',
             'routeParameters' => ['slug' => $Event->getUrlName()],

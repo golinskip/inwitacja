@@ -39,3 +39,11 @@ panel_event_config_type_config:
     defaults: { _controller: PanelBundle:EventConfig:typeConfig }
     options:
         expose: true
+
+panel_event_generator:
+    path:     /generator/{slug}
+    defaults: { _controller: PanelBundle:Generator:index }
+
+panel_event_generator_PDF_stickers:
+    path:     /generator/{slug}/PDF/stickers
+    defaults: { _controller: PanelBundle:Generator:generateStickers }

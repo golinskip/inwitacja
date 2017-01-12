@@ -25,6 +25,8 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
             new JimiGrunge\BootstrapColorPickerBundle\BootstrapColorPickerBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new Spraed\PDFGeneratorBundle\SpraedPDFGeneratorBundle(),
             new AppBundle\AppBundle(),
             new PanelBundle\PanelBundle(),
             new InvitationBundle\InvitationBundle(),

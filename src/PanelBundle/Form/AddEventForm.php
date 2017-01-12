@@ -20,7 +20,6 @@ class AddEventForm extends AbstractType {
                 function ($value, $key, $index) use ($locale){
                     return $value->getNameTranslation()->getValue($locale);
                 }))
-            ->add('description', TextType::class, array('label' => 'eventManager.addDialog.description', 'required' => false))
             ->add('date', DateType::class, array('label' => 'eventManager.addDialog.date'))
             ->add('place', TextType::class, array('label' => 'eventManager.addDialog.place', 'required' => false))
             ;

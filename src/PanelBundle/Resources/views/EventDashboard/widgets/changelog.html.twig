@@ -1,0 +1,25 @@
+<h4>{{'eventDashboard.widget.changelog.title' | trans}}</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>{{'eventDashboard.widget.changelog.date' | trans}}</th>
+        <th>{{'eventDashboard.widget.changelog.invitation' | trans}}</th>
+        <th>{{'eventDashboard.widget.changelog.action' | trans}}</th>
+      </tr>
+    </thead>
+    <tbody>
+{% for Log in Changelog %}
+    <tr>
+        <td>
+        {{Log.date|date('Y-m-d H:i:s')}} 
+        </td>
+        <td>
+        {{Log.invitation.name}}
+        </td>
+        <td>
+        {{ ('changelog.' ~ Log.tag) | trans}}
+        </td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>

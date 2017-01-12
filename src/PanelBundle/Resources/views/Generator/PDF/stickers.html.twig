@@ -1,0 +1,25 @@
+{% extends 'PanelBundle:Generator:PDF/base.html.twig' %}
+
+{% block styles %}
+    .code-block {
+        display: inline-block;
+        margin:12px;
+        border-right: #000 1px dashed;
+    }
+    .code-block .code {
+        font-size: 40px;
+        border-bottom: #000 1px dashed;
+    }
+    .code-block .name {
+        font-size: 10px;
+    }
+{% endblock %}
+    
+{% block body %}
+    {% for Invitation in Event.invitation %}
+        <div class="code-block">
+            <div class="code">{{Invitation.code}}</div>
+            <div class="name">{{Invitation.name}}</div>
+        </div>
+    {% endfor %}
+{% endblock %}

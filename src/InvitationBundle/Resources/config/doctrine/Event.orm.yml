@@ -18,8 +18,7 @@ InvitationBundle\Entity\Event:
             unique: true
             column: url_name
         description:
-            type: string
-            length: 2048
+            type: text
             nullable: true
         place:
             type: string
