@@ -4,24 +4,36 @@ namespace PanelBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use PanelBundle\Form\Generators\StickersForm;
 
 class GeneratorController extends Controller
 {
     public function indexAction($slug) {
         $Event = $this->getEvent($slug);
         
+        $forms = [
+            'stickers' => $this->createForm(StickersForm::class)->createView(),
+        ];
+        
         $this->breadcrumb($Event);
         
         return $this->render('PanelBundle:Generator:index.html.twig', array(
             'Event' => $Event,
+            'forms' => $forms,
         ));
     }
     
-    public function generateStickersAction($slug) {
+    public function generateStickersAction(Request $request, $slug) {
         $Event = $this->getEvent($slug);
+        
+        $form = $this->createForm(StickersForm::class);
+        
+        $form->handleRequest($request);
         
         $html = $this->renderView('PanelBundle:Generator:PDF/stickers.html.twig', array(
             'Event' => $Event,
+            'data' => $form->getData(),
         ));
         
         $pdfGenerator = $this->get('knp_snappy.pdf');
@@ -30,7 +42,9 @@ class GeneratorController extends Controller
         
         return new Response($pdfGenerator->getOutputFromHtml($html), 200, [
             'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="'.$filename.'.pdf"'
+            //@todo: odkomentować
+            //'Content-Disposition' => 'attachment; filename="'.$filename.'.pdf"',
+            'Content-Disposition' => 'inline; filename="'.$filename.'.pdf"',
         ]
         );
     }

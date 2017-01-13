@@ -1,0 +1,46 @@
+InvitationBundle\Entity\News:
+    type: entity
+    table: null
+    repositoryClass: InvitationBundle\Repository\NewsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        urlName:
+            type: string
+            length: '128'
+        title:
+            type: string
+            length: '1024'
+        shortContent:
+            type: text
+            nullable: true
+        content:
+            type: text
+        createdAt:
+            type: datetime
+            column: created_at
+        updatedAt:
+            type: datetime
+            column: updated_at
+        publishAt:
+            type: datetime
+        published:
+            type: boolean
+    manyToOne:
+        event:
+            targetEntity: Event
+            inversedBy: news
+            nullable: false
+            joinColumn:
+                name: event_id
+                referencedColumnName: id
+        user:
+            targetEntity: AppBundle\Entity\User
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

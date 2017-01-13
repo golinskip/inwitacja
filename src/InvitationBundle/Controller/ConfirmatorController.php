@@ -14,7 +14,9 @@ class ConfirmatorController extends Controller
         
         $Invitation = $this->getUser();
         
-        $Parameters = $Invitation->getEvent()->getParameter();
+        $Event = $Invitation->getEvent();
+        
+        $Parameters = $Event->getParameter();
         
         $this->fillParameterValue($Invitation, $Parameters);
         
@@ -23,7 +25,6 @@ class ConfirmatorController extends Controller
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            
             
             $Invitation = $form->getData();
             $em = $this->getDoctrine()->getManager();
@@ -35,11 +36,21 @@ class ConfirmatorController extends Controller
             return $this->redirectToRoute('invitation_confirmator', ['slug' => $slug]);
         }
         
+        $this->breadcrumb($Event);
+        
         return $this->render('InvitationBundle:Confirmator:index.html.twig', array(
             'Invitation' => $Invitation,
             'Parameters' => $Parameters,
             'form' => $form->createView(),
         ));
+    }
+    
+    protected function breadcrumb($Event) {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("breadcrumb.home", $this->get("router")->generate("invitation_dashboard", [
+            'slug' => $Event->getUrlName(),
+        ]));
+        $breadcrumbs->addItem("breadcrumb.confirmator");
     }
     
     protected function notify($Invitation) {

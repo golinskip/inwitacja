@@ -21,6 +21,7 @@ class EventManagerController extends Controller {
         
         if ($form->isSubmitted() && $form->isValid()) {
             $Event = $form->getData();
+            $Event->setDomain($Event->getUrlName().".".$this->getParameter('domain'));
             $Event->setCreatedBy($this->getUser());
             $em->persist($Event);
             $em->flush();

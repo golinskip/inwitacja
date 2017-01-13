@@ -1,0 +1,36 @@
+{% extends 'PanelBundle:PanelEvent:event.html.twig' %}
+{% block title %}{{Event.name}}{{'news.title'|trans}}{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+        '@PanelBundle/Resources/public/js/newsList.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}  
+    <script type="text/javascript">
+        var translations = {
+            'removeEvent': '{{ 'news.remove.messages.question' | trans }}'
+        };
+    </script>  
+{% endblock %}
+
+{% block content %}
+    
+    <div class="row">
+        <div class="col-lg-6">
+            <a href="{{ path('panel_event_news_create', {'slug': Event.urlName}) }}" type="button" class="btn btn-primary btn-lg btn-block">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                {{ "news.addButton" |trans }}
+            </a>
+        </div>
+        <div class="col-lg-6">
+
+        </div>
+        <div class="col-lg-12">
+            {% include 'PanelBundle:News:newsTab.html.twig' with {
+                'Event' : Event,
+                'NewsCollection' : NewsCollection,
+            } %}
+        </div>
+    </div>
+{% endblock %}

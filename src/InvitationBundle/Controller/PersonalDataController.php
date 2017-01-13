@@ -13,6 +13,8 @@ class PersonalDataController extends Controller {
         
         $Invitation = $this->getUser();
         
+        $Event = $Invitation->getEvent();
+        
         $form = $this->createForm(PersonalDataForm::class, $Invitation);
         
         $form->handleRequest($request);
@@ -36,10 +38,21 @@ class PersonalDataController extends Controller {
             ]);
         }
         
+        $this->breadcrumb($Event);
+        
         return $this->render('InvitationBundle:PersonalData:index.html.twig', array(
             'Invitation' => $Invitation,
             'form' => $form->createView(),
         ));
+    }
+    
+    
+    protected function breadcrumb($Event) {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("breadcrumb.home", $this->get("router")->generate("invitation_dashboard", [
+            'slug' => $Event->getUrlName(),
+        ]));
+        $breadcrumbs->addItem("breadcrumb.personalData");
     }
 
 }

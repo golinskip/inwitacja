@@ -82,6 +82,11 @@ class Event
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
+    private $news;
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
     private $personGroup;
     
     /**
@@ -350,6 +355,7 @@ class Event
         $this->invitationGroup = new \Doctrine\Common\Collections\ArrayCollection();
         $this->parameter = new \Doctrine\Common\Collections\ArrayCollection();
         $this->invitation = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->news = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -486,6 +492,40 @@ class Event
     public function getInvitation()
     {
         return $this->invitation;
+    }
+
+    /**
+     * Get news
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNews()
+    {
+        return $this->news;
+    }
+
+    /**
+     * Add news
+     *
+     * @param \InvitationBundle\Entity\News $news
+     *
+     * @return Event
+     */
+    public function addNews(\InvitationBundle\Entity\News $news)
+    {
+        $this->news[] = $news;
+
+        return $this;
+    }
+
+    /**
+     * Remove news
+     *
+     * @param \InvitationBundle\Entity\News $news
+     */
+    public function removeNews(\InvitationBundle\Entity\News $news)
+    {
+        $this->news->removeElement($news);
     }
 
     /**

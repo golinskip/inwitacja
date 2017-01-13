@@ -3,6 +3,7 @@
 {% block body %}
 <div class="container-fluid spaced">
     <div class="container">
+        {{ wo_render_breadcrumbs() }}
         {% include 'InvitationBundle::flashbag.html.twig' %}
         {{ form_start(form) }}
         {{ form_widget(form) }}

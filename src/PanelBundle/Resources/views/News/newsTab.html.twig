@@ -1,0 +1,32 @@
+  <table class="table">
+    <thead>
+      <tr>
+        <th>{{'news.list.title'|trans}}</th>
+        <th>{{'news.list.created'|trans}}</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+{% for News in NewsCollection %}
+    <tr>
+        <td>{{News.title}}</td>
+        <td>{{News.createdAt|date('Y-m-d H:i:s')}}</td>
+        <td>
+                        <a href="{{path('panel_event_news_edit', {
+                                'slug': Event.urlName,
+                                'newsSlug':News.urlName
+                            })}}" class="btn btn-primary btn-sm" role="button">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            {{"news.list.edit"|trans}}
+                        </a>
+                        <a class="text-danger pull-right remove clickable article-remover" href="{{path('panel_event_news_remove', {
+                                'slug': Event.urlName,
+                                'newsSlug':News.urlName
+                            })}}">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+  </table>

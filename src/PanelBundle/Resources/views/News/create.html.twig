@@ -1,0 +1,9 @@
+{% extends 'PanelBundle:PanelEvent:event.html.twig' %}
+{% block title %}{{Event.name}}{{'news.create.title'|trans}}{% endblock %}
+{% block content %}
+    <div class="row">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

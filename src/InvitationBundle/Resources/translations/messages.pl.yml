@@ -1,4 +1,8 @@
 title: " - zaproszenie"
+breadcrumb:
+    home: Zaproszenie
+    confirmator: Potwierdź obecność
+    personalData: Dane kontaktowe
 loginPanel:
     input: Wpisz swój numer...
     hint: Aby potwierdzić swoje zaproszenie wpisz numer otrzymany razem z zaproszeniem i naciśnij przycisk "zaloguj".
@@ -6,6 +10,9 @@ loginPanel:
     messages:
         invalidCode: Nie udało się zalogować. Nie rozpoznano kodu.
 dashboard:
+    news:
+        title: Nowości
+        more: Więcej
     buttons:
         confirm: Potwierdź obecność
         contact: Dane kontaktowe

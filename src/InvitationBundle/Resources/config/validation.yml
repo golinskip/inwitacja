@@ -45,3 +45,22 @@ InvitationBundle\Entity\Person:
             - Length:
                 min: 1
                 max: 255
+InvitationBundle\Entity\News:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [urlName, event]
+    properties:
+        content:
+            - NotBlank: ~
+        title:
+            - NotBlank: ~
+            - Length:
+                min: 3
+                max: 1024
+        urlName:
+            - Length:
+                min: 3
+                max: 128
+            - Regex:
+                pattern: '/^[a-z0-9_-]+$/'
+                message: event.urlName.invalidChars

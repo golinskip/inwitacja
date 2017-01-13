@@ -2,11 +2,6 @@
 {% block title %}{{Event.name}}{{'generator.title'|trans}}{% endblock %}
 {% block content %}
     <div class="row">
-        <h4>{{'generator.stickers.title'|trans}}</h4>
-        <a href="{{ path('panel_event_generator_PDF_stickers', {'slug': Event.urlName}) }}" type="button" target="_blank" class="btn btn-success btn-update btn-add-card">
-                        
-                        <i class="fa fa-download" aria-hidden="true"></i>
-                        {{'generator.stickers.button'|trans}}
-                    </a>
+        {% include 'PanelBundle:Generator:stickers.html.twig' with {'form': forms.stickers, 'Event': Event} %}
     </div>
 {% endblock %}

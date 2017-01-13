@@ -5,9 +5,11 @@
     <div class="container">
         {% include 'InvitationBundle::flashbag.html.twig' %}
         <div class="col-md-7">
-            <h1>{{Invitation.name}}</h1>
+            {{ wo_render_breadcrumbs() }}
+            <h1>{{News.title}}</h1>
+            <p>{{News.createdAt|date('d.m.Y')}}</p>
             <div>
-                {{Event.description|raw}}
+                {{News.content|raw}}
             </div>
         </div>
         <div class="col-md-5">
@@ -17,7 +19,7 @@
             <a class="btn btn-default btn-lg btn-block kp-home-button" href="{{path('invitation_personal_data', {'slug': app.user.event.urlName}) }}">
                 <i class="fa fa-check-circle-o"></i> {{'dashboard.buttons.contact'|trans}}
             </a>
-            {% include 'InvitationBundle:Dashboard:newsList.html.twig' with {'NewsCollection' : NewsCollection} %}
+            {% include 'InvitationBundle:News:newsList.html.twig' with {'NewsCollection' : NewsCollection} %}
         </div>
 </div>
 

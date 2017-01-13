@@ -1,0 +1,15 @@
+{% for News in NewsCollection %}
+<div>
+    <hr/>
+    
+    <h4><a href="{{path('invitation_news', {
+        'newsSlug' : News.urlName,
+        'slug': app.user.event.urlName
+    })}}">{{News.title}}</a></h4>
+    <p>{{News.shortContent|raw}}</p>
+    <a href="{{path('invitation_news', {
+        'newsSlug' : News.urlName,
+        'slug': app.user.event.urlName
+    })}}">{{'dashboard.news.more'|trans}}</a>
+</div>
+{% endfor %}

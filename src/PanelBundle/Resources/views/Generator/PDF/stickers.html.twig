@@ -8,7 +8,7 @@
         float:left;
         margin:12px;
         border-right: #000 1px dashed;
-        width:140px;
+        min-width:140px;
         height:50px;
     }
     .code-block .code {
@@ -20,11 +20,18 @@
         text-align:center;
         font-size: 10px;
     }
+    .code-block .domain {
+        text-align:center;
+        font-size: 12px;
+    }
 {% endblock %}
     
 {% block body %}
     {% for Invitation in Event.invitation %}
         <div class="code-block">
+            {% if data.printUrl %}
+                <div class="domain">{{Event.domain}}</div>
+            {% endif %}
             <div class="code">{{Invitation.code}}</div>
             <div class="name">{{Invitation.name}}</div>
         </div>

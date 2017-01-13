@@ -4,6 +4,7 @@ menu:
 eventMenu:
     dashboard: Panel
     invitations: Zaproszenia
+    news: Artykuły
     generator: Pliki do pobrania
     config: Ustawienia
 breadcrumb:
@@ -13,6 +14,9 @@ breadcrumb:
     event:
         config: Ustawienia
         generator: Pliki do pobrania
+        news:
+            list: Artykuły
+            create: Nowy
 eventManager:
     title: Panel główny
     addButton: Dodaj nowe wydarzenie
@@ -190,8 +194,33 @@ generator:
     stickers:
         title: Naklejki z kodem
         printUrl: Dołącz adres strony
-        button: Pobierz
+        button: Wygeneruj i pobierz
         filename: naklejki
+news:
+    title: ': artykuły'
+    addButton: Nowy artykuł
+    list:
+        title: Tytuł
+        created: Utworzono
+        edit: Edytuj
+    create:
+        title: ': nowy artykuł'
+        messages:
+            success: Utworzono artykuł pomyślnie
+        form:
+            title: Nagłówek
+            urlName: Nazwa url
+            shortContent: Opis artykułu
+            content: Treść
+            published: Opublikuj
+            publishAt: Nie pokazuj przed
+            submit: Zapisz
+    edit:
+        title: ': edycja artykułu'
+    remove:
+        messages:
+            question: Czy na pewno chcesz bezpowrotnie usunąć ten artykuł?
+            success: Pomyślnie usunięto artykuł %title%
 Previous: Poprzednia
 Next: Następna
 literal: %var%

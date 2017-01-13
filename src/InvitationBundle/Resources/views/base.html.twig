@@ -32,11 +32,6 @@
     {% if is_granted('ROLE_GUEST') %}
         {% include 'InvitationBundle::navbar.html.twig' %}
     {% endif %}
-    <div class="container">
-        <div class="row">
-            <h3>{% block title %}{% endblock %}</h3>
-        </div>
-    </div>
 	{% block body %}{% endblock %}
     <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
     <script src="{{ asset('js/jquery.js') }}"></script>

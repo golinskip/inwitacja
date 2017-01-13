@@ -9,3 +9,7 @@ invitation_confirmator:
 invitation_personal_data:
     path:     /personalData
     defaults: { _controller: InvitationBundle:PersonalData:index }
+
+invitation_news:
+    path:     /news/{newsSlug}
+    defaults: { _controller: InvitationBundle:News:index }
