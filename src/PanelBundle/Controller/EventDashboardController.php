@@ -54,7 +54,7 @@ class EventDashboardController extends Controller {
     
     protected function breadcrumb($Event) {
         $breadcrumbs = $this->get("white_october_breadcrumbs");
-        $breadcrumbs->addItem("breadcrumb.home", $this->get("router")->generate("panel_event_manager"));
+        $breadcrumbs->addItem("breadcrumb.eventManager", $this->get("router")->generate("panel_event_manager"));
         $breadcrumbs->addItem("literal", null, ['%var%'=>$Event->getName()]);
     }
 

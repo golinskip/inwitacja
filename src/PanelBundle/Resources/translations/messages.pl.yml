@@ -8,7 +8,7 @@ eventMenu:
     generator: Pliki do pobrania
     config: Ustawienia
 breadcrumb:
-    home: Wydarzenia
+    eventManager: Wydarzenia
     invitation:
         list: Zaproszenia
     event:

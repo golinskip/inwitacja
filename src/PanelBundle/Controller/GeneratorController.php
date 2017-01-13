@@ -89,7 +89,7 @@ class GeneratorController extends Controller
 
     protected function breadcrumb($Event) {
         $breadcrumbs = $this->get("white_october_breadcrumbs");
-        $breadcrumbs->addItem("breadcrumb.home", $this->get("router")->generate("panel_event_manager"));
+        $breadcrumbs->addItem("breadcrumb.eventManager", $this->get("router")->generate("panel_event_manager"));
         $breadcrumbs->addItem("literal", $this->get("router")->generate("panel_event_dashboard", array(
                     'slug' => $Event->getUrlName(),
                 )), ['%var%' => $Event->getName()]);
