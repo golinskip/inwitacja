@@ -151,7 +151,7 @@ eventConfig:
                 radio: Przełącznik
 invitationsManager:
     title: ': zaproszenia'
-    addButton: Dodaj zaproszenie
+    addButton: Nowe zaproszenie
     removeQuestion: Czy napewno chcesz usunąć to zaproszenie?
     addDialog:
         title: Dodaj nowe zaproszenie
@@ -196,6 +196,11 @@ generator:
         printUrl: Dołącz adres strony
         button: Wygeneruj i pobierz
         filename: naklejki
+    vignette:
+        title: Karteczki z podpisem na stolik
+        flexure: Pokaż zagięcie
+        button: Wygeneruj i pobierz
+        filename: winietki
 news:
     title: ': artykuły'
     addButton: Nowy artykuł
@@ -217,6 +222,8 @@ news:
             submit: Zapisz
     edit:
         title: ': edycja artykułu'
+        messages:
+            success: Edycja artykułu przebiegła pomyślnie
     remove:
         messages:
             question: Czy na pewno chcesz bezpowrotnie usunąć ten artykuł?

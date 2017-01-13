@@ -48,6 +48,10 @@ panel_event_generator_PDF_stickers:
     path:     /generator/{slug}/PDF/stickers
     defaults: { _controller: PanelBundle:Generator:generateStickers }
 
+panel_event_generator_PDF_vignette:
+    path:     /generator/{slug}/PDF/vignette
+    defaults: { _controller: PanelBundle:Generator:generateVignette }
+
 panel_event_news:
     path:     /news/{slug}/
     defaults: { _controller: PanelBundle:News:index }

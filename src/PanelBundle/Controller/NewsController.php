@@ -44,6 +44,10 @@ class NewsController extends Controller {
             throw new AccessDeniedException('Access denied.');
         }
         
+        $this->get('invitation.recorder')->start('news.remove')
+            ->record('news.id', $News->getId())
+            ->record('news.title', $News->getTitle())
+            ->commit();
         
             $request->getSession()
                 ->getFlashBag()
@@ -77,6 +81,16 @@ class NewsController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->persist($News);
             $em->flush();
+            
+            $this->get('invitation.recorder')->start('news.create')
+                ->record('news.id', $News->getId())
+                ->record('news.title', $News->getTitle())
+                ->record('news.urlName', $News->getUrlName())
+                ->record('news.published', $News->getPublished())
+                ->record('news.publishAt', $News->getPublishAt())
+                ->record('news.content', $News->getContent())
+                ->record('news.shortContent', $News->getShortContent())
+                ->commit();
             
             $request->getSession()
                 ->getFlashBag()
@@ -119,6 +133,20 @@ class NewsController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->persist($News);
             $em->flush();
+            
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', $this->get('translator')->trans('news.edit.messages.success'));
+                
+            $this->get('invitation.recorder')->start('news.update')
+                ->record('news.id', $News->getId())
+                ->record('news.title', $News->getTitle())
+                ->record('news.urlName', $News->getUrlName())
+                ->record('news.published', $News->getPublished())
+                ->record('news.publishAt', $News->getPublishAt())
+                ->record('news.content', $News->getContent())
+                ->record('news.shortContent', $News->getShortContent())
+                ->commit();
 
             return $this->redirectToRoute('panel_event_news_edit', [
                 'slug' => $slug,

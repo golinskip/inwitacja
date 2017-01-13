@@ -27,6 +27,8 @@ class ConfirmatorController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             
             $Invitation = $form->getData();
+            $Invitation->updateStatus();
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($Invitation);
             $em->flush();

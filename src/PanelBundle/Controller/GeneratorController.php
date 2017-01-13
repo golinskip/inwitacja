@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use PanelBundle\Form\Generators\StickersForm;
+use PanelBundle\Form\Generators\VignetteForm;
 
 class GeneratorController extends Controller
 {
@@ -14,6 +15,7 @@ class GeneratorController extends Controller
         
         $forms = [
             'stickers' => $this->createForm(StickersForm::class)->createView(),
+            'vignette' => $this->createForm(VignetteForm::class)->createView(),
         ];
         
         $this->breadcrumb($Event);
@@ -22,6 +24,31 @@ class GeneratorController extends Controller
             'Event' => $Event,
             'forms' => $forms,
         ));
+    }
+    
+    public function generateVignetteAction(Request $request, $slug) {
+        $Event = $this->getEvent($slug);
+        
+        $form = $this->createForm(VignetteForm::class);
+        
+        $form->handleRequest($request);
+        
+        $html = $this->renderView('PanelBundle:Generator:PDF/vignette.html.twig', array(
+            'Event' => $Event,
+            'data' => $form->getData(),
+        ));
+        
+        $pdfGenerator = $this->get('knp_snappy.pdf');
+
+        $filename = $this->get('translator')->trans('generator.vignette.filename');
+        
+        return new Response($pdfGenerator->getOutputFromHtml($html), 200, [
+            'Content-Type' => 'application/pdf',
+            //@todo: odkomentować
+            //'Content-Disposition' => 'attachment; filename="'.$filename.'.pdf"',
+            'Content-Disposition' => 'inline; filename="'.$filename.'.pdf"',
+        ]
+        );
     }
     
     public function generateStickersAction(Request $request, $slug) {
