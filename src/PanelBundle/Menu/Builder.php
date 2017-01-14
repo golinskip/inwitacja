@@ -11,6 +11,7 @@ class Builder implements ContainerAwareInterface
 
     public function mainMenu(FactoryInterface $factory, array $options) {
         $menu = $factory->createItem('root');
+		$menu->addChild('menu.myAccount', array('route' => 'panel_my_account'));
 		$menu->addChild('menu.logout', array('route' => 'fos_user_security_logout'));
 
         return $menu;

@@ -69,3 +69,7 @@ panel_event_news_remove:
     defaults: { _controller: PanelBundle:News:remove }
     options:
         expose: true
+
+panel_my_account:
+    path:     /account
+    defaults: { _controller: PanelBundle:Account:index }

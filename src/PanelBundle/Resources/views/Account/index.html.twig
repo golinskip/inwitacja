@@ -1,0 +1,20 @@
+{% extends 'PanelBundle:PanelEvent:list.html.twig' %}
+{% block title %}{{'myAccount.title'|trans}}{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+        '@PanelBundle/Resources/public/js/eventManager.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}  
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <h4>{{'myAccount.changePassword.title'|trans}}</h4>
+        {{ form_start(changePasswordForm) }}
+        {{ form_widget(changePasswordForm) }}
+        <button class="btn btn-primary" type="submit">{{'myAccount.changePassword.save'|trans}}</button>
+        {{ form_end(changePasswordForm) }}
+    </div>
+{% endblock %}

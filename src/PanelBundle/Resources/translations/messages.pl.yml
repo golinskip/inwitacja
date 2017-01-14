@@ -1,5 +1,6 @@
 menu:
     personManager: Zaproszenia
+    myAccount: Moje konto
     logout: Wyloguj
 eventMenu:
     dashboard: Panel
@@ -228,6 +229,11 @@ news:
         messages:
             question: Czy na pewno chcesz bezpowrotnie usunąć ten artykuł?
             success: Pomyślnie usunięto artykuł %title%
+myAccount:
+    title: Moje konto
+    changePassword:
+        title: Zmień hasło
+        save: Zapisz
 Previous: Poprzednia
 Next: Następna
 literal: %var%
