@@ -1,0 +1,8 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+    <p><a class="inblue" href="{{ path('panel_event_manager') }}">{{ 'user.confirm.toPanel'|trans({}, 'messages') }}</a></p>
+{% endblock fos_user_content %}

@@ -5,6 +5,8 @@ menu:
     register: Rejestracja
     about: O inwitacji
     contact: Kontakt
+login:
+    forgot: Nie pamiętam hasła
 about:
     pointsHeader: Dlaczego warto skorzystać z portalu
     info: Inwitacja.pl to nowoczesny sposób zapraszania na uroczystości. Do tradycyjnych zaproszeń przyklejasz naklejkę z adresem internetowym i unikalnym kodem za pomocą którego goście potwierdzają swoje przybycie. Za pomocą aplikacji możesz też sam potwierdzić osoby, które wolą dać Ci znać osobiście. Dzięki temu dokładnie zaplanujesz imprezę i nie zapomnisz o żadnych specjalnych preferencjach Twoich gości.
@@ -37,3 +39,6 @@ contact:
     emailView:
         from: Nowa wiadomość od
         ip: Numer IP
+user:
+    confirm:
+        toPanel: Przejdź teraz do panelu
