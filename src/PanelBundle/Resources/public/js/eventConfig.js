@@ -19,7 +19,7 @@ $(document).ready(function(){
             innerOrderVal++;
         });
         
-        alerf(tableHandler.find('tr:last').find('input:first').val());
+        tableHandler.find('tr:last').find('input:first').focus();
         
         e.preventDefault();
         return false;

@@ -64,4 +64,10 @@ class EnumRecord {
 		$this->default = $default;
         return $this;
 	}
+    
+    
+    public function __construct() {
+        $this->setPriceModifier(0);
+        $this->setLimit(0);
+    }
 }

@@ -39,8 +39,11 @@ class InvitationEditorController extends Controller
                 ->record('invitation.id', $Invitation->getId())
                 ->record('invitation.name', $Invitation->getName())
                 ->record('invitation.phone', $Invitation->getPhone())
-                ->record('invitation.email', $Invitation->getEmail())
-                ->record('invitation.group', $Invitation->getInvitationGroup()->getName());
+                ->record('invitation.email', $Invitation->getEmail());
+                    // Error przy edycji grup
+            if($Invitation->getInvitationGroup() != null) {
+                $Recorder->record('invitation.group', $Invitation->getInvitationGroup()->getName());
+            }
             
             foreach ($originalPerson as $Person) {
                 if (false === $Invitation->getPerson()->contains($Person)) {
