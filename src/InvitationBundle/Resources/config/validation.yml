@@ -19,7 +19,7 @@ InvitationBundle\Entity\Event:
         urlName:
             - Length:
                 min: 3
-                max: 16
+                max: 32
             - Regex:
                 pattern: '/^[a-z0-9_-]+$/'
                 message: event.urlName.invalidChars

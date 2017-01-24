@@ -26,12 +26,12 @@ class PersonGroupForm extends AbstractType {
                     'placeholder' => 'eventConfig.form.personGroup.price',
                 ],
             ])
-            ->add('color', TextType::class, [
+            /*->add('color', TextType::class, [
                 'label' => 'eventConfig.form.personGroup.color',
                 'attr' => [
                     'placeholder' => 'eventConfig.form.personGroup.color',
                 ],
-            ])
+            ])*/
             ->add('innerOrder', HiddenType::class)
             ;
     }

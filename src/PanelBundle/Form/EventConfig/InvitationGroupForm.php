@@ -17,13 +17,13 @@ class InvitationGroupForm extends AbstractType {
                     'placeholder' => 'eventConfig.form.invitationGroup.name',
                 ],
             ])
-            ->add('color', TextType::class, [
+            /*->add('color', TextType::class, [
                 'label' => 'eventConfig.form.invitationGroup.color',
                 'attr' => [
                     'placeholder' => 'eventConfig.form.invitationGroup.color',
                 ],
                 'required' => false,
-            ])
+            ])*/
             ;
     }
     

@@ -19,6 +19,8 @@ $(document).ready(function(){
             innerOrderVal++;
         });
         
+        alerf(tableHandler.find('tr:last').find('input:first').val());
+        
         e.preventDefault();
         return false;
     });

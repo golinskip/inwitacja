@@ -14,7 +14,7 @@ InvitationBundle\Entity\Event:
             length: 255
         urlName:
             type: string
-            length: 255
+            length: 32
             unique: true
             column: url_name
         description:
