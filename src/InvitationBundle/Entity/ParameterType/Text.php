@@ -6,7 +6,7 @@ namespace InvitationBundle\Entity\ParameterType;
  *
  * @author pawel
  */
-class Text {
+class Text extends ParameterTypeEntity {
     const INPUT_TYPE_TEXTAREA = 'textarea';
     const INPUT_TYPE_TEXT = 'text';
     
@@ -56,5 +56,9 @@ class Text {
     
     public function getDefault() {
         return "";
+    }
+    
+    public function getVariableType() {
+        return self::TYPE_STRING;
     }
 }

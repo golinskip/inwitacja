@@ -12,11 +12,12 @@ class Enum implements ParameterTypeInterface {
         }
         
         $expanded = ($TypeConfig->getLayout() == EnumEntity::LAYOUT_DROPDOWN)?false:true;
+        $multiple = $TypeConfig->getMultichoice();
         
         $form->add('value', ChoiceType::class, [
             'label' => $name,
             'choices' => $choices,
-            'multiple' => false,
+            'multiple' => $multiple,
             'expanded' => $expanded,
         ]);
     }

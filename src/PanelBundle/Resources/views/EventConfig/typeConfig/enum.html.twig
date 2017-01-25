@@ -14,6 +14,11 @@
         {{ form_label(form.showLimits) }}
     </div>
     <div class='col-md-12'>
+        {{ form_errors(form.multichoice) }}
+        {{ form_widget(form.multichoice) }}
+        {{ form_label(form.multichoice) }}
+    </div>
+    <div class='col-md-12'>
         {{ form_errors(form.showDisabled) }}
         {{ form_widget(form.showDisabled) }}
         {{ form_label(form.showDisabled) }}

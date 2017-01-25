@@ -25,10 +25,23 @@ $(document).ready(function(){
             return false;
         });
         $("#enumRecordsTable .is_default").click(function(){
-            $("#enumRecordsTable .is_default").each(function(){
-               $(this).prop('checked', false);
-            });
-            $(this).prop('checked', true);
+            if(!$('#enum_form_multichoice').prop('checked')) {
+                $("#enumRecordsTable .is_default").each(function(){
+                   $(this).prop('checked', false);
+                });
+                $(this).prop('checked', true);
+            }
+        });
+        $('#enum_form_multichoice').change(function(){
+            if(!$(this).is(':checked')) {
+                var one = false;
+                $("#enumRecordsTable .is_default").each(function(){
+                    if($(this).is(':checked') == true) {
+                        if(one) $(this).prop('checked', false);
+                        one = true;
+                    }
+                });
+            }
         });
         $( "#enumRecordsTable").sortable({
             placeholder: '<tr class="placeholder"/>',

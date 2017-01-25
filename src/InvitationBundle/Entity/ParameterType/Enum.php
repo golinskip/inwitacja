@@ -6,7 +6,7 @@ namespace InvitationBundle\Entity\ParameterType;
  *
  * @author pawel
  */
-class Enum {
+class Enum extends ParameterTypeEntity{
     
     const LAYOUT_DROPDOWN = 'dropdown';
     const LAYOUT_RADIOBUTTON = 'radio';
@@ -36,6 +36,11 @@ class Enum {
     * Pokaż elementy z przekroczonym limitem
     */
     private $showDisabled;
+    
+    /**
+    * Multiwybór
+    */
+    private $multichoice;
 
 	public function getShowLimits(){
 		return $this->showLimits;
@@ -63,11 +68,21 @@ class Enum {
         $this->layout = $layout;
         return $this;
     }
+
+    public function getMultichoice() {
+        return $this->multichoice;
+    }
+
+    public function setMultichoice($multichoice) {
+        $this->multichoice = $multichoice;
+        return $this;
+    }
 	
     
     public function __construct() {
         $this->showDisabled = false;
         $this->showLimits = false;
+        $this->multichoice = false;
         $this->layout = self::$layoutList[0];
         $this->enumRecord = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -107,11 +122,23 @@ class Enum {
     }
     
     public function getDefault() {
+        $defaultArray = [];
         foreach($this->getEnumRecord() as $EnumRecord) {
             if($EnumRecord->getDefault()) {
-                return $EnumRecord->getName();
+                if(!$this->getMultichoice()) {
+                    return $EnumRecord->getName();
+                }
+                $defaultArray[] = $EnumRecord->getName();
             }
         }
-        return null;
+        return empty($defaultArray)?null:$defaultArray;
+    }
+    
+    public function getVariableType() {
+        if($this->getMultichoice()) {
+            return self::TYPE_ARRAY;
+        } else {
+            return self::TYPE_STRING;
+        }
     }
 }

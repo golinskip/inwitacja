@@ -137,6 +137,7 @@ eventConfig:
             priceFactor: Dodatkowe koszty (będą pomnożone przez podaną ilość)
         enum:
             enumRecord: Tablica rekordów
+            multichoice: Możliwość zaznaczenia wielu opcji
             showLimits: Pokaż limit
             showDisabled: Pokaż elementy z przekroczonym limitem
             nullable:  Czy jest możliwość nie wybrania niczego?
@@ -215,7 +216,7 @@ news:
             success: Utworzono artykuł pomyślnie
         form:
             title: Nagłówek
-            urlName: Nazwa url
+            urlName: Adres artykułu
             shortContent: Opis artykułu
             content: Treść
             published: Opublikuj

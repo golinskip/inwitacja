@@ -33,9 +33,11 @@
     
 {% block body %}
     {% for Invitation in Event.invitation %}
-        <div class="vignette">
-            <div class="vig-top"></div>
-            <div class="vig-bottom">{{Invitation.name}}</div>
-        </div>
+        {% for Person in Invitation.person %}
+            <div class="vignette">
+                <div class="vig-top"></div>
+                <div class="vig-bottom">{{Person.name}}</div>
+            </div>
+        {% endfor %}
     {% endfor %}
 {% endblock %}

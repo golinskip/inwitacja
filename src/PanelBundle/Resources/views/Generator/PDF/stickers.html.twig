@@ -28,12 +28,12 @@
     
 {% block body %}
     {% for Invitation in Event.invitation %}
-        <div class="code-block">
-            {% if data.printUrl %}
-                <div class="domain">{{Event.domain}}</div>
-            {% endif %}
-            <div class="code">{{Invitation.code}}</div>
-            <div class="name">{{Invitation.name}}</div>
-        </div>
+            <div class="code-block">
+                {% if data.printUrl %}
+                    <div class="domain">{{Event.domain}}</div>
+                {% endif %}
+                <div class="code">{{Invitation.code}}</div>
+                <div class="name">{{Invitation.name}}</div>
+            </div>
     {% endfor %}
 {% endblock %}

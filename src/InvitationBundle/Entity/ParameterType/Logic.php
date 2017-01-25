@@ -1,7 +1,7 @@
 <?php
 namespace InvitationBundle\Entity\ParameterType;
 
-class Logic {
+class Logic extends ParameterTypeEntity {
     const LAYOUT_BUTTON = 'button';
     const LAYOUT_CHECKBOX = 'checkbox';
     const LAYOUT_DROPDOWN = 'dropdown';
@@ -83,4 +83,7 @@ class Logic {
         $this->layout = self::$layoutList[0];
     }
     
+    public function getVariableType() {
+        return self::TYPE_STRING;
+    }
 }

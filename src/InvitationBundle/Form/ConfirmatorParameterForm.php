@@ -22,7 +22,7 @@ class ConfirmatorParameterForm extends AbstractType {
                 $ParameterTypeFieldClass = "InvitationBundle\\Form\\ParameterType\\".ucfirst($Parameter->getType());
                 $ParameterTypeField = new $ParameterTypeFieldClass;
                 $ParameterType = $Parameter->getTypeConfigObj();
-                if($ParameterValue->getValue() === null ) {
+                if($ParameterValue->getValue() === null || $ParameterType->getVariableType() != gettype($ParameterValue->getValue())) {
                     $ParameterValue->setValue($ParameterType->getDefault());
                 }
                 $ParameterTypeField->addField($form, $Parameter->getName(), $ParameterType);

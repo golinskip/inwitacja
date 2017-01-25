@@ -6,7 +6,7 @@ namespace InvitationBundle\Entity\ParameterType;
  *
  * @author pawel
  */
-class Number {
+class Number extends ParameterTypeEntity {
     
     /**
     * Wartość maksymalna
@@ -59,4 +59,8 @@ class Number {
 	public function setPriceFactor($priceFactor){
 		$this->priceFactor = $priceFactor;
 	}
+    
+    public function getVariableType() {
+        return self::TYPE_STRING;
+    }
 }

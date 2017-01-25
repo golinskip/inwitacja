@@ -22,6 +22,10 @@ class EnumForm extends AbstractType {
                 'label' => 'eventConfig.typeConfig.enum.showDisabled',
                 'required' => false,
             ))
+            ->add('multichoice', CheckboxType::class, array(
+                'label' => 'eventConfig.typeConfig.enum.multichoice',
+                'required' => false,
+            ))
             ->add('showLimits', CheckboxType::class, array(
                 'label' => 'eventConfig.typeConfig.enum.showLimits',
                 'required' => false,
