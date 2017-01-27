@@ -83,7 +83,7 @@ eventConfig:
         personGroup:
             name: Nazwa
             color: Kolor
-            price: Cena
+            price: Koszty
             addGroup: Dodaj grupę
             removeQuestion: Czy napewno chcesz usunąć grupę?
         parameter:
@@ -186,7 +186,7 @@ invitationEditor:
                 undefined: Niezdecydowany
                 enable: Obecny
                 disable: Nieobecny
-        save: Zapisz zmiany
+        save: Zapisz
     messages:
         editSuccess: Edycja zaproszenia przebiegła pomyślnie
         editInvalid: Nie można zapisać ustawień. Popraw błędy.
@@ -203,6 +203,23 @@ generator:
         flexure: Pokaż zagięcie
         button: Wygeneruj i pobierz
         filename: winietki
+    excelList:
+        title: Lista osób w pliku .xls
+        onlyConfirmed: Tylko potwierdzone osoby
+        addCode: Pokaż kod dostępu do zaproszenia
+        button: Wygeneruj i pobierz
+        filename: lista
+        spreadsheet:
+            sheetName: Lista osób
+            header:
+                name: Imię i nazwisko
+                invitation: Zaproszenie
+                invitationGroup: Grupa zaproszeń
+                personGroup: Grupa osób
+                status: Status
+                code: Kod
+                phone: Telefon
+                email: Adres e-mail
 news:
     title: ': artykuły'
     addButton: Nowy artykuł
@@ -219,9 +236,10 @@ news:
             urlName: Adres artykułu
             shortContent: Opis artykułu
             content: Treść
-            published: Opublikuj
+            published: Opublikowane
             publishAt: Nie pokazuj przed
             submit: Zapisz
+            submitAndPublish: Opublikuj i zapisz
     edit:
         title: ': edycja artykułu'
         messages:
@@ -235,6 +253,14 @@ myAccount:
     changePassword:
         title: Zmień hasło
         save: Zapisz
+person:
+    status:
+        0: Nieokreślony
+        1: Obecny
+        2: Nieobecny
+    logic:
+        trueVal: Tak
+        falseVal: Nie
 Previous: Poprzednia
 Next: Następna
 literal: %var%

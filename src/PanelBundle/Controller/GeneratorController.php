@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use PanelBundle\Form\Generators\StickersForm;
 use PanelBundle\Form\Generators\VignetteForm;
+use PanelBundle\Form\Generators\ExcelListForm;
 
 class GeneratorController extends Controller
 {
@@ -16,6 +17,7 @@ class GeneratorController extends Controller
         $forms = [
             'stickers' => $this->createForm(StickersForm::class)->createView(),
             'vignette' => $this->createForm(VignetteForm::class)->createView(),
+            'excelList' => $this->createForm(ExcelListForm::class)->createView(),
         ];
         
         $this->breadcrumb($Event);
@@ -26,7 +28,7 @@ class GeneratorController extends Controller
         ));
     }
     
-    public function generateVignetteAction(Request $request, $slug) {
+    public function generateVignetteAction(Request $request, $slug, $filename) {
         $Event = $this->getEvent($slug);
         
         $form = $this->createForm(VignetteForm::class);
@@ -51,7 +53,7 @@ class GeneratorController extends Controller
         );
     }
     
-    public function generateStickersAction(Request $request, $slug) {
+    public function generateStickersAction(Request $request, $slug, $filename) {
         $Event = $this->getEvent($slug);
         
         $form = $this->createForm(StickersForm::class);
@@ -74,6 +76,21 @@ class GeneratorController extends Controller
             'Content-Disposition' => 'inline; filename="'.$filename.'.pdf"',
         ]
         );
+    }
+    
+    public function generateExcelListAction(Request $request, $slug, $filename) {
+        $Event = $this->getEvent($slug);
+        
+        $form = $this->createForm(ExcelListForm::class);
+        
+        $form->handleRequest($request);
+        
+        $filename = $this->get('translator')->trans('generator.stickers.filename');
+        
+        return $this->render('PanelBundle:Generator:XLS/excelList.html.twig', [
+            'Event' => $Event,
+            'data' => $form->getData(),
+        ]);
     }
     
     protected function getEvent($slug) {

@@ -49,11 +49,29 @@ class ParameterValue
     /**
      * Get value
      *
-     * @return string
+     * @return mixed
      */
     public function getValue()
     {
         return @unserialize($this->value);
+    }
+    
+    /**
+     * Get string value
+     *
+     * @return mixed
+     */
+    public function getStringValue()
+    {
+        $val = $this->getValue();
+        switch(gettype($val)) {
+            case 'array':
+                return implode(', ', $val);
+            case 'string':
+                return trim($val);
+            default:
+                return trim((string)$val);
+        }
     }
 
     /**

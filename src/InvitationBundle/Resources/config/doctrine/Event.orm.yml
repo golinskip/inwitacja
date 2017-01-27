@@ -60,7 +60,7 @@ InvitationBundle\Entity\Event:
             targetEntity: InvitationGroup
             mappedBy: event
             cascade: ['persist', 'remove']
-            orderBy: { 'name': 'ASC' }
+            orderBy: { 'innerOrder': 'ASC' }
         parameter:
             targetEntity: Parameter
             mappedBy: event

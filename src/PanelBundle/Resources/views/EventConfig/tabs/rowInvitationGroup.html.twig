@@ -1,9 +1,13 @@
 <tr data-index="{{form.vars.name}}">
     <td>
         {{ form_errors(form.name) }}
+        {{ form_widget(form.innerOrder, { 'attr': {'class': 'inputInnerOrder'} }) }}
         {{ form_widget(form.name) }}
     </td>
     <td>
+        <a class="text-primary holder move">
+            <i class="fa fa-arrows" aria-hidden="true"></i>
+        </a>
         <a class="text-danger pull-right remove clickable" data-message="removeInvitationGroup">
             <i class="fa fa-times" aria-hidden="true"></i>
         </a>

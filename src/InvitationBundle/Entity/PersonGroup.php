@@ -27,6 +27,9 @@ class PersonGroup
      */
     private $color;
     
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
     private $person;
     
     /**
@@ -121,13 +124,6 @@ class PersonGroup
     {
         return $this->color;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->person = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add person
@@ -193,7 +189,7 @@ class PersonGroup
      *
      * @param integer $innerOrder
      *
-     * @return Person
+     * @return PersonGroup
      */
     public function setInnerOrder($innerOrder)
     {
@@ -210,5 +206,14 @@ class PersonGroup
     public function getInnerOrder()
     {
         return $this->innerOrder;
+    }
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->price = 0;
+        $this->person = new \Doctrine\Common\Collections\ArrayCollection();
     }
 }

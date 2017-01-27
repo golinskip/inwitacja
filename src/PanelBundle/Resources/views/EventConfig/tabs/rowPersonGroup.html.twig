@@ -6,7 +6,11 @@
     </td>
     <td>
         {{ form_errors(form.price) }}
-        {{ form_widget(form.price) }}
+        {% if prototype is defined %}
+            {{ form_widget(form.price, {'value' : '0,00'}) }}
+        {% else %}
+            {{ form_widget(form.price) }}
+        {% endif %}
     </td>
     <td>
         <a class="text-primary holder move">

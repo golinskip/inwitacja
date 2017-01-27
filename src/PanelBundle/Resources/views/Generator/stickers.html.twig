@@ -1,6 +1,6 @@
 <h4>{{'generator.stickers.title'|trans}}</h4>
         {{ form_start(form, {
-            'action' : path('panel_event_generator_PDF_stickers', {'slug': Event.urlName}),
+            'action' : path('panel_event_generator_PDF_stickers', {'slug': Event.urlName, 'filename': 'generator.stickers.filename'|trans}),
             'attr' : {
                 'target' : '_blank'
             }

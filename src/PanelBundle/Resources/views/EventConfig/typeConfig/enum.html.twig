@@ -47,7 +47,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody id="enumRecordsTable" data-prototype="{% filter escape %}{% include 'PanelBundle:EventConfig:typeConfig/enumRecord.html.twig' with {'form': form.children.enumRecord.vars.prototype} %}{% endfilter %}">
+            <tbody id="enumRecordsTable" data-prototype="{% filter escape %}{% include 'PanelBundle:EventConfig:typeConfig/enumRecord.html.twig' with {'form': form.children.enumRecord.vars.prototype, 'prototype':true} %}{% endfilter %}">
                 {% for enumRecord in form.children.enumRecord.children %}
                     {% include 'PanelBundle:EventConfig:typeConfig/enumRecord.html.twig' with {'form': enumRecord} %}
                 {% endfor %}

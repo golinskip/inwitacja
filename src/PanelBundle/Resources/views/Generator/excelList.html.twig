@@ -1,6 +1,6 @@
-<h4>{{'generator.vignette.title'|trans}}</h4>
+<h4>{{'generator.excelList.title'|trans}}</h4>
         {{ form_start(form, {
-            'action' : path('panel_event_generator_PDF_vignette', {'slug': Event.urlName, 'filename': 'generator.vignette.filename'|trans}),
+            'action' : path('panel_event_generator_XLS_list', {'slug': Event.urlName, 'filename': 'generator.excelList.filename'|trans}),
             'attr' : {
                 'target' : '_blank'
             }
@@ -8,6 +8,6 @@
         {{ form_widget(form) }}
         <button type="submit" class="btn btn-success btn-update btn-add-card">
             <i class="fa fa-download" aria-hidden="true"></i>
-            {{'generator.vignette.button'|trans}}
+            {{'generator.excelList.button'|trans}}
          </button>
         {{ form_end(form) }}

@@ -2,11 +2,11 @@
         <thead>
             <tr>
                 <th>
-                    {{'eventConfig.form.invitationGroup.name'|trans}}
+                    <span class='required'>{{'eventConfig.form.invitationGroup.name'|trans}}</span>
                 </th>
             </tr>
         </thead>
-        <tbody id="eventConfig-invitationGroupsTable" class="eventConfig-editableTable" data-prototype="{% filter escape %}{% include 'PanelBundle:EventConfig:tabs/rowInvitationGroup.html.twig' with {'form': form.vars.prototype} %}{% endfilter %}">
+        <tbody id="eventConfig-invitationGroupsTable" class="eventConfig-editableTable tbody-sortable" data-prototype="{% filter escape %}{% include 'PanelBundle:EventConfig:tabs/rowInvitationGroup.html.twig' with {'form': form.vars.prototype} %}{% endfilter %}">
             {% for invitationGroup in form.children %}
                 {% include 'PanelBundle:EventConfig:tabs/rowInvitationGroup.html.twig' with {'form': invitationGroup} %}
             {% endfor %}

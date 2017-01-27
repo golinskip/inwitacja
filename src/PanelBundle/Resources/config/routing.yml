@@ -44,14 +44,6 @@ panel_event_generator:
     path:     /generator/{slug}
     defaults: { _controller: PanelBundle:Generator:index }
 
-panel_event_generator_PDF_stickers:
-    path:     /generator/{slug}/PDF/stickers
-    defaults: { _controller: PanelBundle:Generator:generateStickers }
-
-panel_event_generator_PDF_vignette:
-    path:     /generator/{slug}/PDF/vignette
-    defaults: { _controller: PanelBundle:Generator:generateVignette }
-
 panel_event_news:
     path:     /news/{slug}/
     defaults: { _controller: PanelBundle:News:index }
@@ -73,3 +65,17 @@ panel_event_news_remove:
 panel_my_account:
     path:     /account
     defaults: { _controller: PanelBundle:Account:index }
+
+#Generators
+
+panel_event_generator_PDF_stickers:
+    path:     /generator/{slug}/PDF/stickers/{filename}.{_format}
+    defaults: { _controller: PanelBundle:Generator:generateStickers, _format: pdf }
+
+panel_event_generator_PDF_vignette:
+    path:     /generator/{slug}/PDF/vignette/{filename}.{_format}
+    defaults: { _controller: PanelBundle:Generator:generateVignette, _format: pdf }
+
+panel_event_generator_XLS_list:
+    path:     /generator/{slug}/XLS/list/{filename}.{_format}
+    defaults: { _controller: PanelBundle:Generator:generateExcelList, _format: xls }

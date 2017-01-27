@@ -1,23 +1,17 @@
 <tr data-index="{{form.vars.name}}">
     <td>
-        <div class="form-group">
             {{ form_widget(form.name, { 'attr': {'class': 'inputParameterName'} }) }}
             {{ form_widget(form.typeConfig, { 'attr': {'class': 'inputTypeConfig'} }) }}
             {{ form_widget(form.innerOrder, { 'attr': {'class': 'inputInnerOrder'} }) }}
             {{ form_errors(form.name) }}
-        </div>
     </td>
     <td>
-        <div class="form-group">
             {{ form_widget(form.description) }}
             {{ form_errors(form.description) }}
-        </div>
     </td>
     <td>
-        <div class="form-group">
             {{ form_widget(form.type, { 'attr': {'class': 'inputType'} }) }}
             {{ form_errors(form.type) }}
-        </div>
     </td>
     <td>
         <button type="button" class="btn btn-default typeConfig"  data-toggle="modal" data-target="#typeConfigDialog">

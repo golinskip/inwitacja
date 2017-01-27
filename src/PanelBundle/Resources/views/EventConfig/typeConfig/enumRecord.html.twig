@@ -5,11 +5,19 @@
     </td>
     <td>
         {{ form_errors(form.priceModifier) }}
-        {{ form_widget(form.priceModifier) }}
+        {% if prototype is defined %}
+            {{ form_widget(form.priceModifier, {'value':0}) }}
+        {% else %}
+            {{ form_widget(form.priceModifier) }}
+        {% endif %}
     </td>
     <td>
         {{ form_errors(form.limit) }}
-        {{ form_widget(form.limit) }}
+        {% if prototype is defined %}
+            {{ form_widget(form.limit, {'value':0}) }}
+        {% else %}
+            {{ form_widget(form.limit) }}
+        {% endif %}
     </td>
     <td>
         {{ form_errors(form.default) }}

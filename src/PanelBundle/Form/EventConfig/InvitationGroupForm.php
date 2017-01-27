@@ -4,6 +4,7 @@ namespace PanelBundle\Form\EventConfig;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use InvitationBundle\Entity\InvitationGroup;
 
@@ -24,6 +25,7 @@ class InvitationGroupForm extends AbstractType {
                 ],
                 'required' => false,
             ])*/
+            ->add('innerOrder', HiddenType::class)
             ;
     }
     

@@ -16,16 +16,21 @@ class NewsForm extends AbstractType {
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('title', TextType::class, array('label' => 'news.create.form.title'))
-            ->add('urlName', TextType::class, array('label' => 'news.create.form.urlName'))
             ->add('published', CheckboxType::class, array(
                 'required' => false,
                 'label' => 'news.create.form.published',
              ))
+            ->add('title', TextType::class, array('label' => 'news.create.form.title'))
+            ->add('urlName', TextType::class, array('label' => 'news.create.form.urlName'))
             ->add('publishAt', DateTimeType::class, array('label' => 'news.create.form.publishAt'))
-            ->add('shortContent', CKEditorType::class, array('label' => 'news.create.form.shortContent'))
-            ->add('content', CKEditorType::class, array('label' => 'news.create.form.content'))
-            ->add('submit', SubmitType::class, array('label' => 'news.create.form.submit'))
+            ->add('shortContent', CKEditorType::class, array(
+                'config_name' => 'article',
+                'label' => 'news.create.form.shortContent'
+            ))
+            ->add('content', CKEditorType::class, array(
+                'config_name' => 'article',
+                'label' => 'news.create.form.shortContent'
+            ))
             ;
     }
     

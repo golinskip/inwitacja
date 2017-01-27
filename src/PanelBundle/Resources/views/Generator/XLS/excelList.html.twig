@@ -1,0 +1,77 @@
+{% xlsdocument %}
+    {% xlssheet 'generator.excelList.spreadsheet.sheetName'|trans %}
+        
+        {% xlsrow %}
+            {% xlscell { style: { font: { size: '18' } } } %}
+                {{'generator.excelList.spreadsheet.header.name'|trans}}
+            {% endxlscell %}
+            {% xlscell { style: { font: { size: '18' } } } %}
+                {{'generator.excelList.spreadsheet.header.invitation'|trans}}
+            {% endxlscell %}
+            {% xlscell { style: { font: { size: '18' } } } %}
+                {{'generator.excelList.spreadsheet.header.invitationGroup'|trans}}
+            {% endxlscell %}
+            {% xlscell { style: { font: { size: '18' } } } %}
+                {{'generator.excelList.spreadsheet.header.personGroup'|trans}}
+            {% endxlscell %}
+            {% xlscell { style: { font: { size: '18' } } } %}
+                {{'generator.excelList.spreadsheet.header.status'|trans}}
+            {% endxlscell %}
+            {% if data.addCode %}
+                {% xlscell { style: { font: { size: '18' } } } %}
+                    {{'generator.excelList.spreadsheet.header.code'|trans}}
+                {% endxlscell %}
+            {% endif %}
+            {% xlscell { style: { font: { size: '18' } } } %}
+                {{'generator.excelList.spreadsheet.header.phone'|trans}}
+            {% endxlscell %}
+            {% xlscell { style: { font: { size: '18' } } } %}
+                {{'generator.excelList.spreadsheet.header.email'|trans}}
+            {% endxlscell %}
+            {% for Parameter in Event.parameter %}
+                {% xlscell { style: { font: { size: '18' } } } %}{{Parameter.name}}{% endxlscell %}
+            {% endfor %}
+        {% endxlsrow %}
+        
+        {% for Invitation in Event.invitation %}
+            {% for Person in Invitation.person %}
+                {% if not (data.onlyConfirmed and Person.status != 1) %}
+                    {% xlsrow %}
+                        {% xlscell %}{{ Person.name }}{% endxlscell %}
+                        {% xlscell %}{{ Invitation.name }}{% endxlscell %}
+                        {% if Invitation.invitationGroup is not null %}
+                            {% xlscell %}{{ Invitation.invitationGroup.name }}{% endxlscell %}
+                        {% else %}
+                            {% xlscell %}{% endxlscell %}
+                        {% endif %}
+                        {% if Person.personGroup is not null %}
+                            {% xlscell %}{{ Person.personGroup.name }}{% endxlscell %}
+                        {% else %}
+                            {% xlscell %}{% endxlscell %}
+                        {% endif %}
+                        {% xlscell %}{{ ('person.status.'~Person.status)|trans }}{% endxlscell %}
+                        {% if data.addCode %}
+                            {% xlscell %}{{ Invitation.code }}{% endxlscell %}
+                        {% endif %}
+                        {% xlscell %}{{ Invitation.phone }}{% endxlscell %}
+                        {% xlscell %}{{ Invitation.email }}{% endxlscell %}
+                        {% if Person.status == 1 %}
+                        {% for Parameter in Event.parameter %}
+                            {% for ParameterValue in Person.parameterValue %}
+                                {% if ParameterValue.parameter == Parameter %}
+                                    {% if Parameter.type == 'logic' %}
+                                        {% xlscell %}{{ ('person.logic.'~ParameterValue.stringValue~'Val')|trans }}{% endxlscell %}
+                                    {% else %}
+                                        {% xlscell %}{{ ParameterValue.stringValue }}{% endxlscell %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                        {% endif %}
+                    {% endxlsrow %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        
+    {% endxlssheet %}
+{% endxlsdocument %}

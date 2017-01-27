@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
             new JimiGrunge\BootstrapColorPickerBundle\BootstrapColorPickerBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new MewesK\TwigExcelBundle\MewesKTwigExcelBundle(),
             new AppBundle\AppBundle(),
             new PanelBundle\PanelBundle(),
             new InvitationBundle\InvitationBundle(),

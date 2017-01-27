@@ -1,28 +1,14 @@
 {% extends 'PanelBundle:PanelEvent:event.html.twig' %}
 {% block title %}{{Event.name}}{{'news.create.title'|trans}}{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+        '@PanelBundle/Resources/public/js/newsEdit.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}   
+{% endblock %}
+
 {% block content %}
-    <div class="row">
-        {{ form_start(form) }}
-        
-        <div class="form-group">
-            {{ form_label(form.title) }}
-            {{ form_widget(form.title) }}
-            {{ form_errors(form.title) }}
-        </div>
-        <div class="form-group">
-            {{ form_label(form.urlName) }}
-            <div class="input-group">
-                <span class="input-group-addon">{{path('invitation_news', {
-                        'newsSlug' : 'newsSlug',
-                        'slug': Event.urlName
-                })|replace({'newsSlug' : ''})}}</span>
-                {{form_widget(form.urlName)}}
-            </div>
-            {{ form_errors(form.urlName) }}
-        </div>
-        
-        {{ form_widget(form) }}
-        
-        {{ form_end(form) }}
-    </div>
+    {% include 'PanelBundle:News:form.html.twig' with {'form' : form} %}
 {% endblock %}

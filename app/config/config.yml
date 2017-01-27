@@ -132,3 +132,11 @@ knp_snappy:
         enabled:    true
         binary:     %kernel.root_dir%/../vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64
         options:    []
+
+ivory_ck_editor:
+    configs:
+        article:
+            toolbar: 'article'
+    toolbars:
+        configs:
+            article: [['Source'],['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],['Find', 'Replace', '-', 'SelectAll', '-', 'Scayt'],'/',['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat'],['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'],['Link', 'Unlink', 'Anchor'],['Image', 'FLash', 'Table', 'HorizontalRule', 'SpecialChar', 'PageBreak'],'/',['Format', 'Font', 'FontSize', 'TextColor', 'BGColor'],['Maximize', 'ShowBlocks'],['About']]

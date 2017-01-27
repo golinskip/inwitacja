@@ -22,13 +22,20 @@ class InvitationGroup
      */
     private $color;
 
+    /**
+    * @var \Doctrine\Common\Collections\Collection
+    */
     private $invitation;
-    
     
     /**
      * @var \InvitationBundle\Entity\Event
      */
     private $event;
+
+    /**
+     * @var int
+     */
+    private $innerOrder;
 
     /**
      * Get id
@@ -151,5 +158,29 @@ class InvitationGroup
     public function getEvent()
     {
         return $this->event;
+    }
+    
+    /**
+     * Set innerOrder
+     *
+     * @param integer $innerOrder
+     *
+     * @return InvitationGroup
+     */
+    public function setInnerOrder($innerOrder)
+    {
+        $this->innerOrder = $innerOrder;
+
+        return $this;
+    }
+
+    /**
+     * Get innerOrder
+     *
+     * @return int
+     */
+    public function getInnerOrder()
+    {
+        return $this->innerOrder;
     }
 }
