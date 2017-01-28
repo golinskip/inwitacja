@@ -42,3 +42,14 @@ contact:
 user:
     confirm:
         toPanel: Przejdź teraz do panelu
+error:
+    footerMessage: Aby kontynuować przejdź na stronę główną:
+    404:
+        title: Błąd 404! - strona nie istnieje
+        message: Strona na którą próbujesz się dostać nie istnieje lub została usunięta.
+    403:
+        title: Błąd 403! - dostęp zabroniony
+        message: Nie masz uprawnień do przeglądania tej strony.
+    default:
+        title: Błąd!
+        message: Wystąpił błąd na stronie. Skontaktuj się z administratorem systemu.

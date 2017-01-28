@@ -1,0 +1,13 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block body %}
+    {% include 'AppBundle:Errors:navbar.html.twig' %}
+    <div class="container">
+        {% include 'AppBundle::flashbag.html.twig' %}
+    </div>
+    <section class="success fill errorBlock" id="about" style="">
+		<h1>{{('error.'~code~'.title')|trans}}</h1>
+		<p>{{('error.'~code~'.message')|trans}}</p>
+		<p>{{'error.footerMessage'|trans}} <a href="{{path('index')}}">{{'maintitle'|trans}}</a></p>
+    </section>
+{% endblock %}
