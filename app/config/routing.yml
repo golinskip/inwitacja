@@ -1,7 +1,7 @@
 invitation:
     resource: "@InvitationBundle/Resources/config/routing.yml"
     prefix:   /
-    host:     "{slug}.{domain}"
+    host:     "www.{slug}.{domain}"
     defaults:
         domain: '%domain%'
     requirements:
@@ -10,7 +10,7 @@ invitation:
 panel:
     resource: "@PanelBundle/Resources/config/routing.yml"
     prefix:   /panel
-    host:     "{domain}"
+    host:     "www.{domain}"
     defaults:
         domain: '%domain%'
     requirements:
@@ -18,7 +18,7 @@ panel:
 app:
     resource: "@AppBundle/Resources/config/routing.yml"
     prefix:   /
-    host:     "{domain}"
+    host:     "www.{domain}"
     defaults:
         domain: '%domain%'
     requirements:
