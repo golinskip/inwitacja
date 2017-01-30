@@ -14,7 +14,7 @@ $(document).ready(function(){
         });
         
         var innerOrderVal = 0;
-        $(this).closest( "tbody" ).find('.inputInnerOrder').each(function(){
+        tableHandler.find('.inputInnerOrder').each(function(){
             $(this).val(innerOrderVal);
             innerOrderVal++;
         });

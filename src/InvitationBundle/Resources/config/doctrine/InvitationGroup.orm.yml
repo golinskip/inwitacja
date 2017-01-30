@@ -18,7 +18,7 @@ InvitationBundle\Entity\InvitationGroup:
             nullable: true
         innerOrder:
             type: integer
-            column: inner_orde
+            column: inner_order
     lifecycleCallbacks: {  }
     oneToMany:
         invitation:
