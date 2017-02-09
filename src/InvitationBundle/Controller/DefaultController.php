@@ -58,10 +58,10 @@ class DefaultController extends Controller
             $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
             
             // Regenerate new token
-            $Invitation->generateSingleUseToken();
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($Invitation);
-            $em->flush();
+            //$Invitation->generateSingleUseToken();
+            //$em = $this->getDoctrine()->getManager();
+            //$em->persist($Invitation);
+            //$em->flush();
         }
         
         
