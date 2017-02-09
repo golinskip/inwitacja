@@ -36,6 +36,11 @@
     <script type="text/javascript" src="{{ asset('bundles/bmatznerjqueryui/js/minified/jquery-ui.min.js') }}"></script>
     <!-- Include all JavaScripts, compiled by Assetic -->
     <script src="{{ asset('js/bootstrap.js') }}"></script>
+    {% javascripts
+        '@PanelBundle/Resources/public/js/general.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %} 
     {% block javascripts %}{% endblock %}
 </body>
 </html>

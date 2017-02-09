@@ -15,22 +15,24 @@
 {% endblock %}
 
 {% block content %}
-        <div class="row">
-            <div class="col-lg-6">
-                {% if Event.checkPermission('event.invitation.add') %}
-                    <button type="button" class="btn btn-primary btn-lg btn-block" id="addEventButton" data-toggle="modal" data-target="#addEventDialog">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                        {{ "invitationsManager.addButton" |trans }}
-                    </button>
-                {% endif %}
-            </div>
-            <div class="col-lg-6">
-            
-            </div>
+    <div class="row">
+        <div class="col-lg-6">
+            {% if Event.checkPermission('event.invitation.add') %}
+                <button type="button" class="btn btn-primary btn-lg btn-block" id="addEventButton" data-toggle="modal" data-target="#addEventDialog">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    {{ "invitationsManager.addButton" |trans }}
+                </button>
+            {% endif %}
         </div>
+        <div class="col-lg-6">
+            
+        </div>
+    </div>
     
     <div class="row">
-        {% include 'PanelBundle:InvitationsManager:invitationTable.html.twig' with { 'pagination' : pagination, 'Event' : Event } %}
+        <div class="col-md-12">
+            {% include 'PanelBundle:InvitationsManager:invitationTable.html.twig' with { 'pagination' : pagination, 'Event' : Event } %}
+        </div>
     </div>
                     
     {% if Event.checkPermission('event.invitation.add') %}

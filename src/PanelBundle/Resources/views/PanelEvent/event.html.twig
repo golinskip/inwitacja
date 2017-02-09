@@ -1,14 +1,19 @@
 {% extends 'PanelBundle::base.html.twig' %}
 {% block body %}
 {% include 'PanelBundle:PanelEvent:navbar.html.twig' %}
-{% include 'PanelBundle:PanelEvent:eventMenu.html.twig'  with { 'Event' : Event } %}
 <!-- Main Content -->
-<div class="container-fluid">
-    <div class="side-body">
-        {{ wo_render_breadcrumbs() }}
-        {% include 'PanelBundle::flashbag.html.twig' %}
-        <h3>{% block title %}{% endblock %}</h3>
-    {% block content %}{% endblock %}
-</div>
-</div>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <aside id="sidebar">
+                {% include 'PanelBundle:PanelEvent:eventMenu.html.twig'  with { 'Event' : Event } %}
+
+            </aside>            
+        </div>
+        <main id="page-content-wrapper" role="main">
+            {{ wo_render_breadcrumbs() }}
+            {% include 'PanelBundle::flashbag.html.twig' %}
+            <h3>{% block title %}{% endblock %}</h3>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
 {% endblock %}

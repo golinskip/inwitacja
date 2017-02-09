@@ -2,11 +2,13 @@
 
 {% block label %}
     {% if item.attribute('icon') is defined %}
-        <i class="fa {{item.attribute('icon')}}" aria-hidden="true"></i>
+        <span class="sidebar-icon"><i class="fa {{item.attribute('icon')}}" aria-hidden="true"></i></span>
     {% endif %}
     {% if options.allow_safe_labels and item.getExtra('safe_label', false) %}
-        {{ item.label|trans(item.getExtra('translation_params', {}), item.getExtra('translation_domain', 'messages'))|raw|parse_icons }}
+        <span class="sidebar-title">{{ item.label|trans(item.getExtra('translation_params', {}), item.getExtra('translation_domain', 'messages'))|raw|parse_icons }}</span>
     {% else %}
-        {{ item.label|trans(item.getExtra('translation_params', {}), item.getExtra('translation_domain', 'messages'))|parse_icons }}
+        <span class="sidebar-title">{{ item.label|trans(item.getExtra('translation_params', {}), item.getExtra('translation_domain', 'messages'))|parse_icons }}</span>
     {% endif %}
 {% endblock %}
+
+{% block linkElement %}<a href="{{ item.uri }}" class="accordion-toggle collapsed toggle-switch">{{ block('label') }}</a>{% endblock %}

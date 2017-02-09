@@ -29,13 +29,13 @@
 
 {% block content %}
         {{ form_start(form, {'action': path('panel_event_config', {'slug': app.request.get('slug')}) }) }}
-        <div class='row'>
+        <div>
             <button type="submit" class="btn btn-primary btn-lg right">
                 <i class="fa fa-floppy-o"></i> {{'invitationEditor.form.save'|trans}}
             </button>
             <hr/>
         </div>
-        <div class='row'>
+        <div>
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#invitationGroups" aria-controls="invitationGroups" role="tab" data-toggle="tab">{{'eventConfig.tabs.invitationGroups'|trans}}</a></li>

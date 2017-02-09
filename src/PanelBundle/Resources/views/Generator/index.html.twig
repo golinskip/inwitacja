@@ -1,19 +1,13 @@
 {% extends 'PanelBundle:PanelEvent:event.html.twig' %}
 {% block title %}{{Event.name}}{{'generator.title'|trans}}{% endblock %}
 {% block content %}
-    <div class="row">
         <div class="generator-row">
             {% include 'PanelBundle:Generator:stickers.html.twig' with {'form': forms.stickers, 'Event': Event} %}
         </div>
-    </div>
-    <div class="row">
         <div class="generator-row">
             {% include 'PanelBundle:Generator:vignette.html.twig' with {'form': forms.vignette, 'Event': Event} %}
         </div>
-    </div>
-    <div class="row">
         <div class="generator-row">
             {% include 'PanelBundle:Generator:excelList.html.twig' with {'form': forms.excelList, 'Event': Event} %}
         </div>
-    </div>
 {% endblock %}

@@ -20,7 +20,13 @@ class Builder implements ContainerAwareInterface
     public function eventMenu (FactoryInterface $factory, array $options) {
         $Event = $options['Event'];
         
-        $menu = $factory->createItem('root');
+        $menu = $factory->createItem('root', [
+            'childrenAttributes' => [
+                'class' => 'sidebar-nav',
+                'id' => 'sidemenu',
+            ]
+        ]);
+        
 		$menu->addChild('eventMenu.dashboard', [
             'route' => 'panel_event_dashboard',
             'routeParameters' => ['slug' => $Event->getUrlName()],
