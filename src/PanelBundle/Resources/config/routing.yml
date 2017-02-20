@@ -79,3 +79,15 @@ panel_event_generator_PDF_vignette:
 panel_event_generator_XLS_list:
     path:     /generator/{slug}/XLS/list/{filename}.{_format}
     defaults: { _controller: PanelBundle:Generator:generateExcelList}
+
+person:
+    path:     /person
+    defaults: { _controller: PanelBundle:Report:person }
+
+invitation:
+    path:     /invitation
+    defaults: { _controller: PanelBundle:Report:invitation }
+
+changelog:
+    path:     /changelog
+    defaults: { _controller: PanelBundle:Report:changelog }

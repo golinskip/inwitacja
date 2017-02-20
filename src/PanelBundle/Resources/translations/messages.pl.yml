@@ -7,6 +7,11 @@ eventMenu:
     dashboard: Panel
     invitations: Zaproszenia
     news: Artykuły
+    report:
+        name: Raporty
+        person: Osoby
+        invitation: Zaproszenia
+        changelog: Akcje
     generator: Pliki do pobrania
     config: Ustawienia
 breadcrumb:

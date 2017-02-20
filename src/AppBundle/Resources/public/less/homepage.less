@@ -12,9 +12,18 @@ div.login-form {
         color: #fff;
     }
 }
-.home-image {
-    max-width: @img-home-max;
-    max-height: @img-home-max;
+@media(min-width:767px) {
+    .home-image {
+        max-width: @img-home-max;
+        max-height: @img-home-max;
+    }
+}
+
+@media(max-width:767px) {    
+    .home-image {
+        max-width: @img-home-max-mobile;
+        max-height: @img-home-max-mobile;
+    }
 }
 a.inblue{
     color: #fff;

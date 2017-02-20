@@ -42,6 +42,26 @@ class Builder implements ContainerAwareInterface
             'routeParameters' => ['slug' => $Event->getUrlName()],
         ])->setAttribute('icon', 'fa-newspaper-o');
         
+        $report = $menu->addChild('eventMenu.report.name', [
+            'uri' => '#report-submenu',
+            'childrenAttributes'    => [
+                'class' => 'panel-collapse collapse panel-switch',
+                'role' => 'menu',
+                'id' => 'report-submenu',
+            ],
+        ])
+        ->setAttribute('icon', 'fa-file-text-o');
+        
+        $report->addChild('eventMenu.report.person', [
+            'uri' => '#',
+        ]);
+        $report->addChild('eventMenu.report.invitation', [
+            'uri' => '#',
+        ]);
+        $report->addChild('eventMenu.report.changelog', [
+            'uri' => '#',
+        ]);
+        
 		$menu->addChild('eventMenu.generator', [
             'route' => 'panel_event_generator',
             'routeParameters' => ['slug' => $Event->getUrlName()],
