@@ -15,4 +15,4 @@
 /vendor/
 /web/bundles/
 /nbproject
-composer.lock
+/composer.lock

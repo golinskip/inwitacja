@@ -71,3 +71,7 @@ InvitationBundle\Entity\Invitation:
             joinColumn:
                 name: event_id
                 referencedColumnName: id
+    manyToMany:
+        news:
+            targetEntity: News
+            mappedBy: invitations

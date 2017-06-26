@@ -55,6 +55,16 @@ class News
     private $event;
     
     private $user;
+    
+    /**
+     * @var integer
+     */
+    private $range;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $invitations;
 
 
     /**
@@ -311,6 +321,65 @@ class News
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->publishAt = new \DateTime();
+        $this->invitations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+    /**
+     * Set range
+     *
+     * @param integer $range
+     *
+     * @return News
+     */
+    public function setRange($range)
+    {
+        $this->range = $range;
+
+        return $this;
+    }
+
+    /**
+     * Get range
+     *
+     * @return integer
+     */
+    public function getRange()
+    {
+        return $this->range;
+    }
+
+    /**
+     * Add invitation
+     *
+     * @param \InvitationBundle\Entity\Invitation $invitation
+     *
+     * @return News
+     */
+    public function addInvitation(\InvitationBundle\Entity\Invitation $invitation)
+    {
+        $this->invitations[] = $invitation;
+
+        return $this;
+    }
+
+    /**
+     * Remove invitation
+     *
+     * @param \InvitationBundle\Entity\Invitation $invitation
+     */
+    public function removeInvitation(\InvitationBundle\Entity\Invitation $invitation)
+    {
+        $this->invitations->removeElement($invitation);
+    }
+
+    /**
+     * Get invitations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInvitations()
+    {
+        return $this->invitations;
     }
 }
-
