@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use InvitationBundle\Entity\News;
@@ -23,6 +24,13 @@ class NewsForm extends AbstractType {
             ->add('title', TextType::class, array('label' => 'news.create.form.title'))
             ->add('urlName', TextType::class, array('label' => 'news.create.form.urlName'))
             ->add('publishAt', DateTimeType::class, array('label' => 'news.create.form.publishAt'))
+            ->add('range', ChoiceType::class, [
+                'label' => 'news.create.form.range.title',
+                'choices' => [
+                    'news.create.form.range.event' => News::RANGE_EVENT,
+                    'news.create.form.range.invitation' => News::RANGE_INVITATION,
+                ],
+            ])
             ->add('shortContent', CKEditorType::class, array(
                 'config_name' => 'article',
                 'label' => 'news.create.form.shortContent'

@@ -7,6 +7,9 @@ namespace InvitationBundle\Entity;
  */
 class News
 {
+    const RANGE_EVENT = 1;
+    const RANGE_INVITATION = 2;
+    
     /**
      * @var int
      */
