@@ -31,6 +31,7 @@ InvitationBundle\Entity\News:
         published:
             type: boolean
         range:
+            column: access_range
             type: integer
             options:
                 default: 1

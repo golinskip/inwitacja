@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use InvitationBundle\Entity\News;
+use InvitationBundle\Entity\Invitation;
 
 class NewsForm extends AbstractType {
     
@@ -31,6 +32,16 @@ class NewsForm extends AbstractType {
                     'news.create.form.range.invitation' => News::RANGE_INVITATION,
                 ],
             ])
+            ->add('invitations', EntityType::class, [
+                'required' => false,
+                'class' => Invitation::class,
+                'label' => 'news.create.form.range.invitations',
+                'multiple' => true,
+                'choices' => $options['Invitations'],
+                'choice_label' => function($organisation, $key, $index) {
+                    return $organisation->getName();
+                },
+            ])
             ->add('shortContent', CKEditorType::class, array(
                 'config_name' => 'article',
                 'label' => 'news.create.form.shortContent'
@@ -45,6 +56,7 @@ class NewsForm extends AbstractType {
     public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults([
             'data_class' => News::class,
+            'Invitations' => [],
         ]);
     }
 }

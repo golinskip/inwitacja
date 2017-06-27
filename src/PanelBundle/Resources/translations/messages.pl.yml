@@ -242,6 +242,7 @@ news:
             submit: Zapisz
             submitAndPublish: Opublikuj i zapisz
             range:
+                invitations: Zaproszenia
                 title: Widoczność artykułu
                 event: Dla wszystkich w tym wydarzeniu
                 invitation: Dla wybranych zaproszeń
