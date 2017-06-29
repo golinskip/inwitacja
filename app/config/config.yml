@@ -4,6 +4,7 @@ imports:
     - { resource: services.yml }
     - { resource: "@PanelBundle/Resources/config/services.yml" }
     - { resource: "@InvitationBundle/Resources/config/services.yml" }
+    - { resource: "@LayoutBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -41,6 +42,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         domain: "%domain%"
+        layoutLoader: "@layout.loader"
 
 # Doctrine Configuration
 doctrine:

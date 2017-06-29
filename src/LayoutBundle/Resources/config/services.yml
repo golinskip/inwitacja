@@ -1,0 +1,7 @@
+services:
+#    layout.example:
+#        class: LayoutBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    layout.loader:
+        class: LayoutBundle\Services\LayoutService
+        arguments: [ "@doctrine.orm.entity_manager" ]

@@ -1,0 +1,26 @@
+.outer {
+    background-color: #dadada;
+    background-image:url(/bundles/layout/images/jolaimaciek/flow_002.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}  
+
+.homesplash {
+    background-color: #fff;
+    padding: 40px;
+    -webkit-box-shadow: 1px 64px 43px -19px rgba(0,0,0,0.47);
+    -moz-box-shadow: 1px 64px 43px -19px rgba(0,0,0,0.47);
+    box-shadow: 1px 64px 43px -19px rgba(0,0,0,0.47);
+    border-radius:50px;
+    opacity: 0.9;
+    filter: alpha(opacity=90); /* For IE8 and earlier */
+}
+
+.dashboard-column-left {
+    padding-top:160px;
+    background-image:url(/bundles/layout/images/jolaimaciek/flow_001.png);
+    background-size: 445px 183px, auto, 122px;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
