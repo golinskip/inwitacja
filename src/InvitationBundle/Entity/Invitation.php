@@ -82,6 +82,10 @@ class Invitation implements UserInterface {
     private $message;
     
     private $singleUseToken;
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $news;
 
 
     /**
@@ -586,5 +590,40 @@ class Invitation implements UserInterface {
             }
         }
         return $this->setStatus($status);
+    }
+
+
+    /**
+     * Add news
+     *
+     * @param \InvitationBundle\Entity\News $news
+     *
+     * @return Invitation
+     */
+    public function addNews(\InvitationBundle\Entity\News $news)
+    {
+        $this->news[] = $news;
+
+        return $this;
+    }
+
+    /**
+     * Remove news
+     *
+     * @param \InvitationBundle\Entity\News $news
+     */
+    public function removeNews(\InvitationBundle\Entity\News $news)
+    {
+        $this->news->removeElement($news);
+    }
+
+    /**
+     * Get news
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNews()
+    {
+        return $this->news;
     }
 }

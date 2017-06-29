@@ -30,6 +30,11 @@ InvitationBundle\Entity\News:
             type: datetime
         published:
             type: boolean
+        range:
+            column: access_range
+            type: integer
+            options:
+                default: 1
     manyToOne:
         event:
             targetEntity: Event
@@ -43,4 +48,16 @@ InvitationBundle\Entity\News:
             joinColumn:
                 name: user_id
                 referencedColumnName: id
+    manyToMany:
+        invitations:
+            targetEntity: InvitationBundle\Entity\Invitation
+            inversedBy: news
+            joinTable:
+                name: news_invitation
+                joinColumns:
+                    invitation_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    user_id:
+                        referencedColumnName: id
     lifecycleCallbacks: {  }

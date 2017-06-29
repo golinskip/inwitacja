@@ -71,7 +71,9 @@ class NewsController extends Controller {
         
         $News->setEvent($Event);
         
-        $form = $this->createForm(NewsForm::class, $News);
+        $Invitations = $Event->getInvitation();
+        
+        $form = $this->createForm(NewsForm::class, $News, ['Invitations' => $Invitations]);
         
         $form->handleRequest($request);
         
@@ -124,7 +126,10 @@ class NewsController extends Controller {
             throw new AccessDeniedException('Access denied.');
         }
         
-        $form = $this->createForm(NewsForm::class, $News);
+        
+        $Invitations = $Event->getInvitation();
+        
+        $form = $this->createForm(NewsForm::class, $News, ['Invitations' => $Invitations]);
         
         $form->handleRequest($request);
 
