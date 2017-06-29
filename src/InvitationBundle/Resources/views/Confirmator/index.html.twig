@@ -13,6 +13,7 @@
     <div class="container">
         {{ wo_render_breadcrumbs() }}
         {% include 'InvitationBundle::flashbag.html.twig' %}
+        <div class="custom-content-in">
         <h1>{{'confirmator.title'|trans}}</h1>
         <ul>
         {% for i in range(0,2) -%}
@@ -26,6 +27,7 @@
         {{ form_widget(form.submit, {'attr': {'class' : 'btn-lg btn-block'}} ) }}
         {{ form_widget(form) }}
         {{ form_end(form) }}
+        </div>
     </div>
 </div>
 

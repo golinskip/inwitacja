@@ -6,13 +6,15 @@
         {% include 'InvitationBundle::flashbag.html.twig' %}
         <div class="col-md-7">
             {{ wo_render_breadcrumbs() }}
+            <div class=" news-col-left">
             <h1>{{News.title}}</h1>
             <p>{{News.createdAt|date('d.m.Y')}}</p>
             <div>
                 {{News.content|raw}}
             </div>
+            </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5 news-col-right">
             <a class="btn btn-primary btn-lg btn-block kp-home-button" href="{{path('invitation_confirmator', {'slug': app.user.event.urlName}) }}">
                 <i class="fa fa-check-circle-o"></i> {{'dashboard.buttons.confirm'|trans}}
             </a>
