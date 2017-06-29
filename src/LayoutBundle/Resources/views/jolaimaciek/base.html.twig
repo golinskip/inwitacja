@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inwitacja - twoje nowoczesne zaproszenie.</title>
+	
+    <!-- Bootstrap -->
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+    <!-- Font Awesome -->
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.min.css') }}" />
+    <!-- jQuery UI -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bmatznerjqueryui/css/smoothness/jquery-ui.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bmatznerjqueryui/css/smoothness/jquery.ui.theme.css') }}" />
+    <!-- Less -->
+	{% stylesheets filter='less,cssrewrite' output='css/jolaimaciek.css'
+		'@InvitationBundle/Resources/public/less/main.less'
+		'@LayoutBundle/Resources/public/less/jolaimaciek/main.less'
+	%}
+	<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="all" />
+	{% endstylesheets %}
+    {% stylesheets '@InvitationBundle/Resources/public/css/*'%}
+	<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="all" />
+    {% endstylesheets %}
+    
+    {% stylesheets '@LayoutBundle/Resources/public/css/jolaimaciek/*' filter='cssrewrite'%}
+	<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="all" />
+    {% endstylesheets %}
+    {% block stylesheets %}{% endblock %}
+    <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
+    {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+
+</head>
+
+<body>
+    {% if is_granted('ROLE_GUEST') %}
+        {% include 'InvitationBundle::navbar.html.twig' %}
+    {% endif %}
+	{% block body %}{% endblock %}
+    <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/bmatznerjqueryui/js/minified/jquery-ui.min.js') }}"></script>
+    <!-- Include all JavaScripts, compiled by Assetic -->
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

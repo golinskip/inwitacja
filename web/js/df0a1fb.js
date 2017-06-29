@@ -2,6 +2,13 @@ jQuery(document).ready(function() {
 	jQuery('.modal-form').on('shown.bs.modal', function () {        
 		jQuery("input:first").focus();
 	});
+        $('#invitationsTable .remove').unbind().click(function(e){
+            if(confirm(window.translations.removeQuestion)) {
+                return true;
+            }
+            e.preventDefault();
+            return false;
+        });
 	function fieldDuplicator() {
 		jQuery('.input-duplicatable').unbind().keyup(function(){
 			if(jQuery(this).parent().is(':last-child') && jQuery(this).val() !== '') {
@@ -14,10 +21,6 @@ jQuery(document).ready(function() {
 		});
 	}
 	fieldDuplicator();
-    
-    $('tr[data-href]').click(function(){
-        document.location = $(this).data('href');
-    });
     
     function addInviataionFormReset() {
         

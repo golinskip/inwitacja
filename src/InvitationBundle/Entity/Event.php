@@ -93,6 +93,11 @@ class Event
      * @var \Doctrine\Common\Collections\Collection
      */
     private $invitationGroup;
+    
+    /**
+     * @var string
+     */
+    private $layout;
 
 
     /**
@@ -732,5 +737,30 @@ class Event
     public function getPersonGroup()
     {
         return $this->personGroup;
+    }
+
+
+    /**
+     * Set layout
+     *
+     * @param string $layout
+     *
+     * @return Event
+     */
+    public function setLayout($layout)
+    {
+        $this->layout = $layout;
+
+        return $this;
+    }
+
+    /**
+     * Get layout
+     *
+     * @return string
+     */
+    public function getLayout()
+    {
+        return $this->layout;
     }
 }
