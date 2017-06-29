@@ -27,6 +27,9 @@ InvitationBundle\Entity\Parameter:
             type: integer
             column: inner_order
             nullable: true
+        deleted:
+            type: boolean
+            nullable: true
     lifecycleCallbacks: {  }
     manyToOne:
         predefiniedParameter:

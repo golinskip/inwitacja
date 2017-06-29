@@ -51,7 +51,19 @@ class Parameter
      * @var int
      */
     private $innerOrder;
+    
+    private $deleted;
+    
+    public function getDeleted() {
+        return $this->deleted;
+    }
 
+    public function setDeleted($deleted) {
+        $this->deleted = $deleted;
+        return $this;
+    }
+
+    
 
     /**
      * Get id

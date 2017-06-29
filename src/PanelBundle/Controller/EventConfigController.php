@@ -111,9 +111,11 @@ class EventConfigController extends Controller {
 
         foreach ($originals['originalParameter'] as $Parameter) {
             if (false === $Event->getParameter()->contains($Parameter)) {
-                $Event->getParameter()->removeElement($Parameter);
+                $Event->removeParameter($Parameter);
+                $Parameter->setEvent(null);
                 $em->persist($Event);
-                $em->remove($Parameter);
+                $Parameter->setDeleted(true);
+                $em->persist($Parameter);
             }
         }
 

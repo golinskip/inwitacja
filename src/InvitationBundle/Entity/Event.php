@@ -440,6 +440,7 @@ class Event
      */
     public function addParameter(\InvitationBundle\Entity\Parameter $parameter)
     {
+        if($parameter->getDeleted() === true) return $this;
         $this->parameter[] = $parameter;
 
         return $this;
