@@ -8,7 +8,7 @@
 .homesplash {
     
     background-image:url(/bundles/layout/images/jolaimaciek/flow_001.png);
-    background-size: 649px 272px, auto, 122px;
+    background-size: 100%, auto, 122px;
     background-repeat: no-repeat;
     background-position: top center;
     background-color: #fff;

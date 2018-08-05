@@ -82,7 +82,7 @@ header {
   color: white;
 }
 header .container {
-  padding-top: 100px;
+  padding-top: 40px;
   padding-bottom: 50px;
 }
 header img {
@@ -530,9 +530,17 @@ div.login-form form input.password {
 div.login-form a {
   color: #fff;
 }
-.home-image {
-  max-width: 250px;
-  max-height: 250px;
+@media (min-width: 767px) {
+  .home-image {
+    max-width: 250px;
+    max-height: 250px;
+  }
+}
+@media (max-width: 767px) {
+  .home-image {
+    max-width: 80px;
+    max-height: 80px;
+  }
 }
 a.inblue {
   color: #fff;

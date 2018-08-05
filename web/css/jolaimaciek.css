@@ -6,7 +6,7 @@ body {
 @font-face {
   font-family: 'YourFontName';
   /*a name to be used later*/
-  src: url('../../Resources/public/less/fonts/');
+  src: url('../Resources/public/less/fonts/');
   /*URL to font*/
 }
 img.home-image {
